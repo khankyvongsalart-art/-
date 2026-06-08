@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <title>ໂປຣແກຣມຄິດໄລ່ງວດເງິນກູ້ - ສະຖາບັນການເງິນ ຊັບທະວີ</title>
+<meta name="description" content="ຄິດໄລ່ງວດເງິນກູ້ເບື້ອງຕົ້ນດ້ວຍຕົວເອງ ໄລ່ດອກເບັ້ຍ ແລະ ຕາຕະລາງການຜ່ອນຊຳລະໄດ້ງ່າຍໆ">
+<meta name="keywords" content="ຄິດໄລ່ງວດ, ຄຳນວນເງິນກູ້, ໄລ່ດອກເບັ້ຍ, ຊັບທະວີ">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #C0392B; --dark-red: #922B21; --gold: #C9A84C;
+      --gold-lt: #E8C97A; --cream: #FAF6EF; --dark: #1A1209; --mid: #4A3728; --light: #F0E8D8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans Lao', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+    /* ===== SOCIAL BAR ===== */
+    .social-bar {
+      background: var(--cream);
+      padding: 0.4rem 2.5rem;
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 101;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .social-bar-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 0.5rem;
+    }
+    .social-address {
+      font-size: 0.8rem; color: rgba(255,0,0,0.55);
+      text-decoration: none; transition: color 0.2s;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .social-address:hover { color: var(--gold); }
+    .social-icons { display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .social-btn {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700;
+      text-decoration: none; color: #fff;
+      transition: transform 0.2s;
+    }
+    .social-btn:hover { transform: scale(1.15); }
+    .social-btn.fb { background: #1877F2; }
+    .social-btn.wa { background: #25D366; }
+    .social-btn.tt { background: #000; }
+    .social-btn.yt { background: #FF0000; }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed; top: 36px; width: 100%; z-index: 100;
+      background: #ff7200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 72px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.18);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
+    .nav-brand { color: #fff; line-height: 1.25; }
+    .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 700; }
+    .nav-brand .en { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: 4rem; }
+    .nav-links a {
+      color: #fff; text-decoration: none; font-size: 1rem; font-weight: 500;
+      padding: 0.3rem 0; border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { border-color: #ffe600; color: #ffe600; }
+    .nav-cta {
+      background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.5);
+      color: #fff; padding: 0.5rem 1.4rem; border-radius: 6px;
+      text-decoration: none; font-size: 0.95rem; font-weight: 600;
+      transition: background 0.2s; white-space: nowrap;
+    }
+    .nav-cta:hover { background: rgba(255,255,255,0.28); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: #ff7200; z-index: 99; flex-direction: column;
+      align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 600; }
+    .mobile-menu a:hover { color: #ffe600; }
+
+    /* PAGE HEADER */
+    .page-header { min-height: 280px; background: linear-gradient(135deg, #480606 0%, #8f0505 50%, #4f2929 100%); display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 3rem; position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(192,57,43,0.18) 0%, transparent 70%); }
+    .page-header-grid { position: absolute; inset: 0; opacity: 0.04; background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px); background-size: 60px 60px; }
+    .page-header-content { position: relative; z-index: 1; }
+    .hero-badge { display: inline-block; border: 1px solid var(--gold); color: #fff; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 2px; margin-bottom: 1.5rem; }
+    .page-header h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; color: var(--cream); line-height: 1.3; margin-bottom: 0.5rem; }
+    .page-header h1 em { font-style: normal; color: var(--gold); }
+    .page-header p { color: rgba(250,246,239,0.7); font-size: 1.2rem; }
+
+    /* CALC SECTION */
+    .calc-section { padding: 4rem 2rem 5rem; background: var(--cream); }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .loan-tabs { display: flex; gap: 0.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .loan-tab { padding: 0.6rem 1.4rem; border-radius: 4px; border: 1px solid rgba(192,57,43,0.3); background: #fff; color: var(--mid); font-family: 'Noto Sans Lao', sans-serif; font-size: 0.85rem; cursor: pointer; transition: all 0.25s; }
+    .loan-tab:hover { border-color: var(--red); color: var(--red); transform: translateY(-1px); }
+    .loan-tab.active { background: var(--red); border-color: var(--red); color: #fff; font-weight: 600; box-shadow: 0 4px 12px rgba(192,57,43,0.3); }
+
+    .calc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+
+    .calc-panel { background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 12px; padding: 2rem; box-shadow: 0 4px 24px rgba(26,18,9,0.08); transition: box-shadow 0.3s; }
+    .calc-panel:hover { box-shadow: 0 8px 32px rgba(26,18,9,0.12); }
+    .calc-panel-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 1.75rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--light); display: flex; align-items: center; gap: 0.5rem; }
+    .calc-panel-title::before { content: ''; width: 4px; height: 1.1rem; background: var(--red); border-radius: 2px; display: inline-block; }
+
+    .form-group { margin-bottom: 1.5rem; }
+    .form-label { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--mid); margin-bottom: 0.5rem; }
+    .form-label .val { font-weight: 700; color: var(--red); font-size: 0.95rem; background: rgba(192,57,43,0.07); padding: 0.1rem 0.5rem; border-radius: 4px; }
+
+    input[type="range"] { width: 100%; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 3px; background: var(--light); outline: none; cursor: pointer; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--red); cursor: pointer; box-shadow: 0 2px 8px rgba(192,57,43,0.45); transition: transform 0.15s; border: 3px solid #fff; }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.25); }
+    .range-marks { display: flex; justify-content: space-between; font-size: 0.72rem; color: rgba(74,55,40,0.45); margin-top: 0.35rem; }
+
+    .form-input-text { width: 100%; padding: 0.7rem 1rem; border: 1px solid rgba(74,55,40,0.2); border-radius: 6px; font-family: 'Noto Sans Lao', sans-serif; font-size: 0.9rem; color: var(--dark); background: var(--cream); outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-input-text:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(192,57,43,0.1); }
+    select.form-input-text { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A3728' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-color: var(--cream); cursor: pointer; }
+
+    .calc-btn { width: 100%; padding: 0.9rem; background: var(--red); color: #fff; border: none; border-radius: 6px; font-family: 'Noto Sans Lao', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; margin-top: 0.5rem; }
+    .calc-btn:hover { background: var(--dark-red); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(192,57,43,0.35); }
+    .calc-btn:active { transform: translateY(0); }
+
+    .result-panel { display: flex; flex-direction: column; gap: 1.25rem; }
+    .result-highlight { background: linear-gradient(135deg, #480606, #8f0505); border-radius: 12px; padding: 2rem; text-align: center; position: relative; overflow: hidden; box-shadow: 0 8px 28px rgba(72,6,6,0.35); }
+    .result-highlight::before { content: ''; position: absolute; inset: 0; opacity: 0.05; background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px); background-size: 40px 40px; }
+    .result-highlight::after { content: ''; position: absolute; top: -50%; left: -60%; width: 40%; height: 200%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent); transform: skewX(-15deg); animation: shimmer 3s infinite; }
+    @keyframes shimmer { 0% { left: -60%; } 100% { left: 120%; } }
+    .result-highlight .rl { position: relative; z-index: 1; }
+    .result-highlight .label { font-size: 0.8rem; color: rgba(250,246,239,0.6); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .result-highlight .amount { font-size: 2.8rem; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 0.25rem; }
+    .amount-updated { animation: pulse-gold 0.4s ease; }
+    @keyframes pulse-gold { 0% { transform: scale(1); } 50% { transform: scale(1.06); color: #fff; } 100% { transform: scale(1); } }
+    .result-highlight .unit { font-size: 0.85rem; color: rgba(250,246,239,0.5); }
+
+    .result-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .result-card { background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 10px; padding: 1.25rem; text-align: center; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+    .result-card:hover { border-color: rgba(192,57,43,0.3); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(26,18,9,0.08); }
+    .result-card .rc-label { font-size: 0.75rem; color: var(--mid); margin-bottom: 0.4rem; }
+    .result-card .rc-value { font-size: 1.1rem; font-weight: 700; color: var(--dark); }
+    .result-card .rc-value.accent { color: var(--red); }
+
+    .chart-wrap { background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 12px; padding: 1.75rem; box-shadow: 0 4px 16px rgba(26,18,9,0.06); }
+    .chart-title { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+    .chart-title::before { content: ''; width: 4px; height: 1rem; background: var(--gold); border-radius: 2px; display: inline-block; }
+    .chart-container { position: relative; height: 200px; display: flex; align-items: center; justify-content: center; gap: 2rem; }
+    .chart-canvas-wrap { width: 160px; height: 160px; flex-shrink: 0; }
+    .chart-legend { display: flex; flex-direction: column; gap: 0.75rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+    .legend-label { color: var(--mid); }
+    .legend-value { font-weight: 700; color: var(--dark); margin-left: 0.3rem; }
+
+    .tips-box { background: linear-gradient(135deg, #1A1209, #2C1810); border-radius: 12px; padding: 1.75rem; }
+    .tips-title { color: var(--gold); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
+    .tips-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .tip-item { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.82rem; color: rgba(250,246,239,0.65); line-height: 1.6; }
+    .tip-icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+    .summary-section { margin-top: 2.5rem; }
+    .summary-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+    .summary-title::before { content: ''; width: 4px; height: 1.1rem; background: var(--gold); border-radius: 2px; display: inline-block; }
+    .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .summary-card { background: #fff; border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(74,55,40,0.08); box-shadow: 0 4px 16px rgba(26,18,9,0.06); text-align: center; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+    .summary-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,18,9,0.1); }
+    .summary-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--red), var(--gold)); }
+    .summary-card .sc-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .summary-card .sc-label { font-size: 0.75rem; color: var(--mid); margin-bottom: 0.4rem; letter-spacing: 0.04em; }
+    .summary-card .sc-value { font-size: 1.15rem; font-weight: 700; color: var(--dark); line-height: 1.3; }
+    .summary-card .sc-value.red { color: var(--red); }
+    .summary-card .sc-value.gold { color: #a07c2a; }
+    .summary-card .sc-sub { font-size: 0.72rem; color: rgba(74,55,40,0.5); margin-top: 0.3rem; }
+
+    .apply-cta-wrap { margin-top: 2rem; background: linear-gradient(135deg, #480606, #8f0505); border-radius: 12px; padding: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; position: relative; overflow: hidden; box-shadow: 0 8px 28px rgba(72,6,6,0.25); }
+    .apply-cta-wrap::before { content: ''; position: absolute; inset: 0; opacity: 0.04; background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px); background-size: 40px 40px; }
+    .apply-cta-text { position: relative; z-index: 1; }
+    .apply-cta-text h3 { color: #fff; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .apply-cta-text p { color: rgba(250,246,239,0.65); font-size: 0.85rem; }
+    .apply-cta-text .cta-amount { color: var(--gold); font-weight: 700; font-size: 1rem; }
+    .btn-apply { position: relative; z-index: 1; background: var(--gold); color: var(--dark); padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; white-space: nowrap; border: none; cursor: pointer; font-family: 'Noto Sans Lao', sans-serif; }
+    .btn-apply:hover { background: #e0bb5a; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(201,168,76,0.4); }
+
+    .bar-chart-section { margin-top: 2.5rem; }
+    .bar-chart-wrap { background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 12px; padding: 2rem; box-shadow: 0 4px 16px rgba(26,18,9,0.06); }
+    .bar-chart-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .bar-chart-title::before { content: ''; width: 4px; height: 1.1rem; background: var(--red); border-radius: 2px; display: inline-block; }
+    .bar-chart-sub { font-size: 0.8rem; color: var(--mid); margin-bottom: 1.5rem; }
+    .bar-chart-container { position: relative; height: 280px; }
+
+    .amort-wrap { background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 12px; overflow: hidden; margin-top: 2rem; box-shadow: 0 4px 16px rgba(26,18,9,0.06); }
+    .amort-header { padding: 1rem 1.5rem; background: var(--dark); color: var(--gold); font-size: 0.9rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+    .amort-actions { display: flex; gap: 0.75rem; align-items: center; }
+    .amort-toggle { font-size: 0.78rem; color: rgba(201,168,76,0.7); cursor: pointer; background: none; border: none; font-family: 'Noto Sans Lao', sans-serif; transition: color 0.2s; }
+    .amort-toggle:hover { color: var(--gold); }
+    .print-btn { font-size: 0.78rem; color: rgba(201,168,76,0.7); cursor: pointer; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); font-family: 'Noto Sans Lao', sans-serif; padding: 0.25rem 0.7rem; border-radius: 4px; transition: all 0.2s; }
+    .print-btn:hover { background: rgba(201,168,76,0.2); color: var(--gold); }
+    .amort-table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 600px; }
+    thead tr { background: var(--light); }
+    th { padding: 0.75rem 1rem; text-align: right; color: var(--mid); font-weight: 600; border-bottom: 1px solid rgba(74,55,40,0.1); }
+    th:first-child { text-align: center; }
+    td { padding: 0.7rem 1rem; text-align: right; color: var(--dark); border-bottom: 1px solid rgba(74,55,40,0.05); transition: background 0.15s; }
+    td:first-child { text-align: center; color: var(--mid); }
+    tr:hover td { background: rgba(240,232,216,0.5); }
+    tr.last-row td { font-weight: 700; color: var(--red); background: rgba(192,57,43,0.05); }
+    .more-rows { text-align: center; padding: 0.75rem; font-size: 0.78rem; color: var(--mid); background: var(--light); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+ /* ===== FOOTER ===== */
+    footer { background: #ffd700; color: #fff; padding: 2.5rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between;align-items: flex-start;gap: 4rem; padding: 2rem 0; }
+    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.2rem; color: #fff; }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 0.75rem; }
+   
+    @media print {
+      nav, .social-bar, .loan-tabs, .calc-btn, .amort-toggle, .print-btn, .amort-actions, .tips-box, .apply-cta-wrap { display: none !important; }
+      body { background: #fff; }
+      .page-header { min-height: auto; padding: 2rem; }
+      .calc-section { padding: 1rem; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    @media (max-width: 900px) { .summary-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) {
+      .social-bar { padding: 0.4rem 1rem; }
+      .social-address { font-size: 0.7rem; max-width: 52vw; }
+      nav { padding: 0 1rem; top: 32px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .calc-layout { grid-template-columns: 1fr; }
+      .result-cards { grid-template-columns: 1fr 1fr; }
+      .chart-container { flex-direction: column; height: auto; }
+      .chart-canvas-wrap { width: 140px; height: 140px; }
+      .apply-cta-wrap { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .social-bar { padding: 0.3rem 0.75rem; }
+      .social-address { font-size: 0.65rem; max-width: 48vw; }
+      nav { height: 60px; }
+      .nav-brand .lo { font-size: 0.9rem; }
+      .nav-brand .en { display: none; }
+      .result-cards { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: 1fr 1fr; }
+      .loan-tabs { gap: 0.35rem; }
+      .loan-tab { font-size: 0.78rem; padding: 0.5rem 0.9rem; }
+    }
+    /* VISITOR WIDGET */
+.visitor-widget {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #333;
+  min-width: 400px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.vw-row {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px dotted #e0e0e0;
+}
+.vw-row:last-child { border-bottom: none; }
+.vw-left { display: flex; align-items: center; gap: 8px; color: #444; }
+.vw-val { font-weight: 600; color: #222;font-size: 16px; }
+.vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: #ff7200; border-top: 1px solid #eee; padding-top: 6px; }
+  </style>
+  </style>
+</head>
+<body>
+
+<!-- SOCIAL BAR -->
+<div class="social-bar">
+  <div class="social-bar-inner">
+    <a href="https://maps.google.com/?q=326+Unit+16+Sikhay+Vientiane" target="_blank" class="social-address">
+      📍 ສຳນັກງານຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ
+    </a>
+   <div class="social-icons">
+  <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://wa.me/85621520722" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.tiktok.com/@.fis78" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
+  <a href="https://m.youtube.com/channel/UCiovNJcNcy-OHdQHk_bbfkA" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i></a>
+</div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <img src="images/LOGO-FINAL-01.png" alt="logo" style="height:56px;">
+    <div class="nav-brand">
+      <span class="lo">ສະຖາບັນການເງິນ ຊັບທະວີ</span>
+      <span class="en">Financial Institutes Sapthavy</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">ໜ້າຫລັກ</a></li>
+    <li><a href="products.html">ສິນເຊື່ອ</a></li>
+    <li><a href="insurance.html">ປະກັນໄພ</a></li>
+    <li><a href="calculator.html">ຄິດໄລ່</a></li>
+  </ul>
+  <a href="apply.html" class="nav-cta">ສະໝັກກູ້ເງິນ</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">ໜ້າຫລັກ</a>
+  <a href="products.html" onclick="toggleMenu()">ສິນເຊື່ອ</a>
+  <a href="insurance.html" onclick="toggleMenu()">ປະກັນໄພ</a>
+  <a href="calculator.html" onclick="toggleMenu()">ຄິດໄລ່</a>
+  <a href="apply.html" onclick="toggleMenu()">ສະໝັກກູ້ເງິນ</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-content reveal">
+    <div class="hero-badge">Financial Institutes Sapthavy</div>
+    <h1>ຄິດໄລ່ <em>ສິນເຊື່ອ</em></h1>
+    <p>ຄຳນວນຍອດຜ່ອນ ດອກເບ້ຍ ແລະ ຕາຕະລາງການຊຳລະ</p>
+  </div>
+</div>
+
+<section class="calc-section">
+  <div class="container">
+
+    <div class="loan-tabs reveal">
+      <button class="loan-tab active" onclick="setLoanType('personal', this)">ສິນເຊື່ອສ່ວນບຸກຄົນ</button>
+      <button class="loan-tab" onclick="setLoanType('business', this)">ສິນເຊື່ອທຸລະກິດ</button>
+      <button class="loan-tab" onclick="setLoanType('mortgage', this)">ສິນເຊື່ອທີ່ດິນ / ເຮືອນ</button>
+      <button class="loan-tab" onclick="setLoanType('car', this)">ສິນເຊື່ອລົດ</button>
+    </div>
+
+    <div class="calc-layout">
+      <div class="calc-panel reveal">
+        <div class="calc-panel-title">ຂໍ້ມູນສິນເຊື່ອ</div>
+        <div class="form-group">
+          <div class="form-label"><span>ຈຳນວນເງິນກູ້ (ກີບ)</span><span class="val" id="amountDisplay">50,000,000</span></div>
+          <input type="range" id="amountSlider" min="5000000" max="500000000" step="5000000" value="50000000" oninput="updateAmount(this.value)">
+          <div class="range-marks"><span>5 ລ້ານ</span><span>250 ລ້ານ</span><span>1000 ລ້ານ</span></div>
+        </div>
+        <div class="form-group">
+          <div class="form-label"><span>ໄລຍະຜ່ອນ</span><span class="val" id="termDisplay">24 ເດືອນ</span></div>
+          <input type="range" id="termSlider" min="3" max="120" step="3" value="24" oninput="updateTerm(this.value)">
+          <div class="range-marks"><span>3 ເດືອນ</span><span>5 ປີ</span><span>10 ປີ</span></div>
+        </div>
+        <div class="form-group">
+          <div class="form-label"><span>ດອກເບ້ຍ / ເດືອນ (%)</span><span class="val" id="rateDisplay">0.80%</span></div>
+          <input type="range" id="rateSlider" min="0.3" max="5.0" step="0.05" value="0.80" oninput="updateRate(this.value)">
+          <div class="range-marks"><span>0.3%</span><span>2.0%</span><span>5.0%</span></div>
+        </div>
+        <div class="form-group">
+          <div class="form-label"><span>ວິທີຄິດໄລ່</span></div>
+          <select class="form-input-text" id="methodSelect" onchange="calculate()">
+            <option value="reducing">Reducing Balance (ດອກເບ້ຍຫຼຸດລົງ)</option>
+            <option value="flat">Flat Rate (ດອກເບ້ຍຄົງທີ່)</option>
+          </select>
+        </div>
+        <button class="calc-btn" onclick="calculate()">✓ ຄຳນວນ</button>
+      </div>
+
+      <div class="result-panel reveal">
+        <div class="result-highlight">
+          <div class="rl">
+            <div class="label">ຍອດຜ່ອນ / ເດືອນ</div>
+            <div class="amount" id="monthlyResult">0</div>
+            <div class="unit">ກີບ / ເດືອນ</div>
+          </div>
+        </div>
+        <div class="result-cards">
+          <div class="result-card"><div class="rc-label">ເງິນຕົ້ນ</div><div class="rc-value" id="principalResult">0</div></div>
+          <div class="result-card"><div class="rc-label">ດອກເບ້ຍທັງໝົດ</div><div class="rc-value accent" id="interestResult">0</div></div>
+          <div class="result-card"><div class="rc-label">ຍອດຊຳລະທັງໝົດ</div><div class="rc-value" id="totalResult">0</div></div>
+          <div class="result-card"><div class="rc-label">ອັດຕາດອກເບ້ຍ / ປີ</div><div class="rc-value accent" id="annualRateResult">0%</div></div>
+        </div>
+        <div class="chart-wrap">
+          <div class="chart-title">ສັດສ່ວນເງິນຕົ້ນ vs ດອກເບ້ຍ</div>
+          <div class="chart-container">
+            <div class="chart-canvas-wrap"><canvas id="loanChart"></canvas></div>
+            <div class="chart-legend">
+              <div class="legend-item"><div class="legend-dot" style="background:#C0392B;"></div><span class="legend-label">ເງິນຕົ້ນ</span><span class="legend-value" id="legendPrincipal">—</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:#C9A84C;"></div><span class="legend-label">ດອກເບ້ຍ</span><span class="legend-value" id="legendInterest">—</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tips-box">
+          <div class="tips-title">💡 ຄຳແນະນຳ</div>
+          <div class="tips-list">
+            <div class="tip-item"><span class="tip-icon">▸</span><span>ຍອດຜ່ອນ/ເດືອນ ບໍ່ຄວນເກີນ 40% ຂອງລາຍຮັບ</span></div>
+            <div class="tip-item"><span class="tip-icon">▸</span><span>Reducing Balance ຈ່າຍດອກເບ້ຍໜ້ອຍກວ່າ Flat Rate</span></div>
+            <div class="tip-item"><span class="tip-icon">▸</span><span>ຜ່ອນໄລຍະສັ້ນ = ດອກເບ້ຍລວມໜ້ອຍກວ່າ</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-section reveal">
+      <div class="summary-title">ສະຫຼຸບຜົນການຄຳນວນ</div>
+      <div class="summary-grid">
+        <div class="summary-card"><div class="sc-icon">💰</div><div class="sc-label">ຈຳນວນກູ້</div><div class="sc-value" id="sum-principal">—</div><div class="sc-sub">ກີບ</div></div>
+        <div class="summary-card"><div class="sc-icon">📅</div><div class="sc-label">ຍອດຜ່ອນ / ເດືອນ</div><div class="sc-value red" id="sum-monthly">—</div><div class="sc-sub">ກີບ / ເດືອນ</div></div>
+        <div class="summary-card"><div class="sc-icon">📈</div><div class="sc-label">ດອກເບ້ຍທັງໝົດ</div><div class="sc-value gold" id="sum-interest">—</div><div class="sc-sub">ກີບ</div></div>
+        <div class="summary-card"><div class="sc-icon">🧾</div><div class="sc-label">ຍອດຊຳລະທັງໝົດ</div><div class="sc-value" id="sum-total">—</div><div class="sc-sub">ກີບ</div></div>
+      </div>
+    </div>
+
+    <div class="apply-cta-wrap reveal">
+      <div class="apply-cta-text">
+        <h3>ພ້ອມສະໝັກແລ້ວບໍ?</h3>
+        <p>ຜ່ອນ <span class="cta-amount" id="cta-monthly">—</span> ກີບ/ເດືອນ · ໄລຍະ <span class="cta-amount" id="cta-term">—</span> · ດອກເບ້ຍ <span class="cta-amount" id="cta-rate">—</span>%/ເດືອນ</p>
+      </div>
+      <button class="btn-apply" onclick="goApply()">ສະໝັກກູ້ເງິນດຽວນີ້ →</button>
+    </div>
+
+    <div class="bar-chart-section reveal">
+      <div class="bar-chart-wrap">
+        <div class="bar-chart-title">ຍອດຜ່ອນຕໍ່ເດືອນ ຕະຫຼອດໄລຍະສັນຍາ</div>
+        <div class="bar-chart-sub">ສ່ວນສີແດງ = ຕັດຕົ້ນ · ສ່ວນສີທອງ = ດອກເບ້ຍ</div>
+        <div class="bar-chart-container"><canvas id="barChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="amort-wrap reveal" id="amortWrap">
+      <div class="amort-header">
+        <span>📋 ຕາຕະລາງການຜ່ອນຊຳລະ</span>
+        <div class="amort-actions">
+          <button class="print-btn" onclick="window.print()">🖨 ພິມ / Export PDF</button>
+          <button class="amort-toggle" onclick="toggleAmort()">ສະແດງ / ເຊື່ອງ</button>
+        </div>
+      </div>
+      <div id="amortBody"><div class="more-rows">ກົດ "ຄຳນວນ" ເພື່ອສະແດງຕາຕະລາງ</div></div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+  <div class="visitor-widget" id="visitorWidget">
+  <div class="vw-row"><span class="vw-left">📶 User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
+  <div class="vw-row"><span class="vw-left">👁️ View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
+  <div class="vw-row"><span class="vw-left">👤 Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
+  <div class="vw-row"><span class="vw-left">👥 Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
+  <div class="vw-row"><span class="vw-left">👤 Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
+  <div class="vw-footer">📊 sapthavy.com</div>
+</div>
+
+    <ul class="footer-contact">
+      <li>📍 ສຳນກງານ ຕັ້ງຢ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫວງວຽງຈັນ</li>
+      <li>📧 ອີເມວ : contact@sapthavy.com</li>
+      <li>📞 ໂທລະສັບ : (+85621)520722, 02054213555</li>
+      <li>🌐 ເວັບໄຊ້ : www.sapthavy.com</li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const presets = {
+    personal: { rate: 3.0, maxAmount: 50000000, maxTerm: 60 },
+    business: { rate: 3.0, maxAmount: 5000000000, maxTerm: 120 },
+    mortgage: { rate: 3.0, maxAmount: 500000000, maxTerm: 120 },
+    car:      { rate: 3.0, maxAmount: 500000000, maxTerm: 84  },
+  };
+
+  let showAmort = true;
+  let doughnutChart = null;
+  let barChartInstance = null;
+
+  function setLoanType(type, btn) {
+    document.querySelectorAll('.loan-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    const p = presets[type];
+    document.getElementById('rateSlider').value = p.rate;
+    updateRate(p.rate);
+    document.getElementById('amountSlider').max = p.maxAmount;
+    document.getElementById('termSlider').max   = p.maxTerm;
+    calculate();
+  }
+
+  function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
+
+  function updateSliderBg(el) {
+    const pct = ((parseFloat(el.value) - parseFloat(el.min)) / (parseFloat(el.max) - parseFloat(el.min))) * 100;
+    el.style.background = 'linear-gradient(90deg, #C0392B ' + pct + '%, #F0E8D8 ' + pct + '%)';
+  }
+
+  function updateAmount(val) { document.getElementById('amountDisplay').textContent = fmt(val); updateSliderBg(document.getElementById('amountSlider')); calculate(); }
+  function updateTerm(val) {
+    const months = parseInt(val), years = Math.floor(months/12), rem = months%12;
+    let label = months + ' ເດືອນ';
+    if (years > 0) label = years + ' ປີ' + (rem > 0 ? ' ' + rem + ' ເດືອນ' : '');
+    document.getElementById('termDisplay').textContent = label;
+    updateSliderBg(document.getElementById('termSlider'));
+    calculate();
+  }
+  function updateRate(val) { document.getElementById('rateDisplay').textContent = parseFloat(val).toFixed(2) + '%'; updateSliderBg(document.getElementById('rateSlider')); calculate(); }
+
+  function calculate() {
+    const P      = parseFloat(document.getElementById('amountSlider').value);
+    const n      = parseInt(document.getElementById('termSlider').value);
+    const rInput = parseFloat(document.getElementById('rateSlider').value);
+    const r      = rInput / 100;
+    const method = document.getElementById('methodSelect').value;
+
+    let monthly, totalInterest, totalPay;
+    if (method === 'reducing') {
+      monthly       = P * r * Math.pow(1+r,n) / (Math.pow(1+r,n) - 1);
+      totalPay      = monthly * n;
+      totalInterest = totalPay - P;
+    } else {
+      totalInterest = P * r * n;
+      totalPay      = P + totalInterest;
+      monthly       = totalPay / n;
+    }
+
+    const monthlyEl = document.getElementById('monthlyResult');
+    if (monthlyEl) {
+      monthlyEl.textContent = fmt(monthly);
+      monthlyEl.classList.remove('amount-updated'); void monthlyEl.offsetWidth; monthlyEl.classList.add('amount-updated');
+    }
+    document.getElementById('principalResult').textContent  = fmt(P);
+    document.getElementById('interestResult').textContent   = fmt(totalInterest);
+    document.getElementById('totalResult').textContent      = fmt(totalPay);
+    document.getElementById('annualRateResult').textContent = (rInput * 12).toFixed(2) + '%';
+
+    updateDoughnut(P, totalInterest);
+    document.getElementById('legendPrincipal').textContent = fmt(P);
+    document.getElementById('legendInterest').textContent  = fmt(totalInterest);
+
+    document.getElementById('sum-principal').textContent = fmt(P);
+    document.getElementById('sum-monthly').textContent   = fmt(monthly);
+    document.getElementById('sum-interest').textContent  = fmt(totalInterest);
+    document.getElementById('sum-total').textContent     = fmt(totalPay);
+
+    document.getElementById('cta-monthly').textContent = fmt(monthly);
+    document.getElementById('cta-term').textContent    = document.getElementById('termDisplay').textContent;
+    document.getElementById('cta-rate').textContent    = rInput.toFixed(2);
+
+    buildBarChart(P, r, monthly, n, method);
+    buildAmortTable(P, r, monthly, n, method);
+  }
+
+  function updateDoughnut(principal, interest) {
+    const canvas = document.getElementById('loanChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (doughnutChart) doughnutChart.destroy();
+    doughnutChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: { datasets: [{ data: [principal, interest], backgroundColor: ['#C0392B','#C9A84C'], borderWidth: 0, hoverOffset: 8 }] },
+      options: { cutout: '68%', animation: { animateRotate: true, duration: 600 }, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ' ' + fmt(c.raw) + ' ກີບ' } } } }
+    });
+  }
+
+  function buildBarChart(P, r, monthly, n, method) {
+    const canvas = document.getElementById('barChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (barChartInstance) barChartInstance.destroy();
+    const step = n <= 60 ? 1 : Math.ceil(n / 60);
+    const labels = [], principals = [], interests = [];
+    let balance = P;
+    for (let i = 1; i <= n; i += step) {
+      let intPart, prinPart;
+      if (method === 'reducing') { intPart = balance * r; prinPart = monthly - intPart; }
+      else { intPart = P * r; prinPart = monthly - intPart; }
+      balance = Math.max(balance - prinPart * step, 0);
+      labels.push(i); principals.push(Math.round(prinPart)); interests.push(Math.round(intPart));
+    }
+    barChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: { labels, datasets: [
+        { label: 'ຕັດຕົ້ນ', data: principals, backgroundColor: '#C0392B', borderRadius: 2, borderSkipped: false },
+        { label: 'ດອກເບ້ຍ', data: interests,  backgroundColor: '#C9A84C', borderRadius: 2, borderSkipped: false },
+      ]},
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { position: 'top', labels: { font: { family: 'Noto Sans Lao', size: 11 }, color: '#4A3728', boxWidth: 12, boxHeight: 12 } },
+          tooltip: { callbacks: { label: c => ' ' + c.dataset.label + ': ' + fmt(c.raw) + ' ກີບ' } }
+        },
+        scales: {
+          x: { stacked: true, ticks: { color: '#4A3728', font: { size: 10 }, maxTicksLimit: 15 }, grid: { display: false }, title: { display: true, text: 'ເດືອນ', color: '#4A3728', font: { size: 11 } } },
+          y: { stacked: true, ticks: { color: '#4A3728', font: { size: 10 }, callback: v => (v/1000000).toFixed(0) + 'M' }, grid: { color: 'rgba(74,55,40,0.06)' }, title: { display: true, text: 'ກີບ', color: '#4A3728', font: { size: 11 } } }
+        }
+      }
+    });
+  }
+
+  let showAllRows = false;
+
+function buildAmortTable(P, r, monthly, n, method) {
+  const body = document.getElementById('amortBody');
+  const show = showAllRows ? n : Math.min(n, 24);
+  let balance = P, rows = '';
+  rows += '<div class="amort-table-wrap"><table><thead><tr><th>ເດືອນ</th><th>ຍອດຜ່ອນ</th><th>ຕັດຕົ້ນ</th><th>ດອກເບຍ</th><th>ຍອດຄ້າງ</th></tr></thead><tbody>';
+  for (let i = 1; i <= show; i++) {
+    let interest, principal;
+    if (method === 'reducing') { interest = balance * r; principal = monthly - interest; }
+    else { interest = P * r; principal = monthly - interest; }
+    balance = Math.max(balance - principal, 0);
+    rows += '<tr' + (i===n?' class="last-row"':'') + '><td>' + i + '</td><td>' + fmt(monthly) + '</td><td>' + fmt(principal) + '</td><td>' + fmt(interest) + '</td><td>' + fmt(balance) + '</td></tr>';
+  }
+  rows += '</tbody></table></div>';
+  if (n > 24) {
+    if (!showAllRows) {
+      rows += '<div class="more-rows" style="cursor:pointer;" onclick="toggleAllRows()">... ສະແດງ 24 ເດືອນທຳອດ (ທັງໝົດ ' + n + ' ເດືອນ) — <span style="color:var(--red);">ກົດເພື່ອດທັງໝົດ</span></div>';
+    } else {
+      rows += '<div class="more-rows" style="cursor:pointer;" onclick="toggleAllRows()"><span style="color:var(--red);">ຫຍໍ້ຄືນ</span></div>';
+    }
+  }
+  body.innerHTML = rows;
+}
+
+function toggleAllRows() {
+  showAllRows = !showAllRows;
+  calculate();
+}
+
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  window.addEventListener('DOMContentLoaded', () => {
+    ['amountSlider','termSlider','rateSlider'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) updateSliderBg(el);
+    });
+    calculate();
+  });
+</script>
+<script>
+(function() {
+  const now   = new Date();
+  const today = now.toISOString().slice(0, 10);
+  const month = now.toISOString().slice(0, 7);
+  const year  = now.getFullYear().toString();
+
+  let views = JSON.parse(localStorage.getItem('vw_views') || '{}');
+  views[today] = (views[today] || 0) + 1;
+  localStorage.setItem('vw_views', JSON.stringify(views));
+
+  if (!sessionStorage.getItem('vw_visited')) {
+    sessionStorage.setItem('vw_visited', '1');
+    let vToday = JSON.parse(localStorage.getItem('vw_today') || '{}');
+    vToday[today] = (vToday[today] || 0) + 1;
+    localStorage.setItem('vw_today', JSON.stringify(vToday));
+    let vMonth = JSON.parse(localStorage.getItem('vw_month') || '{}');
+    vMonth[month] = (vMonth[month] || 0) + 1;
+    localStorage.setItem('vw_month', JSON.stringify(vMonth));
+    let vYear = JSON.parse(localStorage.getItem('vw_year') || '{}');
+    vYear[year] = (vYear[year] || 0) + 1;
+    localStorage.setItem('vw_year', JSON.stringify(vYear));
+  }
+
+  function fmt(n) { if (n >= 1000) return (n/1000).toFixed(1).replace('.0','') + 'K'; return n; }
+  document.getElementById('vw-views').textContent = fmt(views[today] || 0);
+  document.getElementById('vw-today').textContent = fmt((JSON.parse(localStorage.getItem('vw_today')||'{}'))[today]||0);
+  document.getElementById('vw-month').textContent = fmt((JSON.parse(localStorage.getItem('vw_month')||'{}'))[month]||0);
+  document.getElementById('vw-year').textContent  = fmt((JSON.parse(localStorage.getItem('vw_year') ||'{}'))[year] ||0);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>ບໍລິການສິນເຊື່ອ ກູ້ເງິນດ່ວນ - ສະຖາບັນການເງິນ ຊັບທະວີ</title>
+<meta name="description" content="ເລືອກສິນເຊື່ອທີ່ເໝາະກັບທ່ານ ສິນເຊື່ອທຸລະກິດ SME ສິນເຊື່ອຊື້ລົດ ແລະ ສິນເຊື່ອອຸປະໂພກບໍລິໂພກ ດອກເບັ້ຍຕ່ຳ ອະນຸມັດໄວ">
+<meta name="keywords" content="ກູ້ເງິນ, ສິນເຊື່ອ, ກູ້ເງິນດ່ວນ, ສິນເຊື່ອSME, ຊັບທະวີ">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #C0392B; --dark-red: #922B21; --orange: #ff7200;
+      --gold: #C9A84C; --gold-lt: #E8C97A; --cream: #FAF6EF;
+      --dark: #1A1209; --mid: #4A3728;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans Lao', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+    /* SOCIAL BAR */
+    .social-bar { background: var(--cream); padding: 0.4rem 2.5rem; position: fixed; top: 0; left: 0; right: 0; z-index: 101; border-bottom: 1px solid rgba(201,168,76,0.2); }
+    .social-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+    .social-address { font-size: 0.8rem; color: rgba(255,0,0,0.55); text-decoration: none; transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .social-address:hover { color: var(--gold); }
+    .social-icons { display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .social-btn { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; text-decoration: none; color: #fff; transition: transform 0.2s; }
+    .social-btn:hover { transform: scale(1.15); }
+    .social-btn.fb { background: #1877F2; } .social-btn.wa { background: #25D366; }
+    .social-btn.tt { background: #000; } .social-btn.yt { background: #FF0000; }
+
+    /* NAVBAR */
+    nav { position: fixed; top: 36px; width: 100%; z-index: 100; background: #ff7200; display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; box-shadow: 0 2px 20px rgba(0,0,0,0.18); }
+    .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
+    .nav-brand { color: #fff; line-height: 1.25; }
+    .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 700; }
+    .nav-brand .en { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: 4rem; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 1rem; font-weight: 500; padding: 0.3rem 0; border-bottom: 2px solid transparent; transition: border-color 0.2s, color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { border-color: #ffe600; color: #ffe600; }
+    .nav-cta { background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.5); color: #fff; padding: 0.5rem 1.4rem; border-radius: 6px; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: background 0.2s; white-space: nowrap; }
+    .nav-cta:hover { background: rgba(255,255,255,0.28); }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile Menu */
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ff7200; z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 600; }
+    .mobile-menu a:hover { color: #ffe600; }
+
+    /* PAGE HERO */
+    .page-hero { background: linear-gradient(150deg, #3a0202 0%, #7a0808 40%, #3d1a0a 100%); padding: 8rem 2rem 4rem; position: relative; overflow: hidden; text-align: center; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, rgba(201,168,76,0.18) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.5; }
+    .page-hero::after { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; right: -150px; top: -150px; background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 65%); }
+    .page-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .page-tag { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(201,168,76,0.5); background: rgba(201,168,76,0.08); color: var(--gold-lt); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.38rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; animation: fadeUp 0.7s 0.1s ease both; }
+    .page-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 1rem; animation: fadeUp 0.7s 0.2s ease both; }
+    .page-hero h1 em { font-style: normal; color: var(--gold-lt); }
+    .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.8; animation: fadeUp 0.7s 0.3s ease both; }
+
+    /* FILTER TABS */
+    .filter-bar { background: #fff; border-bottom: 1px solid rgba(74,55,40,0.08); position: sticky; top: 72px; z-index: 50; padding: 0 2rem; }
+    .filter-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
+    .filter-inner::-webkit-scrollbar { display: none; }
+    .filter-btn { flex-shrink: 0; background: none; border: none; cursor: pointer; font-family: 'Noto Sans Lao', sans-serif; font-size: 0.88rem; font-weight: 500; color: var(--mid); padding: 1rem 1.4rem; border-bottom: 2.5px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+    .filter-btn:hover { color: var(--dark); }
+    .filter-btn.active { color: var(--red); border-color: var(--red); font-weight: 700; }
+
+    /* CONTAINER */
+    .container { max-width: 1100px; margin: 0 auto; }
+    section { padding: 4rem 2rem; }
+
+    /* PRODUCTS GRID */
+    #products-section { background: var(--cream); }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .product-card { background: #fff; border: 1px solid rgba(74,55,40,0.08); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.22s, box-shadow 0.22s; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(26,18,9,0.1); }
+    .card-header { padding: 1.6rem 1.75rem 1rem; display: flex; align-items: flex-start; gap: 1rem; border-bottom: 1px solid rgba(74,55,40,0.06); position: relative; }
+    .card-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--red), var(--gold)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+    .product-card:hover .card-header::after { transform: scaleX(1); }
+    .card-icon-wrap { width: 52px; height: 52px; border-radius: 12px; flex-shrink: 0; background: rgba(192,57,43,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.55rem; }
+    .card-meta { flex: 1; }
+    .card-title-lo { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.15rem; }
+    .card-title-en { font-size: 0.68rem; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; }
+    .card-body { padding: 1.2rem 1.75rem; flex: 1; }
+    .card-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.75; margin-bottom: 1.2rem; }
+    .card-specs { display: flex; gap: 0; border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; overflow: hidden; margin-bottom: 1.2rem; }
+    .spec-item { flex: 1; text-align: center; padding: 0.65rem 0.5rem; border-right: 1px solid rgba(201,168,76,0.15); background: #faf6ef; }
+    .spec-item:last-child { border-right: none; }
+    .spec-val { font-size: 0.95rem; font-weight: 800; color: var(--red); line-height: 1; }
+    .spec-lbl { font-size: 0.62rem; color: var(--mid); margin-top: 0.2rem; }
+    .card-features { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .card-features li { font-size: 0.8rem; color: var(--mid); display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5; }
+    .card-features li::before { content: '✓'; color: #187048; font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 0.1rem; }
+    .card-footer { padding: 1rem 1.75rem 1.5rem; display: flex; gap: 0.75rem; align-items: center; }
+    .btn-apply { flex: 1; background: var(--red); color: #fff; padding: 0.75rem 1rem; border-radius: 8px; text-align: center; text-decoration: none; font-size: 0.88rem; font-weight: 700; transition: background 0.2s, transform 0.15s; }
+    .btn-apply:hover { background: var(--dark-red); transform: translateY(-1px); }
+    .btn-detail { padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid rgba(192,57,43,0.3); color: var(--red); font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+    .btn-detail:hover { background: rgba(192,57,43,0.06); }
+    .card-badge { position: absolute; top: 1rem; right: 1rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 100px; }
+    .badge-popular { background: #fff3f2; color: var(--red); border: 1px solid rgba(192,57,43,0.2); }
+    .badge-new     { background: #eef5ff; color: #1a5fa8; border: 1px solid rgba(26,95,168,0.2); }
+    .badge-low     { background: #f0faf5; color: #187048; border: 1px solid rgba(24,112,72,0.2); }
+
+    /* WHY US */
+    #why { background: linear-gradient(160deg, #1a0d04, #2e1007, #1a1209); padding: 4rem 2rem; }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; border: 1px solid rgba(201,168,76,0.15); border-radius: 12px; overflow: hidden; background: rgba(201,168,76,0.12); }
+    .why-item { background: rgba(26,18,9,0.7); padding: 2rem 1.5rem; text-align: center; transition: background 0.2s; }
+    .why-item:hover { background: rgba(192,57,43,0.1); }
+    .why-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .why-title { font-size: 0.92rem; font-weight: 700; color: var(--gold-lt); margin-bottom: 0.4rem; }
+    .why-desc  { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+    /* CTA */
+    #cta { background: var(--orange); text-align: center; padding: 5rem 2rem; position: relative; overflow: hidden; }
+    #cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 70%); }
+    .cta-inner { position: relative; z-index: 1; }
+    .section-tag  { display: inline-block; color: var(--red); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; margin-bottom: 0.6rem; }
+    .section-title { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 800; color: var(--dark); line-height: 1.3; margin-bottom: 0.85rem; }
+    .section-desc  { color: var(--mid); font-size: 1rem; line-height: 1.85; max-width: 480px; }
+    #cta .section-tag   { color: rgba(255,255,255,0.7); }
+    #cta .section-title { color: #fff; margin-bottom: 0.85rem; }
+    #cta .section-desc  { color: rgba(255,255,255,0.8); margin: 0 auto 2.2rem; text-align: center; }
+    .btn-cta { display: inline-block; background: #fff; color: var(--orange); padding: 1rem 2.6rem; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.05rem; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+    .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+
+    /* FOOTER */
+     footer { background: #ffd700; color: #fff; padding: 2.5rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between;align-items: flex-start;gap: 4rem; padding: 2rem 0; }
+    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.2rem; color: #fff; }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 0.75rem; }
+   
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .social-bar { padding: 0.4rem 1rem; }
+      .social-address { font-size: 0.7rem; max-width: 52vw; }
+      nav { padding: 0 1rem; top: 32px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .products-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { justify-content: flex-start; }
+      .footer-contact { font-size: 0.85rem; }
+    }
+    @media (max-width: 480px) {
+      nav { height: 60px; }
+      .nav-brand .lo { font-size: 0.9rem; }
+      .nav-brand .en { display: none; }
+      .why-grid { grid-template-columns: 1fr; }
+      section { padding: 3rem 1.25rem; }
+    }
+     /* VISITOR WIDGET */
+.visitor-widget {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #333;
+  min-width: 400px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.vw-row {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px dotted #e0e0e0;
+}
+.vw-row:last-child { border-bottom: none; }
+.vw-left { display: flex; align-items: center; gap: 8px; color: #444; }
+.vw-val { font-weight: 600; color: #222;font-size: 16px; }
+.vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: #ff7200; border-top: 1px solid #eee; padding-top: 6px; }
+  </style>
+</head>
+<body>
+
+<!-- SOCIAL BAR -->
+<div class="social-bar">
+  <div class="social-bar-inner">
+    <a href="https://maps.google.com/?q=326+Unit+16+Sikhay+Vientiane" target="_blank" class="social-address">
+      📍 ສຳນັກງານຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ
+    </a>
+    <div class="social-icons">
+  <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://wa.me/85621520722" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.tiktok.com/@.fis78" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
+  <a href="https://m.youtube.com/channel/UCiovNJcNcy-OHdQHk_bbfkA" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i></a>
+</div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <img src="images/LOGO-FINAL-01.png" alt="logo" style="height:56px;">
+    <div class="nav-brand">
+      <span class="lo">ສະຖາບັນການເງິນ ຊັບທະວີ</span>
+      <span class="en">Financial Institutes Sapthavy</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">ໜ້າຫລັກ</a></li>
+    <li><a href="products.html" class="active">ສິນເຊື່ອ</a></li>
+    <li><a href="insurance.html">ປະກັນໄພ</a></li>
+    <li><a href="calculator.html">ຄິດໄລ່</a></li>
+  </ul>
+  <a href="apply.html" class="nav-cta">ສະໝັກກູ້ເງິນ</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">ໜ້າຫລັກ</a>
+  <a href="products.html" onclick="toggleMenu()">ສິນເຊື່ອ</a>
+  <a href="insurance.html" onclick="toggleMenu()">ປະກັນໄພ</a>
+  <a href="calculator.html" onclick="toggleMenu()">ຄິດໄລ່</a>
+  <a href="apply.html" onclick="toggleMenu()">ສະໝັກກູ້ເງິນ</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-tag">ສິນເຊື່ອທຸກປະເພດ</div>
+    <h1>ເລືອກສິນເຊື່ອ<br/>ທີ່<em>ເໝາະກັບທ່ານ</em></h1>
+    <p>ສິນເຊື່ອຫຼາກຫຼາຍ ດ້ວຍດອກເບ້ຍທ່ຽງທຳ ເງື່ອນໄຂໂປ່ງໃສ ແລະ ອະນຸມັດໄວ</p>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-btn active" onclick="filterCards('all', this)">ທັງໝົດ</button>
+    <button class="filter-btn" onclick="filterCards('personal', this)">ສ່ວນຕົວ</button>
+    <button class="filter-btn" onclick="filterCards('home', this)">ທີ່ດິນ / ເຮືອນ</button>
+    <button class="filter-btn" onclick="filterCards('auto', this)">ລົດ</button>
+    <button class="filter-btn" onclick="filterCards('business', this)">ທຸລະກິດ</button>
+    <button class="filter-btn" onclick="filterCards('edu', this)">ການສຶກສາ</button>
+    <button class="filter-btn" onclick="filterCards('agri', this)">ກະສິກຳ</button>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products-section">
+  <div class="container">
+    <div class="products-grid">
+
+      <div class="product-card reveal" data-cat="home">
+        <div class="card-header">
+          <div class="card-icon-wrap">🏠</div>
+          <div class="card-meta">
+            <div class="card-title-lo">ສິນເຊື່ອຊື້ທີ່ດິນ-ເຮືອນ</div>
+            <div class="card-title-en">Home / Land Loan</div>
+          </div>
+          <span class="card-badge badge-popular">ນິຍົມ</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">ເປີດໂອກາດເປັນເຈົ້າຂອງທີ່ດິນ ຫຼື ທີ່ພັກອາໄສ ດ້ວຍວົງເງິນສູງ ແລະ ດອກເບ້ຍທ່ຽງທຳ.</p>
+          <div class="card-specs">
+            <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
+            <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້ນານ</div></div>
+            
+          </div>
+          <ul class="card-features">
+            <li>ວົງເງິນກູ້ສູງສຸດ 1,000,000,000 ກີບ</li>
+            <li>ຜ່ອນໄດ້ສູງສຸດ 10 ປີ</li>
+            <li>ອະນຸມັດໄວ ພາຍໃນ 24 ຊົ່ວໂມງ</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="apply.html" class="btn-apply">ສະໝັກດຽວນີ້</a>
+          <a href="#" class="btn-detail">ລາຍລະອຽດ</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="auto">
+        <div class="card-header">
+          <div class="card-icon-wrap">🚗</div>
+          <div class="card-meta">
+            <div class="card-title-lo">ສິນເຊື່ອຊື້ລົດ</div>
+            <div class="card-title-en">Auto Loan</div>
+          </div>
+          <span class="card-badge badge-new">ໃໝ່</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">ຊ່ວຍທ່ານເປັນເຈົ້າຂອງລົດໃນລາຄາທີ່ດີ ດ້ວຍແຜນຜ່ອນທີ່ຍືດຫຍຸ່ນ ອະນຸມັດໄວ.</p>
+          <div class="card-specs">
+            <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
+            <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
+            
+          </div>
+          <ul class="card-features">
+            <li>ທັງລົດໃໝ່ ແລະ ລົດມືສອງ</li>
+            <li>ວົງເງິນກູ້ສູງສຸດ 1,000,000,000 ກີບ</li>
+            <li>ບໍ່ຕ້ອງມີຜູ້ຄໍ້າ (ສໍາລັບລູກຄ້າເດີມ)</li>
+            
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="apply.html" class="btn-apply">ສະໝັກດຽວນີ້</a>
+          <a href="#" class="btn-detail">ລາຍລະອຽດ</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="business">
+        <div class="card-header">
+          <div class="card-icon-wrap">💼</div>
+          <div class="card-meta">
+            <div class="card-title-lo">ສິນເຊື່ອທຸລະກິດ</div>
+            <div class="card-title-en">Business Loan</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">ສ້າງ ຫຼື ຂະຫຍາຍທຸລະກິດ SME ດ້ວຍເງິນທຶນທີ່ພ້ອມສະໜັບສະໜູນ ທຸກຂັ້ນຕອນ.</p>
+          <div class="card-specs">
+            <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
+            <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ໄລຍະ</div></div>
+            <div class="spec-item"><div class="spec-val">ສູງ</div><div class="spec-lbl">ວົງເງິນ</div></div>
+          </div>
+          <ul class="card-features">
+            <li>ທຶນໝູນວຽນ ແລະ ທຶນລົງທຶນ</li>
+            <li>ວົງເງິນກູ້ສູງສຸດ 1,000,000,000 ກີບ</li>
+            <li>ທີ່ປຶກສາທຸລະກິດໃຫ້ຟຣີ</li>
+            <li>ປ່ຽນລໍາດັບຜ່ອນໄດ້ຕາມລະດູ</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="apply.html" class="btn-apply">ສະໝັກດຽວນີ້</a>
+          <a href="#" class="btn-detail">ລາຍລະອຽດ</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="personal">
+        <div class="card-header">
+          <div class="card-icon-wrap">💳</div>
+          <div class="card-meta">
+            <div class="card-title-lo">ສິນເຊື່ອສ່ວນຕົວ</div>
+            <div class="card-title-en">Personal Loan</div>
+          </div>
+          <span class="card-badge badge-low">ດອກເບ້ຍຕໍ່າ</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">ໃຊ້ຈ່າຍສ່ວນຕົວ ຫຼື ສຸກເສີນ ດ້ວຍຂັ້ນຕອນທີ່ງ່າຍ ອະນຸມັດໄວ ບໍ່ຕ້ອງມີຫຼັກຊັບ.</p>
+          <div class="card-specs">
+            <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
+            <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
+            <div class="spec-item"><div class="spec-val">ໄວ</div><div class="spec-lbl">ອະນຸມັດ</div></div>
+          </div>
+          <ul class="card-features">
+            <li>ບໍ່ຕ້ອງມີຫຼັກຊັບຄໍ້າປະກັນ</li>
+            <li>ວົງເງິນກູ້ສູງສຸດ 1,000,000,000 ກີບ ກີບ</li>
+            <li>ຜ່ອນໄດ້  3ປີ</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="apply.html" class="btn-apply">ສະໝັກດຽວນີ້</a>
+          <a href="#" class="btn-detail">ລາຍລະອຽດ</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="edu">
+        <div class="card-header">
+          <div class="card-icon-wrap">🎓</div>
+          <div class="card-meta">
+            <div class="card-title-lo">ສິນເຊື່ອເພື່ອການສຶກສາ</div>
+            <div class="card-title-en">Education Loan</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">ສະໜັບສະໜູນການສຶກສາທຸກລະດັບ ທັງໃນ ແລະ ຕ່າງປະເທດ ດ້ວຍດອກເບ້ຍຕໍ່າ.</p>
+          <div class="card-specs">
+            <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
+            <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
+           
+          </div>
+          <ul class="card-features">
+            <li>ໃຊ້ໄດ້ທັງຄ່າຮຽນ ຄ່າຄອງຊີບ</li>
+            <li>ເລີ່ມຜ່ອນຫຼັງຈົບການສຶກສາ</li>
+            <li>ອາຈານ / ຜູ້ປົກຄອງເປັນຜູ້ຄໍ້າ</li>
+            <li>ວົງເງິນກູ້ສູງສຸດ 1,000,000,000 ກີບ</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="apply.html" class="btn-apply">ສະໝັກດຽວນີ້</a>
+          <a href="#" class="btn-detail">ລາຍລະອຽດ</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="agri">
+        <div class="card-header">
+          <div class="card-icon-wrap">🌾</div>
+          <div class="card-meta">
+            <div class="card-title-lo">ສິນເຊື່ອຊາວກະສິກຳ</div>
+            <div class="card-title-en">Agricultural Loan</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">ສ້າງໂອກາດຊາວກະສິກຳ ຂະຫຍາຍກິດຈະການ ດ້ວຍທຶນທີ່ເໝາະສົມ ແລະ ໄລຍະຜ່ອນທີ່ຍືດຫຍຸ່ນ.</p>
+          <div class="card-specs">
+            <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
+            <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ໄລຍະ</div></div>
+           
+          </div>
+          <ul class="card-features">
+            <li>ສິນເຊື່ອລະດູການ ຍືດຫຍຸ່ນ</li>
+            <li>ຍົກເວັ້ນຄ່າທໍານຽມ ສໍາລັບຊາວກະສິກຳ</li>
+            <li>ທີ່ດິນກະສິກຳໃຊ້ເປັນຫຼັກຊັບໄດ້</li>
+            <li>ທີມງານລົງພື້ນທີ່ຕົວຈິງ</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="apply.html" class="btn-apply">ສະໝັກດຽວນີ້</a>
+          <a href="#" class="btn-detail">ລາຍລະອຽດ</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid reveal">
+      <div class="why-item"><div class="why-icon">⚡</div><div class="why-title">ອະນຸມັດໄວ</div><div class="why-desc">ພາຍໃນ 24-48 ຊົ່ວໂມງ ທຸກໂຄງການ</div></div>
+      <div class="why-item"><div class="why-icon">📋</div><div class="why-title">ເອກະສານໜ້ອຍ</div><div class="why-desc">ຂັ້ນຕອນງ່າຍ ບໍ່ຊັບຊ້ອນ ດໍາເນີນໄດ້ດ້ວຍຕົນເອງ</div></div>
+      <div class="why-item"><div class="why-icon">💎</div><div class="why-title">ດອກເບ້ຍໂປ່ງໃສ</div><div class="why-desc">ບໍ່ມີຄ່າທໍານຽມລີ້ລັບ ທຸກຢ່າງຊັດເຈນ</div></div>
+      <div class="why-item"><div class="why-icon">🤝</div><div class="why-title">ທີມງານຊ່ຽວຊານ</div><div class="why-desc">ໃຫ້ຄໍາປຶກສາຟຣີ ຕະຫຼອດທຸກຂັ້ນຕອນ</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container cta-inner reveal">
+    <span class="section-tag">ເລີ່ມຕົ້ນໄດ້ເລີຍ</span>
+    <h2 class="section-title">ພ້ອມສະໝັກແລ້ວບໍ?</h2>
+    <p class="section-desc">ຕື່ມຂໍ້ມູນງ່າຍໆ ພຽງບໍ່ກີ່ນາທີ ທີມງານຂອງເຮົາຈະຕິດຕໍ່ກັບທ່ານໂດຍໄວ</p>
+    <a href="apply.html" class="btn-cta">ສະໝັກກູ້ເງິນດຽວນີ້</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+  <div class="visitor-widget" id="visitorWidget">
+  <div class="vw-row"><span class="vw-left">📶 User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
+  <div class="vw-row"><span class="vw-left">👁️ View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
+  <div class="vw-row"><span class="vw-left">👤 Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
+  <div class="vw-row"><span class="vw-left">👥 Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
+  <div class="vw-row"><span class="vw-left">👤 Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
+  <div class="vw-footer">📊 sapthavy.com</div>
+</div>
+
+    <ul class="footer-contact">
+      <li>📍 ສຳນກງານ ຕັ້ງຢ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫວງວຽງຈັນ</li>
+      <li>📧 ອີເມວ : contact@sapthavy.com</li>
+      <li>📞 ໂທລະສັບ : (+85621)520722, 02054213555</li>
+      <li>🌐 ເວັບໄຊ້ : www.sapthavy.com</li>
+    </ul>
+  </div>
+    
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  function filterCards(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.product-card').forEach(card => {
+      const match = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = match ? '' : 'none';
+    });
+  }
+</script>
+<script>
+(function() {
+  const now   = new Date();
+  const today = now.toISOString().slice(0, 10);
+  const month = now.toISOString().slice(0, 7);
+  const year  = now.getFullYear().toString();
+
+  let views = JSON.parse(localStorage.getItem('vw_views') || '{}');
+  views[today] = (views[today] || 0) + 1;
+  localStorage.setItem('vw_views', JSON.stringify(views));
+
+  if (!sessionStorage.getItem('vw_visited')) {
+    sessionStorage.setItem('vw_visited', '1');
+    let vToday = JSON.parse(localStorage.getItem('vw_today') || '{}');
+    vToday[today] = (vToday[today] || 0) + 1;
+    localStorage.setItem('vw_today', JSON.stringify(vToday));
+    let vMonth = JSON.parse(localStorage.getItem('vw_month') || '{}');
+    vMonth[month] = (vMonth[month] || 0) + 1;
+    localStorage.setItem('vw_month', JSON.stringify(vMonth));
+    let vYear = JSON.parse(localStorage.getItem('vw_year') || '{}');
+    vYear[year] = (vYear[year] || 0) + 1;
+    localStorage.setItem('vw_year', JSON.stringify(vYear));
+  }
+
+  function fmt(n) { if (n >= 1000) return (n/1000).toFixed(1).replace('.0','') + 'K'; return n; }
+  document.getElementById('vw-views').textContent = fmt(views[today] || 0);
+  document.getElementById('vw-today').textContent = fmt((JSON.parse(localStorage.getItem('vw_today')||'{}'))[today]||0);
+  document.getElementById('vw-month').textContent = fmt((JSON.parse(localStorage.getItem('vw_month')||'{}'))[month]||0);
+  document.getElementById('vw-year').textContent  = fmt((JSON.parse(localStorage.getItem('vw_year') ||'{}'))[year] ||0);
+})();
+</script>
+</body>
+</html>
