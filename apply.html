@@ -347,7 +347,7 @@
     </a>
    <div class="social-icons">
   <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
-  <a href="https://wa.me/85621520722" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://wa.me/8562054213555" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
   <a href="https://www.tiktok.com/@.fis78" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
   <a href="https://m.youtube.com/channel/UCiovNJcNcy-OHdQHk_bbfkA" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i></a>
 </div>
@@ -562,103 +562,98 @@
           </div>
         </div>
 
-        <!-- STEP 3 -->
-        <div class="step-panel" id="panel3">
-          <div class="step-title">ລາຍລະອຽດສິນເຊື່ອ</div>
-          <div class="step-sub">Loan Details — ຂໍ້ມູນຈຳນວນ ແລະ ປະເພດທີ່ຕ້ອງການ</div>
+       <!-- STEP 3 -->
+<div class="step-panel" id="panel3">
+  <div class="step-title">ລາຍລະອຽດສິນເຊື່ອ</div>
+  <div class="step-sub">Loan Details — ຂໍ້ມູນຈຳນວນ ແລະ ປະເພດທີ່ຕ້ອງການ</div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ປະເພດສິນເຊື່ອ <span class="req">*</span></label>
-              <select class="form-select" id="loanType" onchange="updateAmountDisplay()">
-                <option value="">— ເລືອກ —</option>
-                <option>ສິນເຊື່ອເພື່ອການສຶກສາ</option>
-                <option>ສິນເຊື່ອເພື່ອທີ່ຢູ່ອາໄສ</option>
-                <option>ສິນເຊື່ອເພື່ອລົດ</option>
-                <option>ສິນເຊື່ອເພື່ອຊາວກະສິກຳ</option>
-                <option>ສິນເຊື່ອທຸລະກິດ</option>
-                <option>ສິນເຊື່ອສ່ວນບຸກຄົນ</option>
-              </select>
-              <div class="error-msg">ກະລຸນາເລືອກປະເພດ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ຈຸດປະສົງ <span class="req">*</span></label>
-              <select class="form-select" id="purpose">
-                <option value="">— ເລືອກ —</option>
-                <option>ການສຶກສາ</option>
-                <option>ຊື້ທີ່ຢູ່ອາໄສ</option>
-                <option>ຊື້ລົດ</option>
-                <option>ຂະຫຍາຍທຸລະກິດ</option>
-                <option>ຊຳລະໜີ້</option>
-                <option>ໃຊ້ຈ່າຍທົ່ວໄປ</option>
-                <option>ອື່ນໆ</option>
-              </select>
-              <div class="error-msg">ກະລຸນາເລືອກຈຸດປະສົງ</div>
-            </div>
-          </div>
+  <div class="form-group">
+    <label class="form-label">ປະເພດສິນເຊື່ອ <span class="req">*</span></label>
+    <select class="form-select" id="loanType" onchange="updateAmountDisplay()">
+      <option value="">— ເລືອກ —</option>
+      <option>ສິນເຊືອເພື່ອການສຶກສາ</option>
+      <option>ສິນເຊື່ອເພື່ອທີ່ຢູອາໄສ</option>
+      <option>ສິນເຊື່ອເພື່ອລົດ</option>
+      <option>ສິນເຊື່ອເພື່ອຊາວກະສິກຳ</option>
+      <option>ສິນເຊື່ອທຸລະກິດ</option>
+      <option>ສິນເຊື່ອສ່ວນບຸກຄົນ</option>
+    </select>
+    <div class="error-msg">ກະລຸນາເລືອກປະເພດ</div>
+  </div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ຈຳນວນທີ່ຕ້ອງການ (ກີບ) <span class="req">*</span></label>
-              <input type="number" class="form-input" id="loanAmount" placeholder="ຕົວຢ່າງ: 50000000" oninput="updateAmountDisplay()">
-              <div class="error-msg">ກະລຸນາຕື່ມຈຳນວນ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ໄລຍະຜ່ອນ <span class="req">*</span></label>
-              <select class="form-select" id="loanTerm" onchange="updateAmountDisplay()">
-                <option value="">— ເລືອກ —</option>
-                <option value="6">6 ເດືອນ</option>
-                <option value="12">12 ເດືອນ (1 ປີ)</option>
-                <option value="24">24 ເດືອນ (2 ປີ)</option>
-                <option value="36">36 ເດືອນ (3 ປີ)</option>
-                <option value="48">48 ເດືອນ (4 ປີ)</option>
-                <option value="60">60 ເດືອນ (5 ປີ)</option>
-                <option value="84">84 ເດືອນ (7 ປີ)</option>
-                <option value="120">120 ເດືອນ (10 ປີ)</option>
-              </select>
-              <div class="error-msg">ກະລຸນາເລືອກໄລຍະ</div>
-            </div>
-          </div>
+  <div class="form-group">
+    <label class="form-label">ຈຸດປະສົງ <span class="req">*</span></label>
+    <input type="text" class="form-input" id="purpose" placeholder="ລະບຸຈຸດປະສົງ...">
+    <div class="error-msg">ກະລຸນາຕື່ມຈຸດປະສົງ</div>
+  </div>
 
-          <div class="amount-display" id="amountPreview" style="display:none;">
-            <div style="position:relative;z-index:1;">
-              <div class="lbl">ຈຳນວນກູ້</div>
-              <div class="val" id="previewAmount">—</div>
-            </div>
-            <div class="monthly">
-              <div class="lbl">ຜ່ອນ/ເດືອນ (ປະມານ)</div>
-              <div class="val" id="previewMonthly">—</div>
-            </div>
-          </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">ຈຳນວນທີ່ຕ້ອງການ (ກີບ) <span class="req">*</span></label>
+      <input type="number" class="form-input" id="loanAmount" placeholder="ຕົວຢ່າງ: 50000000" oninput="updateAmountDisplay()">
+      <div class="error-msg">ກະລຸນາຕື່ມຈຳນວນ</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">ໄລຍະຜ່ອນ <span class="req">*</span></label>
+      <select class="form-select" id="loanTerm" onchange="updateAmountDisplay()">
+        <option value="">— ເລືອກ —</option>
+        <option value="1">1 ເດືອນ</option>
+        <option value="2">2 ເດືອນ</option>
+        <option value="3">3 ເດືອນ</option>
+        <option value="4">4 ເດືອນ</option>
+        <option value="5">5 ເດືອນ</option>
+        <option value="6">6 ເດືອນ</option>
+        <option value="12">12 ເດືອນ (1 ປີ)</option>
+        <option value="24">24 ເດືອນ (2 ປີ)</option>
+        <option value="36">36 ເດືອນ (3 ປີ)</option>
+        <option value="48">48 ເດືອນ (4 ປີ)</option>
+        <option value="60">60 ເດືອນ (5 ປີ)</option>
+        <option value="84">84 ເດືອນ (7 ປີ)</option>
+        <option value="120">120 ເດືອນ (10 ປີ)</option>
+      </select>
+      <div class="error-msg">ກະລຸນາເລືອກໄລຍະ</div>
+    </div>
+  </div>
 
-          <div class="form-group">
-            <label class="form-label">ຂໍ້ມູນເພີ່ມເຕີມ</label>
-            <textarea class="form-textarea form-input" id="notes" placeholder="ລາຍລະອຽດເພີ່ມເຕີມ ຫຼື ຄຳຖາມ (ຖ້າມີ)"></textarea>
-          </div>
+  <div class="amount-display" id="amountPreview" style="display:none;">
+    <div style="position:relative;z-index:1;">
+      <div class="lbl">ຈຳນວນກູ້</div>
+      <div class="val" id="previewAmount">—</div>
+    </div>
+    <div class="monthly">
+      <div class="lbl">ຜ່ອນ/ເດືອນ (ປະມານ)</div>
+      <div class="val" id="previewMonthly">—</div>
+    </div>
+  </div>
 
-          <div class="consent-box">
-            <div class="consent-item">
-              <input type="checkbox" id="consent1">
-              <label for="consent1">ຂ້ອຍຢືນຢັນວ່າຂໍ້ມູນທີ່ຕື່ມທັງໝົດຖືກຕ້ອງ ແລະ ເປັນຄວາມຈິງ</label>
-            </div>
-            <div class="consent-item">
-              <input type="checkbox" id="consent2">
-              <label for="consent2">ຂ້ອຍຍິນຍອມໃຫ້ ສະຖາບັນການເງິນ ສັບທະວີ ເກັບກຳ ແລະ ໃຊ້ຂໍ້ມູນຂ້ອຍ</label>
-            </div>
-          </div>
+  <div class="form-group">
+    <label class="form-label">ຂໍ້ມູນເພີ່ມເຕີມ</label>
+    <textarea class="form-textarea form-input" id="notes" placeholder="ລາຍລະອຽດເພີ່ມເຕີມ ຫຼື ຄຳຖາມ (ຖ້າມີ)"></textarea>
+  </div>
 
-          <div class="form-nav">
-            <button class="btn-back" onclick="prevStep(3)">← ກັບ</button>
-            <button class="btn-submit" onclick="submitForm()">✓ ສົ່ງຄຳຮ້ອງ</button>
-          </div>
-        </div>
+  <div class="consent-box">
+    <div class="consent-item">
+      <input type="checkbox" id="consent1">
+      <label for="consent1">ຂ້ອຍຢືນຢັນວ່າຂໍ້ມູນທີ່ຕື່ມທັງໝົດຖືກຕ້ອງ ແລະ ເປັນຄວາມຈິງ</label>
+    </div>
+    <div class="consent-item">
+      <input type="checkbox" id="consent2">
+      <label for="consent2">ຂ້ອຍຍິນຍອມໃຫ້ ສະຖາບັນການເງິນ ສັບທະວີ ເກັບກຳ ແລະ ໃຊ້ຂໍ້ມູນຂ້ອຍ</label>
+    </div>
+  </div>
+
+  <div class="form-nav">
+    <button class="btn-back" onclick="prevStep(3)">← ກັບ</button>
+    <button class="btn-submit" onclick="submitForm()">✓ ສົ່ງຄຳຮ້ອງ</button>
+  </div>
+</div>
 
         <!-- SUCCESS -->
         <div class="success-panel" id="successPanel">
           <div class="success-icon">✓</div>
           <div class="success-title">Application Sent!</div>
           <div class="success-lao">ສົ່ງຄຳຮ້ອງສຳເລັດ</div>
-          <p class="success-desc">ທີມງານຂອງເຮົາໄດ້ຮັບຄຳຮ້ອງຂອງທ່ານແລ້ວ ແລະ ຈະຕິດຕໍ່ກັບທ່ານ ພາຍໃນ 1-2 ວັນທຳການ</p>
+          <p class="success-desc">ທີມງານຂອງເຮົາໄດ້ຮັບຄຳຮ້ອງຂອງທ່ານແລ້ວ ແລະ ຈະຕິດຕໍ່ກັບທ່ານ ພາຍໃນ 1 ວັນທຳການ</p>
           <div class="ref-box">
             <div class="ref-label">ເລກທີຄຳຮ້ອງ / Reference Number</div>
             <div class="ref-num" id="refNumber">—</div>
