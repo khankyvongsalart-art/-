@@ -281,9 +281,9 @@
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ===== FOOTER ===== */
-    footer { background: #ffd700; color: #fff; padding: 2.5rem 2rem; }
+    footer { background: #efeded; color: #fff; padding: 2.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between;align-items: flex-start;gap: 4rem; padding: 2rem 0; }
-    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.2rem; color: #fff; }
+    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.2rem; color: #000000; }
     .footer-contact li { display: flex; align-items: flex-start; gap: 0.75rem; }
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
@@ -425,58 +425,68 @@
           <div class="step-title">ຂໍ້ມູນສ່ວນຕົວ</div>
           <div class="step-sub">Personal Information — ກະລຸນາຕື່ມຂໍ້ມູນທີ່ຖືກຕ້ອງ</div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ຊື່ <span class="req">*</span></label>
-              <input type="text" class="form-input" id="firstName" placeholder="ຊື່ຂອງທ່ານ">
-              <div class="error-msg">ກະລຸນາຕື່ມຊື່</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ນາມສະກຸນ <span class="req">*</span></label>
-              <input type="text" class="form-input" id="lastName" placeholder="ນາມສະກຸນ">
-              <div class="error-msg">ກະລຸນາຕື່ມນາມສະກຸນ</div>
-            </div>
-          </div>
+  <div class="form-row">
+  <div class="form-group">
+    <label class="form-label">ຊື່ <span class="req">*</span></label>
+    <input type="text" class="form-input" id="firstName" placeholder="ຊື່ຂອງທ່ານ">
+    <div class="error-msg">ກະລຸນາຕື່ມຊື່</div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">ນາມສະກຸນ <span class="req">*</span></label>
+    <input type="text" class="form-input" id="lastName" placeholder="ນາມສະກຸນ">
+    <div class="error-msg">ກະລຸນາຕື່ມນາມສະກຸນ</div>
+  </div>
+</div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ເບີໂທ <span class="req">*</span></label>
-              <input type="tel" class="form-input" id="phone" placeholder="020 XXXX XXXX">
-              <div class="error-msg">ກະລຸນາຕື່ມເບີໂທ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ອີເມວ</label>
-              <input type="email" class="form-input" id="email" placeholder="example@email.com">
-              <div class="form-hint">ບໍ່ບັງຄັບ</div>
-            </div>
-            <div class="form-group">
-              <input type="number" class="form-input" id="age" 
-                    placeholder="ອາຍຸຂອງທ່ານ" 
-                    required
-                    min="18" 
-                    max="70">
-              <div class="form-hint">ບັງຄັບ</div>
-            </div>
-          </div>
+<div class="form-row">
+  <div class="form-group">
+    <label class="form-label">ເບີໂທ <span class="req">*</span></label>
+    <input type="tel" class="form-input" id="phone" placeholder="020 XXXX XXXX">
+    <div class="error-msg">ກະລຸນາຕືມເບີໂທ</div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">ອີເມວ <span class="req">*</span></label>
+    <input type="email" class="form-input" id="email" placeholder="example@email.com">
+    <div class="form-hint">ບໍ່ບັງຄັບ</div>
+  </div>
+</div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ເລກບັດປະຈຳຕົວ <span class="req">*</span></label>
-              <input type="text" class="form-input" id="idCard" placeholder="XXXXXXXXXXXXX">
-              <div class="error-msg">ກະລຸນາຕື່ມເລກບັດ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ວັນເດືອນປີເກີດ <span class="req">*</span></label>
-              <input type="date" class="form-input" id="dob">
-              <div class="error-msg">ກະລຸນາເລືອກວັນເດືອນປີ</div>
-            </div>
-          </div>
+<div class="form-row">
+  <div class="form-group">
+    <label class="form-label">ອາຍຸ <span class="req">*</span></label>
+    <input type="number" class="form-input" id="age" placeholder="ອາຍຸຂອງທ່ານ" min="18" max="70">
+    <div class="error-msg">ກະລຸນາຕື່ມອາຍຸ</div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">ເພດ <span class="req">*</span></label>
+    <select class="form-input form-select" id="sex">
+      <option value="">-- ເລືອກເພດ --</option>
+      <option value="male">ຊາຍ</option>
+      <option value="female">ຍິງ</option>
+      <option value="other">ອື່ນໆ</option>
+    </select>
+    <div class="error-msg">ກະລຸນາເລືອກເພດ</div>
+  </div>
+</div>
 
-          <div class="form-group">
-            <label class="form-label">ທີ່ຢູ່ປັດຈຸບັນ <span class="req">*</span></label>
-            <textarea class="form-textarea form-input" id="address" placeholder="ບ້ານ, ເມືອງ, ແຂວງ"></textarea>
-            <div class="error-msg">ກະລຸນາຕື່ມທີ່ຢູ່</div>
-          </div>
+<div class="form-row">
+  <div class="form-group">
+    <label class="form-label">ເລກບັດປະຈຳຕົວ <span class="req">*</span></label>
+    <input type="text" class="form-input" id="idCard" placeholder="XXXXXXXXXXXXX">
+    <div class="error-msg">ກະລຸນາຕືມເລກບັດ</div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">ວັນເດືອນປີເກີດ <span class="req">*</span></label>
+    <input type="date" class="form-input" id="dob">
+    <div class="error-msg">ກະລຸນາເລືອກວັນເດືອນປີ</div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="form-label">ທີ່ຢູ່ປັດຈຸບັນ <span class="req">*</span></label>
+  <textarea class="form-textarea form-input" id="address" placeholder="ບ້ານ, ເມືອງ, ແຂວງ"></textarea>
+  <div class="error-msg">ກະລຸນາຕມທີ່ຢູ່</div>
+</div>
 
           <div class="form-nav">
             <div></div>
@@ -499,6 +509,8 @@
                 <option>ນັກທຸລະກິດ</option>
                 <option>ຄ້າຂາຍ</option>
                 <option>ເກສຕຣ</option>
+                <option>ປະຊາຊົນ</option>
+                <option>ນັກສຶກສາ</option>
                 <option>ອື່ນໆ</option>
               </select>
               <div class="error-msg">ກະລຸນາເລືອກສະຖານະ</div>
@@ -743,7 +755,7 @@
 
   function validateStep(step) {
     const required = {
-      1: ['firstName','lastName','phone','idCard','dob','address','age'],
+      1: ['firstName','lastName','phone','idCard','dob','address','age','sex'],
       2: ['employment','income'],
       3: ['loanType','purpose','loanAmount','loanTerm'],
     };
