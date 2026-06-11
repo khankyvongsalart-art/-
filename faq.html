@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>FAQ ຄຳຖາມທີ່ພົບບ່ອຍ - ສະຖາບັນການເງິນ ຊັບທະວີ</title>
+  <meta name="description" content="ຄຳຖາມທີ່ພົບບ່ອຍກ່ຽວກັບສິນເຊື່ອ ປະກັນໄພ ແລະ ບໍລິການຂອງ ສະຖາບັນການເງິນ ຊັບທະວີ">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #C0392B; --dark-red: #922B21; --orange: #ff7200;
+      --gold: #C9A84C; --gold-lt: #E8C97A;
+      --cream: #FAF6EF; --dark: #1A1209; --mid: #4A3728;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans Lao', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+    /* SOCIAL BAR */
+    .social-bar { background: var(--cream); padding: 0.4rem 2.5rem; position: fixed; top: 0; left: 0; right: 0; z-index: 101; border-bottom: 1px solid rgba(201,168,76,0.2); }
+    .social-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+    .social-address { font-size: 0.8rem; color: rgba(255,0,0,0.55); text-decoration: none; transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .social-address:hover { color: var(--gold); }
+    .social-icons { display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .social-btn { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; text-decoration: none; color: #fff; transition: transform 0.2s; }
+    .social-btn:hover { transform: scale(1.15); }
+    .social-btn.fb { background: #1877F2; }
+    .social-btn.wa { background: #25D366; }
+    .social-btn.tt { background: #000; }
+    .social-btn.yt { background: #FF0000; }
+
+    /* NAVBAR */
+    nav { position: fixed; top: 36px; width: 100%; z-index: 100; background: #ff7200; display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; box-shadow: 0 2px 20px rgba(0,0,0,0.18); }
+    .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
+    .nav-brand { color: #fff; line-height: 1.25; }
+    .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 700; }
+    .nav-brand .en { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: 4rem; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 1rem; font-weight: 500; padding: 0.3rem 0; border-bottom: 2px solid transparent; transition: border-color 0.2s, color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { border-color: #ffe600; color: #ffe600; }
+    .nav-cta { background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.5); color: #fff; padding: 0.5rem 1.4rem; border-radius: 6px; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: background 0.2s; white-space: nowrap; }
+    .nav-cta:hover { background: rgba(255,255,255,0.28); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ff7200; z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 600; }
+    .mobile-menu a:hover { color: #ffe600; }
+
+    /* PAGE HERO */
+    .page-hero { background: linear-gradient(150deg, #3a0202 0%, #7a0808 40%, #3d1a0a 100%); padding: 9rem 2rem 4rem; position: relative; overflow: hidden; text-align: center; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, rgba(201,168,76,0.18) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.5; }
+    .page-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .page-tag { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(201,168,76,0.5); background: rgba(201,168,76,0.08); color: var(--gold-lt); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.38rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; animation: fadeUp 0.7s 0.1s ease both; }
+    .page-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 1rem; animation: fadeUp 0.7s 0.2s ease both; }
+    .page-hero h1 em { font-style: normal; color: var(--gold-lt); }
+    .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.8; animation: fadeUp 0.7s 0.3s ease both; }
+
+    /* FAQ SECTION */
+    .faq-section { padding: 4.5rem 2rem 5rem; }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    /* CATEGORY TABS */
+    .faq-cats { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .faq-cat { padding: 0.5rem 1.2rem; border-radius: 100px; border: 1.5px solid rgba(192,57,43,0.25); background: #fff; color: var(--mid); font-family: 'Noto Sans Lao', sans-serif; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+    .faq-cat:hover { border-color: var(--red); color: var(--red); }
+    .faq-cat.active { background: var(--red); border-color: var(--red); color: #fff; font-weight: 600; }
+
+    /* FAQ GROUPS */
+    .faq-group { display: none; }
+    .faq-group.active { display: block; }
+
+    .faq-group-title { font-size: 0.75rem; font-weight: 700; color: var(--red); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .faq-group-title::before { content: ''; width: 4px; height: 1rem; background: var(--red); border-radius: 2px; display: inline-block; }
+
+    /* ACCORDION */
+    .faq-item { background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 12px; margin-bottom: 0.75rem; overflow: hidden; transition: box-shadow 0.2s; }
+    .faq-item:hover { box-shadow: 0 4px 16px rgba(26,18,9,0.08); }
+    .faq-item.open { box-shadow: 0 6px 24px rgba(192,57,43,0.1); border-color: rgba(192,57,43,0.2); }
+
+    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; cursor: pointer; gap: 1rem; user-select: none; }
+    .faq-q-text { font-size: 0.95rem; font-weight: 600; color: var(--dark); line-height: 1.5; }
+    .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(192,57,43,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s, transform 0.3s; color: var(--red); font-size: 0.8rem; }
+    .faq-item.open .faq-icon { background: var(--red); color: #fff; transform: rotate(45deg); }
+
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.2s; }
+    .faq-a-inner { padding: 0 1.5rem 1.25rem; font-size: 0.88rem; color: var(--mid); line-height: 1.85; border-top: 1px solid rgba(74,55,40,0.06); padding-top: 1rem; }
+    .faq-item.open .faq-a { max-height: 400px; }
+
+    /* CTA BOX */
+    .faq-cta { margin-top: 3rem; background: linear-gradient(135deg, #480606, #8f0505); border-radius: 16px; padding: 2.5rem; text-align: center; position: relative; overflow: hidden; }
+    .faq-cta::before { content: ''; position: absolute; inset: 0; opacity: 0.05; background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px); background-size: 40px 40px; }
+    .faq-cta-inner { position: relative; z-index: 1; }
+    .faq-cta h3 { color: #fff; font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .faq-cta p { color: rgba(255,255,255,0.65); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .faq-cta-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--gold); color: var(--dark); padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: #e0bb5a; transform: translateY(-2px); }
+    .btn-outline { border: 1.5px solid rgba(255,255,255,0.4); color: #fff; background: rgba(255,255,255,0.08); padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: background 0.2s; }
+    .btn-outline:hover { background: rgba(255,255,255,0.18); }
+
+    /* ===== FOOTER ===== */
+    footer { background: #efeded; color: #fff; padding: 2.5rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between;align-items: flex-start;gap: 4rem; padding: 2rem 0; }
+    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.2rem; color: #000000; }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .social-bar { padding: 0.4rem 1rem; }
+      .social-address { font-size: 0.7rem; max-width: 52vw; }
+      nav { padding: 0 1rem; top: 32px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { justify-content: flex-start; }
+    }
+    @media (max-width: 480px) {
+      nav { height: 60px; }
+      .nav-brand .en { display: none; }
+    }
+    /* VISITOR WIDGET */
+.visitor-widget {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #333;
+  min-width: 400px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.vw-row {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px dotted #e0e0e0;
+}
+.vw-row:last-child { border-bottom: none; }
+.vw-left { display: flex; align-items: center; gap: 8px; color: #444; }
+.vw-val { font-weight: 600; color: #222;font-size: 16px; }
+.vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: #ff7200; border-top: 1px solid #eee; padding-top: 6px; }
+  </style>
+  </style>
+</head>
+<body>
+
+<!-- SOCIAL BAR -->
+<div class="social-bar">
+  <div class="social-bar-inner">
+    <a href="https://maps.google.com/?q=326+Unit+16+Sikhay+Vientiane" target="_blank" class="social-address">
+      📍 ສຳນັກງານຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ
+    </a>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/8562054213555" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.tiktok.com/@.fis78" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
+      <a href="https://m.youtube.com/channel/UCiovNJcNcy-OHdQHk_bbfkA" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <img src="images/LOGO-FINAL-01.png" alt="logo" style="height:56px;">
+    <div class="nav-brand">
+      <span class="lo">ສະຖາບັນການເງິນ ຊັບທະວີ</span>
+      <span class="en">Financial Institutes Sapthavy</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">ໜ້າຫລັກ</a></li>
+    <li><a href="products.html">ສິນເຊື່ອ</a></li>
+    <li><a href="insurance.html">ປະກັນໄພ</a></li>
+    <li><a href="calculator.html">ຄິດໄລ່</a></li>
+    <li><a href="faq.html" class="active">ຄຳຖາມ</a></li>
+  </ul>
+  <a href="apply.html" class="nav-cta">ສະໝັກກູ້ເງິນ</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">ໜ້າຫລັກ</a>
+  <a href="products.html" onclick="toggleMenu()">ສິນເຊື່ອ</a>
+  <a href="insurance.html" onclick="toggleMenu()">ປະກັນໄພ</a>
+  <a href="calculator.html" onclick="toggleMenu()">ຄິດໄລ່</a>
+  <a href="faq.html" onclick="toggleMenu()">ຄຳຖາມ</a>
+  <a href="apply.html" onclick="toggleMenu()">ສະໝັກກູ້ເງິນ</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-tag">FAQ</div>
+    <h1>ຄຳຖາມທີ່<em>ພົບຫຼາຍ</em></h1>
+    <p>ຄຳຕອບຄຳຖາມທີ່ລູກຄ້າຖາມເລື້ອຍໆ ກ່ຽວກັບສິນເຊື່ອ ປະກັນໄພ ແລະ ການສະໝັກ</p>
+  </div>
+</div>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+  <div class="container">
+
+    <!-- CATEGORY TABS -->
+    <div class="faq-cats reveal">
+      <button class="faq-cat active" onclick="showCat('all', this)">ທັງໝົດ</button>
+      <button class="faq-cat" onclick="showCat('loan', this)">ສິນເຊື່ອ</button>
+      <button class="faq-cat" onclick="showCat('insurance', this)">ປະກັນໄພ</button>
+      <button class="faq-cat" onclick="showCat('apply', this)">ການສະໝັກ</button>
+      <button class="faq-cat" onclick="showCat('payment', this)">ການຊຳລະ</button>
+    </div>
+
+    <!-- ສິນເຊື່ອ -->
+    <div class="faq-group active reveal" id="cat-loan">
+      <div class="faq-group-title">💰 ສິນເຊື່ອ</div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ກູ້ເງິນໄດ້ສູງສຸດເທົ່າໃດ?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ຂຶ້ນຢູ່ກັບປະເພດສິນເຊື່ອ ສິນເຊື່ອສ່ວນຕົວສູງສຸດ 50 ລ້ານກີບ ສິນເຊື່ອທຸລະກິດ ແລະ ທີ່ດິນ-ເຮືອນ ສູງສຸດ 500 ລ້ານກີບ ຂຶ້ນຢູ່ກັບຄຸ້ມຄ່ານຊັບສິນຄໍ້າປະກັນ ແລະ ຄວາມສາມາດໃນການຊຳລະຂອງທ່ານ.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ດອກເບ້ຍເທົ່າໃດຕໍ່ເດືອນ?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ອັດຕາດອກເບ້ຍເລີ່ມຕົ້ນ 3.0% ຕໍ່ເດືອນ ຂຶ້ນຢູ່ກັບປະເພດສິນເຊື່ອ ໄລຍະຜ່ອນ ແລະ ຄຸນສົມບັດຂອງຜູ້ສະໝັກ ສາມາດໃຊ້ເຄື່ອງຄິດໄລ່ຂອງເຮົາ ເພື່ອຄາດຄະເນຍອດຜ່ອນໄດ້ເລີຍ.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ສິນເຊື່ອສ່ວນຕົວຕ້ອງມີຫຼັກຊັບບໍ່?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ສິນເຊື່ອຈຳນວນໜ້ອຍ ສາມາດໃຊ້ຄົນຄໍ້າໄດ້ ສຳລັບຈຳນວນສູງ ຕ້ອງມີຊັບສິນຄໍ້າປະກັນ ເຊັ່ນ ໃບ້ຕາດິນ ເຮືອນ  ຍານພາຫະນະ ເຄື່ອງໃຊ້ໄຟຟ້າ ຫຼື ມືຖື ທີມງານຈະໃຫ້ຄໍາປຶກສາໂດຍກົງ.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ຜ່ອນໄດ້ດົນສູງສຸດເທົ່າໃດ?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ສິນເຊື່ອສ່ວນຕົວ ສູງສຸດ 60 ເດືອນ (5 ປີ) ສິນເຊື່ອທີ່ດິນ-ເຮືອນ ແລະ ທຸລະກິດ ສູງສຸດ 120 ເດືອນ (10 ປີ) ສິນເຊື່ອລົດ ສູງສຸດ 84 ເດືອນ (7 ປີ).</div></div>
+      </div>
+    </div>
+
+    <!-- ປະກັນໄພ -->
+    <div class="faq-group active reveal" id="cat-insurance">
+      <div class="faq-group-title" style="margin-top:2rem;">🛡️ ປະກັນໄພ</div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ມີປະກັນໄພແບບໃດແດ່?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ເຮົາໃຫ້ບໍລິການ 6 ປະເພດຄື ປະກັນຊີວິດ ປະກັນສຸຂະພາບ ປະກັນລົດ ແລະ ປະກັນອາຄານ ແຕ່ລະແຜນອອກແບບໃຫ້ເໝາະສົມ ດ້ວຍຄ່າເບ້ຍທີ່ເໝາະສົມ.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ຄ່າເບ້ຍປະກັນເລີ່ມຕົ້ນເທົ່າໃດ?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ປະກັນຊີວິດ ແລະ ສຸຂະພາບ ເລີ່ມຕົ້ນ 500,000 ກີບ/ເດືອນ ປະກັນລົດ ແລະ ອາຄານ ເລີ່ມຕົ້ນ 2,000,000 ກີບ/ປີ ລາຄາຂຶ້ນຢູ່ກັບວົງເງິນຄ້ອງຄອງທີ່ເລືອກ.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ຕິດຕໍ່ທີມງານໂດຍຕົງໄດ້ທ່ານໃດ?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ຕິດຕໍ່ທີມງານໂດຍກົງຜ່ານໂທລະສັບ ຫຼື Facebook ທີມງານຈະຊ່ວຍດໍາເນີນການທຸກຂັ້ນຕອນ ການຈ່າຍທຶນໄວພາຍໃນ 2 ວັນ ຫຼັງຈາກເອກະສານຄົບ.</div></div>
+      </div>
+    </div>
+
+    <!-- ການສະໝັກ -->
+    <div class="faq-group active reveal" id="cat-apply">
+      <div class="faq-group-title" style="margin-top:2rem;">📋 ການສະໝັກ</div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ຕ້ອງໃຊ້ເອກະສານຫຍັງແດ່?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ເອກະສານຫຼັກ ໄດ້ແກ່ ບັດປະຈຳຕົວ ສຳມະໂນຄົວ ຫຼັກຖານລາຍໄດ້ ແລະ ໃບ້ຊັບສິນຄໍ້າ (ຖ້າມີ) ສຳລັບສິນເຊື່ອທຸລະກິດ ຕ້ອງມີເອກະສານທຸລະກິດເພີ່ມເຕີມ.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ອະນຸມັດໃຊ້ເວລາດົນປານໃດ?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ຫຼັງຈາກສົ່ງເອກະສານຄົບ ທີມງານຈະດໍາເນີນການພາຍໃນ 24 ຊົ່ວໂມງ ບາງກໍລະນີອາດໃຊ້ 1-2 ວັນ ຂຶ້ນຢູ່ກັບຄວາມຊັບຊ້ອນຂອງການຄໍ້າ.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ສະໝັກອອນລາຍໄດ້ໄຫມ?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ສາມາດຕື່ມໃບສະໝັກເບື້ອງຕົ້ນໃນເວັບໄຊ້ໄດ້ເລີຍ ແຕ່ຍັງຕ້ອງຍື່ນເອກະສານຕົວຈິງ ທີ່ສຳນັກງານ ຫຼື ຜ່ານທີມງານ ເຮົາຈະຕິດຕໍ່ກັບທ່ານຫຼັງຮັບໃບສະໝັກ.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ອາຍຸຕໍ່າ-ສູງສຸດເທົ່າໃດ?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ຜູ້ສະໝັກຕ້ອງມີອາຍຸ 18 - 70 ປີ ມີລາຍໄດ້ສະໝໍ່າສະເໝີ ແລະ ບໍ່ມີປະຫວັດໜີ້ສິນທີ່ຄ້າງຊຳລະ.</div></div>
+      </div>
+    </div>
+
+    <!-- ການຊຳລະ -->
+    <div class="faq-group active reveal" id="cat-payment">
+      <div class="faq-group-title" style="margin-top:2rem;">💳 ການຊຳລະ</div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ຊຳລະໄດ້ຜ່ານຊ່ອງທາງໃດ?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ຊຳລະໄດ້ຜ່ານ ໂອນເງິນທະນາຄານ BCEL / LDB ຊຳລະທີ່ສຳນັກງານໂດຍກົງ ຫຼື ຜ່ານ App ທະນາຄານ ທີມງານຈະສົ່ງລາຍລະອຽດໃຫ້ຫຼັງອະນຸມັດ.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ຖ້າຊຳລະຊ້າຈະໄດ້ຮັບໂທດຫຍັງ?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ການຊຳລະຊ້າຈະມີຄ່າປັບໃໝຕາມທີ່ກຳນົດໃນສັນຍາ ແນະນຳໃຫ້ຕິດຕໍ່ທີມງານ ກ່ອນຮອດກຳນົດ ຖ້າຄາດວ່າຊຳລະບໍ່ທັນ ເພື່ອຊອກຫາທາງອອກຮ່ວມກັນ.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">ຊຳລະໜີ້ກ່ອນກຳນົດໄດ້ບໍ່?</span>
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">ສາມາດຊຳລະໜີ້ກ່ອນກຳນົດໄດ້ ໂດຍອາດມີຄ່າທຳນຽມໂດຍລວມຕາມທີ່ກຳນົດໃນສັນຍາ ກະລຸນາຕິດຕໍ່ທີມງານ ເພື່ອຂໍລາຍລະອຽດ.</div></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="faq-cta reveal">
+      <div class="faq-cta-inner">
+        <h3>ຍັງມີຄຳຖາມອີກບໍ່?</h3>
+        <p>ທີມງານຂອງເຮົາພ້ອມຕອບທຸກຄຳຖາມ ຕິດຕໍ່ໄດ້ ໃນເວລາ 8:00 -17:00</p>
+        <div class="faq-cta-btns">
+          <a href="apply.html" class="btn-primary">ສະໝັກກູ້ເງິນ</a>
+          <a href="https://wa.me/8562054213555" target="_blank" class="btn-outline">💬 WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+  <div class="visitor-widget" id="visitorWidget">
+  <div class="vw-row"><span class="vw-left">📶 User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
+  <div class="vw-row"><span class="vw-left">👁️ View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
+  <div class="vw-row"><span class="vw-left">👤 Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
+  <div class="vw-row"><span class="vw-left">👥 Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
+  <div class="vw-row"><span class="vw-left">👤 Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
+  <div class="vw-footer">📊 sapthavy.com</div>
+</div>
+
+    <ul class="footer-contact">
+      <li>📍 ສຳນກງານ ຕັ້ງຢ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫວງວຽງຈັນ</li>
+      <li>📧 ອີເມວ : contact@sapthavy.com</li>
+      <li>📞 ໂທລະສັບ : (+85621)520722, 02054213555</li>
+      <li>🌐 ເວັບໄຊ້ : www.sapthavy.com</li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function showCat(cat, btn) {
+    document.querySelectorAll('.faq-cat').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if (cat === 'all') {
+      document.querySelectorAll('.faq-group').forEach(g => g.classList.add('active'));
+    } else {
+      document.querySelectorAll('.faq-group').forEach(g => g.classList.remove('active'));
+      document.getElementById('cat-' + cat).classList.add('active');
+    }
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.05 });
+  reveals.forEach(el => observer.observe(el));
+  
+  
+</script><script>
+  function fmt(n) { if (n >= 1000) return (n/1000).toFixed(1).replace('.0','') + 'K'; return n; }
+
+  function updateWidget() {
+    const n = new Date();
+    const d = n.toISOString().slice(0,10);
+    const m = n.toISOString().slice(0,7);
+    const y = n.getFullYear().toString();
+    document.getElementById('vw-views').textContent = fmt((JSON.parse(localStorage.getItem('vw_views')||'{}'))[d]||0);
+    document.getElementById('vw-today').textContent = fmt((JSON.parse(localStorage.getItem('vw_today')||'{}'))[d]||0);
+    document.getElementById('vw-month').textContent = fmt((JSON.parse(localStorage.getItem('vw_month')||'{}'))[m]||0);
+    document.getElementById('vw-year').textContent  = fmt((JSON.parse(localStorage.getItem('vw_year') ||'{}'))[y]||0);
+  }
+
+  (function() {
+    const now   = new Date();
+    const today = now.toISOString().slice(0,10);
+    const month = now.toISOString().slice(0,7);
+    const year  = now.getFullYear().toString();
+    let views = JSON.parse(localStorage.getItem('vw_views') || '{}');
+    views[today] = (views[today] || 0) + 1;
+    localStorage.setItem('vw_views', JSON.stringify(views));
+    if (!sessionStorage.getItem('vw_visited')) {
+      sessionStorage.setItem('vw_visited', '1');
+      let vToday = JSON.parse(localStorage.getItem('vw_today') || '{}');
+      vToday[today] = (vToday[today] || 0) + 1;
+      localStorage.setItem('vw_today', JSON.stringify(vToday));
+      let vMonth = JSON.parse(localStorage.getItem('vw_month') || '{}');
+      vMonth[month] = (vMonth[month] || 0) + 1;
+      localStorage.setItem('vw_month', JSON.stringify(vMonth));
+      let vYear = JSON.parse(localStorage.getItem('vw_year') || '{}');
+      vYear[year] = (vYear[year] || 0) + 1;
+      localStorage.setItem('vw_year', JSON.stringify(vYear));
+    }
+    updateWidget();
+  })();
+
+  window.addEventListener('focus', updateWidget);
+  window.addEventListener('pageshow', updateWidget);
+</script>
+</body>
+</html>
