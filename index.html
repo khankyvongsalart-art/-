@@ -4,11 +4,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <title>ສະຖາບັນການເງິນ ຊັບທະວີ - ບໍລິການສິນເຊື່ອ ແລະ ປະກັນໄພ</title>
   <meta name="description" content="ສະຖາບັນການເງິນ ຊັບທະວີ ບໍລິການສິນເຊື່ອອຸປະໂພກ ບໍລິໂພກ, ສິນເຊື່ອທຸລະກິດ ແລະ ປະກັນໄພ ອະນຸມັດໄວ ເງື່ອນໄຂງ່າຍດາຍ">
-  <meta name="keywords" content="ກູ້ເງິນ, ສิນເຊື່ອ, ປະກັນໄພ, ຊັບທະວີ, ສະຖາບັນການເງິນ">
-
+  <meta name="keywords" content="ກູ້ເງິນ, ສິນເຊື່ອ, ປະກັນໄພ, ຊັບທະວີ, ສະຖາບັນການເງິນ">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -29,63 +28,71 @@
 
     /* ===== SOCIAL BAR ===== */
     .social-bar {
-      background: var(--cream);
+      background: #ffffff;
       padding: 0.4rem 2.5rem;
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 101;
-      border-bottom: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(255, 114, 0, 0.15);
     }
     .social-bar-inner {
       max-width: 1100px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 0.5rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
     }
     .social-address {
-      font-size: 0.8rem; color: rgba(255,0,0,0.55);
+      font-size: 0.8rem; color: var(--orange);
       text-decoration: none; transition: color 0.2s;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .social-address:hover { color: var(--gold); }
+    .social-address:hover { color: var(--dark); }
     .social-icons { display: flex; gap: 0.5rem; flex-shrink: 0; }
     .social-btn {
       width: 28px; height: 28px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 0.75rem; font-weight: 700;
       text-decoration: none; color: #fff;
-      transition: transform 0.2s;
+      transition: transform 0.2s, opacity 0.2s;
     }
-    .social-btn:hover { transform: scale(1.15); }
+    .social-btn:hover { transform: scale(1.15); opacity: 0.9; }
     .social-btn.fb { background: #1877F2; }
     .social-btn.wa { background: #25D366; }
     .social-btn.tt { background: #000; }
     .social-btn.yt { background: #FF0000; }
 
-    /* ===== NAVBAR ===== */
+    /* ===== NAVBAR — orange bg, white text ===== */
     nav {
       position: fixed; top: 36px; width: 100%; z-index: 100;
-      background: #ff7200;
+      background: var(--orange);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2.5rem; height: 72px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.18);
+      box-shadow: 0 2px 16px rgba(255,114,0,0.25);
     }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
     .nav-brand { color: #fff; line-height: 1.25; }
-    .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 700; }
-    .nav-brand .en { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+    .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 800; color: #fff; }
+    .nav-brand .en { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); }
+
     .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: 4rem; }
     .nav-links a {
-      color: #fff; text-decoration: none; font-size: 1rem; font-weight: 500;
+      color: #ffffff; text-decoration: none; font-size: 1rem; font-weight: 600;
       padding: 0.3rem 0; border-bottom: 2px solid transparent;
       transition: border-color 0.2s, color 0.2s;
     }
-    .nav-links a:hover { border-color: #ffe600; color: #ffe600; }
-    .nav-cta {
-      background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.5);
-      color: #fff; padding: 0.5rem 1.4rem; border-radius: 6px;
-      text-decoration: none; font-size: 0.95rem; font-weight: 600;
-      transition: background 0.2s; white-space: nowrap;
+    .nav-links a:hover, .nav-links a.active {
+      border-color: #ffe600; color: #ffe600;
     }
-    .nav-cta:hover { background: rgba(255,255,255,0.28); }
+
+    /* CTA button: white bg, orange text */
+    .nav-cta {
+      background: #ffffff;
+      border: 2px solid #ffffff;
+      color: var(--orange);
+      padding: 0.5rem 1.4rem; border-radius: 8px;
+      text-decoration: none; font-size: 0.95rem; font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+    .nav-cta:hover { background: #fff3e0; transform: translateY(-1px); }
 
     /* Hamburger */
     .hamburger {
@@ -97,63 +104,106 @@
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Mobile Menu */
+    /* Mobile Menu — keep orange bg for mobile */
     .mobile-menu {
       display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: #ff7200; z-index: 99; flex-direction: column;
-      align-items: center; justify-content: center; gap: 2rem;
+      background: var(--orange); z-index: 99;
+      flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 600; }
+    .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 700; }
     .mobile-menu a:hover { color: #ffe600; }
 
-    /* ===== HERO ===== */
+    /* ===== HERO — light / white theme ===== */
     .hero {
       min-height: 100vh;
-      background: linear-gradient(150deg, #3a0202 0%, #7a0808 40%, #3d1a0a 100%);
+      background: #ffffff;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       position: relative; overflow: hidden;
-      padding: 7rem 2rem 4rem;
+      padding: 10rem 2rem 5rem;
     }
+    /* soft orange glow blobs */
     .hero::before, .hero::after { content: ''; position: absolute; border-radius: 50%; pointer-events: none; }
-    .hero::before { width: 680px; height: 680px; right: -180px; top: -140px; background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 65%); }
-    .hero::after  { width: 500px; height: 500px; left: -120px; bottom: -120px; background: radial-gradient(circle, rgba(192,57,43,0.2) 0%, transparent 65%); }
-    .hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, rgba(201,168,76,0.18) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.6; }
+    .hero::before { width: 700px; height: 700px; right: -220px; top: -180px; background: radial-gradient(circle, rgba(255,114,0,0.08) 0%, transparent 65%); }
+    .hero::after  { width: 550px; height: 550px; left: -160px; bottom: -150px; background: radial-gradient(circle, rgba(255,114,0,0.06) 0%, transparent 65%); }
+
+    /* subtle dot grid */
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255,114,0,0.12) 1px, transparent 1px);
+      background-size: 40px 40px; opacity: 1;
+    }
+
     .hero-inner { position: relative; z-index: 1; text-align: center; max-width: 680px; }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      border: 1px solid rgba(201,168,76,0.55); background: rgba(201,168,76,0.08);
-      color: var(--gold-lt); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+      border: 1.5px solid rgba(255,114,0,0.35); background: rgba(255,114,0,0.06);
+      color: var(--orange); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
       padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 2rem;
       animation: fadeUp 0.8s 0.1s ease both;
     }
-    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); display: inline-block; }
-    .hero-sub { font-size: 0.9rem; color: rgba(255,255,255,0.5); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; animation: fadeUp 0.8s 0.2s ease both; }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 1.5rem; animation: fadeUp 0.8s 0.3s ease both; }
-    .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--gold), #f5d78e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.62); line-height: 1.85; max-width: 500px; margin: 0 auto 2.5rem; animation: fadeUp 0.8s 0.4s ease both; }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); display: inline-block; }
+
+    .hero-sub {
+      font-size: 0.88rem; color: rgba(255,114,0,0.6);
+      letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800;
+      color: var(--dark); line-height: 1.25; margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--orange), #ff9c44);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.05rem; color: var(--mid);
+      line-height: 1.85; max-width: 500px; margin: 0 auto 2.5rem;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
     .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.5s ease both; }
-    .btn-primary { background: var(--red); color: #fff; padding: 0.9rem 2.2rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; border: none; cursor: pointer; box-shadow: 0 4px 18px rgba(192,57,43,0.45); }
-    .btn-primary:hover { background: var(--dark-red); transform: translateY(-2px); }
-    .btn-outline { border: 1.5px solid rgba(255,230,100,0.55); color: #fff; background: rgba(255,255,255,0.06); padding: 0.9rem 2.2rem; border-radius: 6px; text-decoration: none; font-size: 1rem; font-weight: 500; transition: background 0.2s, border-color 0.2s, transform 0.15s; }
-    .btn-outline:hover { background: rgba(255,230,100,0.12); border-color: #ffe600; transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--orange); color: #fff;
+      padding: 0.9rem 2.2rem; border-radius: 8px;
+      text-decoration: none; font-weight: 700; font-size: 1rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      border: none; cursor: pointer;
+      box-shadow: 0 4px 18px rgba(255,114,0,0.38);
+    }
+    .btn-primary:hover { background: #e06200; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,114,0,0.45); }
+
+    .btn-outline {
+      border: 2px solid rgba(255,114,0,0.5); color: var(--orange);
+      background: transparent;
+      padding: 0.9rem 2.2rem; border-radius: 8px;
+      text-decoration: none; font-size: 1rem; font-weight: 600;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { background: rgba(255,114,0,0.06); border-color: var(--orange); transform: translateY(-2px); }
 
     /* Stats Bar */
     .stats-bar {
       position: relative; z-index: 2; width: 100%; max-width: 700px;
       display: flex; justify-content: center; margin-top: 4.5rem;
-      border: 1px solid rgba(201,168,76,0.22); border-radius: 12px;
-      overflow: hidden; background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(6px); animation: fadeUp 0.8s 0.65s ease both;
+      border: 1.5px solid rgba(255,114,0,0.2); border-radius: 14px;
+      overflow: hidden; background: #fff;
+      box-shadow: 0 4px 24px rgba(255,114,0,0.1);
+      animation: fadeUp 0.8s 0.65s ease both;
     }
-    .stat { flex: 1; text-align: center; padding: 1.4rem 1rem; border-right: 1px solid rgba(201,168,76,0.15); }
+    .stat { flex: 1; text-align: center; padding: 1.4rem 1rem; border-right: 1px solid rgba(255,114,0,0.12); }
     .stat:last-child { border-right: none; }
-    .stat-num   { font-size: 2rem; font-weight: 800; color: var(--gold); line-height: 1; }
-    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-top: 0.35rem; }
+    .stat-num   { font-size: 2rem; font-weight: 800; color: var(--orange); line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: var(--mid); margin-top: 0.35rem; }
 
     /* ===== SHARED ===== */
     section { padding: 5rem 2rem; }
@@ -171,46 +221,40 @@
     .promo-header-left .section-title { margin-bottom: 0; font-size: clamp(1.4rem, 2.5vw, 1.9rem); }
     .promo-view-all { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--red); font-size: 0.85rem; font-weight: 600; text-decoration: none; border-bottom: 1.5px solid transparent; transition: border-color 0.2s; white-space: nowrap; }
     .promo-view-all:hover { border-color: var(--red); }
-
     .promo-grid { display: grid; grid-template-columns: 1.55fr 1fr 1fr; grid-template-rows: auto auto; gap: 1.25rem; }
-
-    .promo-card { background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid rgba(74,55,40,0.08); transition: transform 0.22s, box-shadow 0.22s; display: flex; flex-direction: column; }
-    .promo-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,18,9,0.1); }
+    .promo-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid rgba(74,55,40,0.08); transition: transform 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; box-shadow: 0 2px 12px rgba(26,18,9,0.06); }
+    .promo-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(26,18,9,0.13); }
     .promo-card.featured { grid-row: 1 / 3; }
-
-    .promo-img-ph { width: 100%; background: linear-gradient(135deg, #d9d0c3, #c6bdb0); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: rgba(74,55,40,0.38); font-size: 0.72rem; letter-spacing: 0.06em; }
-    .promo-img-ph.tall  { aspect-ratio: 3/2.2; }
+    .promo-img-ph { width: 100%; overflow: hidden; position: relative; }
+    .promo-img-ph.tall  { aspect-ratio: 3/2.6; }
     .promo-img-ph.short { aspect-ratio: 16/8; }
-    .promo-img-ph svg { opacity: 0.4; }
-
+    .promo-img-ph img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.45s ease; }
+    .promo-card:hover .promo-img-ph img { transform: scale(1.05); }
+    .promo-img-ph::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 55%, rgba(26,18,9,0.22) 100%); pointer-events: none; }
     .promo-body { padding: 1.4rem 1.5rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
     .promo-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.22rem 0.7rem; border-radius: 100px; margin-bottom: 0.75rem; }
-    .badge-hot  { background: #fff0ee; color: #b02a1e; border: 1px solid rgba(176,42,30,0.2); }
-    .badge-new  { background: #eef5ff; color: #1a5fa8; border: 1px solid rgba(26,95,168,0.2); }
-    .badge-ltd  { background: #fffaed; color: #a06c00; border: 1px solid rgba(160,108,0,0.2); }
-    .badge-fast { background: rgba(255,255,255,0.18); color: #fff; border: 1px solid rgba(255,255,255,0.28); }
-
+    .badge-hot  { background:#fff0ee; color:#b02a1e; border:1px solid rgba(176,42,30,0.2); }
+    .badge-new  { background:#eef5ff; color:#1a5fa8; border:1px solid rgba(26,95,168,0.2); }
+    .badge-ltd  { background:#fffaed; color:#a06c00; border:1px solid rgba(160,108,0,0.2); }
+    .badge-fast { background:rgba(255,255,255,0.18); color:#fff; border:1px solid rgba(255,255,255,0.28); }
     .promo-title { font-size: 0.97rem; font-weight: 700; color: var(--dark); line-height: 1.4; margin-bottom: 0.5rem; }
     .promo-card.featured .promo-title { font-size: 1.18rem; }
     .promo-desc { font-size: 0.82rem; color: var(--mid); line-height: 1.65; flex: 1; }
-
     .rate-callout { display: flex; gap: 0.75rem; margin: 1rem 0; flex-wrap: wrap; }
     .rate-box { flex: 1; min-width: 60px; background: #faf6ef; border: 1px solid rgba(201,168,76,0.22); border-radius: 10px; padding: 0.8rem 0.6rem; text-align: center; }
-    .rate-num   { font-size: 1.45rem; font-weight: 800; color: var(--red); line-height: 1; }
-    .rate-label { font-size: 0.68rem; color: var(--mid); margin-top: 0.2rem; }
-
+    .rate-num   { font-size:1.45rem; font-weight:800; color:var(--red); line-height:1; }
+    .rate-label { font-size:0.68rem; color:var(--mid); margin-top:0.2rem; }
     .promo-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid rgba(74,55,40,0.07); }
-    .promo-expire { font-size: 0.72rem; color: rgba(74,55,40,0.42); }
-    .promo-link { font-size: 0.8rem; font-weight: 700; color: var(--red); text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem; transition: gap 0.2s; }
+    .promo-expire { font-size:0.72rem; color:rgba(74,55,40,0.42); }
+    .promo-link { font-size:0.8rem; font-weight:700; color:var(--red); text-decoration:none; display:inline-flex; align-items:center; gap:0.25rem; transition: gap 0.2s; }
     .promo-link:hover { gap: 0.45rem; }
-
     .promo-card.fast-card { background: linear-gradient(145deg, #7a0808, #b00000); border: none; }
-    .promo-card.fast-card .promo-title { color: #fff; }
-    .promo-card.fast-card .promo-desc  { color: rgba(255,255,255,0.68); }
-    .promo-card.fast-card .promo-footer { border-top-color: rgba(255,255,255,0.12); }
-    .promo-card.fast-card .promo-expire { color: rgba(255,255,255,0.38); }
-    .promo-card.fast-card .promo-link   { color: var(--gold-lt); }
-    .fast-icon { font-size: 2.2rem; display: block; margin-bottom: 0.5rem; }
+    .promo-card.fast-card .promo-title { color:#fff; }
+    .promo-card.fast-card .promo-desc  { color:rgba(255,255,255,0.68); }
+    .promo-card.fast-card .promo-footer { border-top-color:rgba(255,255,255,0.12); }
+    .promo-card.fast-card .promo-expire { color:rgba(255,255,255,0.38); }
+    .promo-card.fast-card .promo-link   { color:var(--gold-lt); }
+    .fast-icon { font-size:2.2rem; display:block; margin-bottom:0.5rem; }
 
     /* ===== SERVICES ===== */
     #services { background: var(--cream); }
@@ -224,7 +268,8 @@
     .card-title-lo { font-size: 0.97rem; font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; }
     .card-title-en { font-size: 0.68rem; color: var(--red); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
     .card-desc { font-size: 0.82rem; color: var(--mid); line-height: 1.7; }
-    
+    .product-card { background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 12px; padding: 1.75rem; transition: transform 0.2s, box-shadow 0.2s; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,18,9,0.1); }
 
     /* ===== CTA ===== */
     #cta { background: var(--orange); text-align: center; position: relative; overflow: hidden; }
@@ -238,77 +283,49 @@
 
     /* ===== FOOTER ===== */
     footer { background: #efeded; color: #fff; padding: 2.5rem 2rem; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between;align-items: flex-start;gap: 4rem; padding: 2rem 0; }
-    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.2rem; color: #000000; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 4rem; padding: 2rem 0; }
+    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1rem; color: #000; }
     .footer-contact li { display: flex; align-items: flex-start; gap: 0.75rem; }
+
+    /* Visitor widget */
+    .visitor-widget { background: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; font-size: 16px; color: #333; min-width: 400px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .vw-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #e0e0e0; }
+    .vw-row:last-child { border-bottom: none; }
+    .vw-left { display: flex; align-items: center; gap: 8px; color: #444; }
+    .vw-val { font-weight: 600; color: #222; font-size: 16px; }
+    .vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: var(--orange); border-top: 1px solid #eee; padding-top: 6px; }
+
     /* ===== REVEAL ===== */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      /* Social bar */
       .social-bar { padding: 0.4rem 1rem; }
       .social-address { font-size: 0.7rem; max-width: 52vw; }
-
-      /* Navbar */
       nav { padding: 0 1rem; top: 32px; }
-      .nav-links { display: none; }
-      .nav-cta { display: none; }
+      .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
-
-      /* Hero */
-      .hero { padding: 6rem 1.25rem 3rem; }
+      .hero { padding: 8rem 1.25rem 3rem; }
       .stats-bar { flex-direction: column; width: 90%; margin-top: 2.5rem; }
-      .stat { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.15); }
+      .stat { border-right: none; border-bottom: 1px solid rgba(255,114,0,0.15); }
       .stat:last-child { border-bottom: none; }
-
-      /* Promotions */
       .promo-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
       .promo-card.featured { grid-row: auto; }
-
-      /* Services */
       .services-layout { grid-template-columns: 1fr; gap: 2rem; }
       .services-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-      /* Footer */
-      .footer-inner { justify-content: flex-start; }
-      .footer-contact { font-size: 0.85rem; }
+      .footer-inner { flex-direction: column; gap: 1.5rem; }
+      .visitor-widget { min-width: unset; width: 100%; }
+      div[style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
     }
-
     @media (max-width: 480px) {
       .social-bar { padding: 0.3rem 0.75rem; }
-      .social-address { font-size: 0.65rem; max-width: 48vw; }
       nav { height: 60px; }
       .nav-brand .lo { font-size: 0.9rem; }
       .nav-brand .en { display: none; }
       .services-grid { grid-template-columns: 1fr; }
-      .rate-callout { flex-wrap: wrap; }
-      .rate-box { min-width: 45%; }
       section { padding: 3rem 1.25rem; }
     }
-    /* VISITOR WIDGET */
-.visitor-widget {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 16px;
-  color: #333;
-  min-width: 400px;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.vw-row {
-  display: flex; align-items: center;
-  justify-content: space-between;
-  padding: 5px 0;
-  border-bottom: 1px dotted #e0e0e0;
-}
-.vw-row:last-child { border-bottom: none; }
-.vw-left { display: flex; align-items: center; gap: 8px; color: #444; }
-.vw-val { font-weight: 600; color: #222;font-size: 16px; }
-.vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: #ff7200; border-top: 1px solid #eee; padding-top: 6px; }
   </style>
 </head>
 <body>
@@ -319,12 +336,12 @@
     <a href="https://maps.google.com/?q=326+Unit+16+Sikhay+Vientiane" target="_blank" class="social-address">
       📍 ສຳນັກງານຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ
     </a>
-   <div class="social-icons">
-  <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
-  <a href="https://wa.me/8562054213555" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://www.tiktok.com/@.fis78" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
-  <a href="https://m.youtube.com/channel/UCiovNJcNcy-OHdQHk_bbfkA" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i></a>
-</div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/8562054213555" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.tiktok.com/@.fis78" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
+      <a href="https://m.youtube.com/channel/UCiovNJcNcy-OHdQHk_bbfkA" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i></a>
+    </div>
   </div>
 </div>
 
@@ -381,207 +398,16 @@
 </section>
 
 <!-- PROMOTIONS -->
-<!DOCTYPE html>
-<html lang="lo">
-<head>
-<meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-/* ===== ONLY CHANGED: promo section styles ===== */
-:root {
-  --red:#C0392B; --dark-red:#922B21; --orange:#ff7200;
-  --gold:#C9A84C; --gold-lt:#E8C97A;
-  --cream:#FAF6EF; --dark:#1A1209; --mid:#4A3728;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Noto Sans Lao', sans-serif; background: #f5f0e8; }
-.container { max-width: 1100px; margin: 0 auto; }
-
-/* ===== PROMOTIONS ===== */
-#promotions {
-  background: #f5f0e8;
-  padding: 4.5rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-#promotions::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
-}
-
-.promo-header {
-  display: flex; align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 2.25rem;
-  flex-wrap: wrap; gap: 1rem;
-}
-.section-tag {
-  display: inline-block; color: var(--red);
-  font-size: 0.75rem; letter-spacing: 0.2em;
-  text-transform: uppercase; font-weight: 700;
-  margin-bottom: 0.3rem;
-}
-.section-title {
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-  font-weight: 800; color: var(--dark);
-  line-height: 1.3; margin-bottom: 0;
-}
-.promo-view-all {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  color: var(--red); font-size: 0.85rem; font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1.5px solid transparent;
-  transition: border-color 0.2s; white-space: nowrap;
-}
-.promo-view-all:hover { border-color: var(--red); }
-
-/* GRID */
-.promo-grid {
-  display: grid;
-  grid-template-columns: 1.55fr 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 1.25rem;
-}
-.promo-card {
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(74,55,40,0.08);
-  transition: transform 0.25s, box-shadow 0.25s;
-  display: flex; flex-direction: column;
-  box-shadow: 0 2px 12px rgba(26,18,9,0.06);
-}
-.promo-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 48px rgba(26,18,9,0.13);
-}
-.promo-card.featured { grid-row: 1 / 3; }
-
-/* IMAGE WRAPPERS */
-.promo-img-ph {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-.promo-img-ph.tall  { aspect-ratio: 3/2.6; }
-.promo-img-ph.short { aspect-ratio: 16/8; }
-
-.promo-img-ph img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 0.45s ease;
-}
-.promo-card:hover .promo-img-ph img {
-  transform: scale(1.05);
-}
-
-/* Overlay gradient on image */
-.promo-img-ph::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 55%, rgba(26,18,9,0.22) 100%);
-  pointer-events: none;
-}
-
-/* BODY */
-.promo-body {
-  padding: 1.4rem 1.5rem 1.6rem;
-  flex: 1; display: flex; flex-direction: column;
-}
-
-/* BADGES */
-.promo-badge {
-  display: inline-block;
-  font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 0.22rem 0.7rem; border-radius: 100px;
-  margin-bottom: 0.75rem;
-}
-.badge-hot  { background:#fff0ee; color:#b02a1e; border:1px solid rgba(176,42,30,0.2); }
-.badge-new  { background:#eef5ff; color:#1a5fa8; border:1px solid rgba(26,95,168,0.2); }
-.badge-ltd  { background:#fffaed; color:#a06c00; border:1px solid rgba(160,108,0,0.2); }
-.badge-fast { background:rgba(255,255,255,0.18); color:#fff; border:1px solid rgba(255,255,255,0.28); }
-
-.promo-title {
-  font-size: 0.97rem; font-weight: 700;
-  color: var(--dark); line-height: 1.4;
-  margin-bottom: 0.5rem;
-}
-.promo-card.featured .promo-title { font-size: 1.18rem; }
-.promo-desc {
-  font-size: 0.82rem; color: var(--mid);
-  line-height: 1.65; flex: 1;
-}
-
-.rate-callout {
-  display: flex; gap: 0.75rem;
-  margin: 1rem 0; flex-wrap: wrap;
-}
-.rate-box {
-  flex: 1; min-width: 60px;
-  background: #faf6ef;
-  border: 1px solid rgba(201,168,76,0.22);
-  border-radius: 10px;
-  padding: 0.8rem 0.6rem; text-align: center;
-}
-.rate-num   { font-size:1.45rem; font-weight:800; color:var(--red); line-height:1; }
-.rate-label { font-size:0.68rem; color:var(--mid); margin-top:0.2rem; }
-
-.promo-footer {
-  display: flex; align-items: center;
-  justify-content: space-between;
-  margin-top: 1.1rem; padding-top: 1rem;
-  border-top: 1px solid rgba(74,55,40,0.07);
-}
-.promo-expire { font-size:0.72rem; color:rgba(74,55,40,0.42); }
-.promo-link {
-  font-size:0.8rem; font-weight:700; color:var(--red);
-  text-decoration:none;
-  display:inline-flex; align-items:center; gap:0.25rem;
-  transition: gap 0.2s;
-}
-.promo-link:hover { gap: 0.45rem; }
-
-/* FAST CARD */
-.promo-card.fast-card {
-  background: linear-gradient(145deg, #7a0808, #b00000);
-  border: none;
-}
-.promo-card.fast-card .promo-title { color:#fff; }
-.promo-card.fast-card .promo-desc  { color:rgba(255,255,255,0.68); }
-.promo-card.fast-card .promo-footer { border-top-color:rgba(255,255,255,0.12); }
-.promo-card.fast-card .promo-expire { color:rgba(255,255,255,0.38); }
-.promo-card.fast-card .promo-link   { color:var(--gold-lt); }
-.fast-icon { font-size:2.2rem; display:block; margin-bottom:0.5rem; }
-
-@media (max-width: 768px) {
-  .promo-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-  .promo-card.featured { grid-row: auto; }
-}
-</style>
-</head>
-<body>
-
-<!-- ====================================================
-     COPY ສ່ວນນີ້ທັງໝົດ ໄປແທນ <section id="promotions"> ເດີມ
-     ==================================================== -->
 <section id="promotions">
   <div class="container">
-    <div class="promo-header">
+    <div class="promo-header reveal">
       <div class="promo-header-left">
         <span class="section-tag">ໂປໂມຊັນພິເສດ</span>
         <h2 class="section-title">ຂໍ້ສະເໜີທີ່ໜ້າສົນໃຈ</h2>
       </div>
       <a href="products.html" class="promo-view-all">ເບິ່ງທັງໝົດ →</a>
     </div>
-
-    <div class="promo-grid">
-
-      <!-- FEATURED -->
+    <div class="promo-grid reveal">
       <div class="promo-card featured">
         <div class="promo-img-ph tall">
           <img src="images/676863722_1570615068397533_8500512773006057277_n.jpg" alt="ສິນເຊື່ອທີ່ດິນ">
@@ -592,7 +418,6 @@ body { font-family: 'Noto Sans Lao', sans-serif; background: #f5f0e8; }
           <div class="rate-callout">
             <div class="rate-box"><div class="rate-num">3%</div><div class="rate-label">ດອກເບ້ຍ/ປີ</div></div>
             <div class="rate-box"><div class="rate-num">3 ປີ</div><div class="rate-label">ໄລຍະສູງສຸດ</div></div>
-
           </div>
           <div class="promo-desc">ເຊີນທ່ານຮັບສິດພິເສດ ດ້ວຍດອກເບ້ຍທ່ຽງທຳ ເງື່ອນໄຂຜ່ອນງ່າຍ ແລະ ທີມງານໃຫ້ຄໍາປຶກສາຟຣີທຸກຂັ້ນຕອນ.</div>
           <div class="promo-footer">
@@ -601,8 +426,6 @@ body { font-family: 'Noto Sans Lao', sans-serif; background: #f5f0e8; }
           </div>
         </div>
       </div>
-
-      <!-- ລົດ -->
       <div class="promo-card">
         <div class="promo-img-ph short">
           <img src="images/707509627_1604830981642608_2281246463967755971_n.jpg" alt="ສິນເຊື່ອລົດ">
@@ -617,22 +440,18 @@ body { font-family: 'Noto Sans Lao', sans-serif; background: #f5f0e8; }
           </div>
         </div>
       </div>
-
-      <!-- FAST CARD -->
       <div class="promo-card fast-card">
         <div class="promo-body" style="justify-content:center; padding-top:2rem;">
           <span class="fast-icon">⚡</span>
           <span class="promo-badge badge-fast">ອະນຸມັດໄວ</span>
           <div class="promo-title">ອະນຸມັດພາຍໃນ 24 ຊົ່ວໂມງ</div>
-          <div class="promo-desc">ບໍ່ຕ້ອງລໍຖ້ານານ! ຍື່ນໃບສະໝັກດຽວນີ້ ທີມງານຂອງເຮົາຈະດໍາເນີນການໃຫ້ທ່ານໄດ້ໄວທີ່ສຸດ ທຸກໂຄງການ.</div>
+          <div class="promo-desc">ບໍ່ຕ້ອງລໍຖ້ານານ! ຍື່ນໃບສະໝັກດຽວນີ້ ທີມງານຈະດໍາເນີນການໃຫ້ທ່ານໄວທີ່ສຸດ ທຸກໂຄງການ.</div>
           <div class="promo-footer">
             <span class="promo-expire">ທຸກໂຄງການສິນເຊື່ອ</span>
             <a href="apply.html" class="promo-link">ສະໝັກເລີຍ →</a>
           </div>
         </div>
       </div>
-
-      <!-- SME -->
       <div class="promo-card">
         <div class="promo-img-ph short">
           <img src="images/711848271_1608793241246382_2958059748228363262_n.jpg" alt="SME">
@@ -647,13 +466,9 @@ body { font-family: 'Noto Sans Lao', sans-serif; background: #f5f0e8; }
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
-</body>
-</html>
 
 <!-- SERVICES -->
 <section id="services">
@@ -677,6 +492,7 @@ body { font-family: 'Noto Sans Lao', sans-serif; background: #f5f0e8; }
     </div>
   </div>
 </section>
+
 <!-- TESTIMONIALS -->
 <section id="reviews" style="background: var(--light); padding: 5rem 2rem;">
   <div class="container">
@@ -686,43 +502,30 @@ body { font-family: 'Noto Sans Lao', sans-serif; background: #f5f0e8; }
       <p class="section-desc">ຄວາມໄວ້ວາງໃຈຈາກລູກຄ້າກວ່າ 5,000 ຄົນ</p>
     </div>
     <div style="display:grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;">
-
       <div class="product-card reveal">
         <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
           <div style="width:48px;height:48px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;font-weight:700;">ສ</div>
-          <div>
-            <div style="font-weight:700;color:var(--dark);">ທ້າວ ປຸກກີ້ ສີສຸມັງ</div>
-            <div style="font-size:0.75rem;color:var(--mid);">ພະນັກງານລັດ</div>
-          </div>
+          <div><div style="font-weight:700;color:var(--dark);">ທ້າວ ປຸກກີ້ ສີສຸມັງ</div><div style="font-size:0.75rem;color:var(--mid);">ພະນັກງານລັດ</div></div>
         </div>
         <div style="color:var(--gold);margin-bottom:0.75rem;">★★★★★</div>
         <p style="font-size:0.875rem;color:var(--mid);line-height:1.7;">"ສະໝັກງ່າຍ ອະນຸມັດໄວ ພຽງ 1 ວັນ ໄດ້ເງິນເລີຍ ປະທັບໃຈຫຼາຍ ແນະນຳໃຫ້ທຸກຄົນເລີຍ"</p>
       </div>
-
       <div class="product-card reveal">
         <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
-          <div style="width:48px;height:48px;border-radius:50%;background:#ff7200;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;font-weight:700;">ບ</div>
-          <div>
-            <div style="font-weight:700;color:var(--dark);">ທ້າວ ຂັນໄຊ</div>
-            <div style="font-size:0.75rem;color:var(--mid);">ນັກທຸລະກິດ</div>
-          </div>
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;font-weight:700;">ບ</div>
+          <div><div style="font-weight:700;color:var(--dark);">ທ້າວ ຂັນໄຊ</div><div style="font-size:0.75rem;color:var(--mid);">ນັກທຸລະກິດ</div></div>
         </div>
         <div style="color:var(--gold);margin-bottom:0.75rem;">★★★★★</div>
-        <p style="font-size:0.875rem;color:var(--mid);line-height:1.7;">"ກູ້ເງິນຂະຫຍາຍທຸລະກິດ ດອກເບ້ຍໂປງໃສ ທີມງານດູແລດີ ຈະໃຊ້ບໍລິການຕໄປ"</p>
+        <p style="font-size:0.875rem;color:var(--mid);line-height:1.7;">"ກູ້ເງິນຂະຫຍາຍທຸລະກິດ ດອກເບ້ຍໂປງໃສ ທີມງານດູແລດີ ຈະໃຊ້ບໍລິການຕໍ່ໄປ"</p>
       </div>
-
       <div class="product-card reveal">
         <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
           <div style="width:48px;height:48px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:var(--dark);font-size:1.2rem;font-weight:700;">ນ</div>
-          <div>
-            <div style="font-weight:700;color:var(--dark);">ທ້າວໂອ ເງິນ</div>
-            <div style="font-size:0.75rem;color:var(--mid);">ຄ້າຂາຍ</div>
-          </div>
+          <div><div style="font-weight:700;color:var(--dark);">ທ້າວໂອ ເງິນ</div><div style="font-size:0.75rem;color:var(--mid);">ຄ້າຂາຍ</div></div>
         </div>
         <div style="color:var(--gold);margin-bottom:0.75rem;">★★★★★</div>
-        <p style="font-size:0.875rem;color:var(--mid);line-height:1.7;">"ຊື້ລົດໃໝ່ໄດ້ດວຍສິນເຊື່ອ ຜ່ອນສະດວກ ໜາທ່ານ ບໍ່ມີຄ່າທຳນຽມຊ່ອນ ດີຫຼາຍ"</p>
+        <p style="font-size:0.875rem;color:var(--mid);line-height:1.7;">"ຊື້ລົດໃໝ່ໄດ້ດ້ວຍສິນເຊື່ອ ຜ່ອນສະດວກ ບໍ່ມີຄ່າທຳນຽມຊ່ອນ ດີຫຼາຍ"</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -740,17 +543,16 @@ body { font-family: 'Noto Sans Lao', sans-serif; background: #f5f0e8; }
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-  <div class="visitor-widget" id="visitorWidget">
-  <div class="vw-row"><span class="vw-left">📶 User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
-  <div class="vw-row"><span class="vw-left">👁️ View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
-  <div class="vw-row"><span class="vw-left">👤 Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
-  <div class="vw-row"><span class="vw-left">👥 Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
-  <div class="vw-row"><span class="vw-left">👤 Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
-  <div class="vw-footer">📊 sapthavy.com</div>
-</div>
-
+    <div class="visitor-widget" id="visitorWidget">
+      <div class="vw-row"><span class="vw-left">📶 User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
+      <div class="vw-row"><span class="vw-left">👁️ View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
+      <div class="vw-row"><span class="vw-left">👤 Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
+      <div class="vw-row"><span class="vw-left">👥 Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
+      <div class="vw-row"><span class="vw-left">👤 Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
+      <div class="vw-footer">📊 sapthavy.com</div>
+    </div>
     <ul class="footer-contact">
-      <li>📍 ສຳນກງານ ຕັ້ງຢ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫວງວຽງຈັນ</li>
+      <li>📍 ສຳນັກງານ ຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ</li>
       <li>📧 ອີເມວ : contact@sapthavy.com</li>
       <li>📞 ໂທລະສັບ : (+85621)520722, 02054213555</li>
       <li>🌐 ເວັບໄຊ້ : www.sapthavy.com</li>
@@ -790,11 +592,9 @@ body { font-family: 'Noto Sans Lao', sans-serif; background: #f5f0e8; }
     const today = now.toISOString().slice(0,10);
     const month = now.toISOString().slice(0,7);
     const year  = now.getFullYear().toString();
-
     let views = JSON.parse(localStorage.getItem('vw_views') || '{}');
     views[today] = (views[today] || 0) + 1;
     localStorage.setItem('vw_views', JSON.stringify(views));
-
     if (!sessionStorage.getItem('vw_visited')) {
       sessionStorage.setItem('vw_visited', '1');
       let vToday = JSON.parse(localStorage.getItem('vw_today') || '{}');
@@ -807,14 +607,11 @@ body { font-family: 'Noto Sans Lao', sans-serif; background: #f5f0e8; }
       vYear[year] = (vYear[year] || 0) + 1;
       localStorage.setItem('vw_year', JSON.stringify(vYear));
     }
-
     updateWidget();
   })();
 
   window.addEventListener('focus', updateWidget);
   window.addEventListener('pageshow', updateWidget);
 </script>
-
 </body>
-
 </html>
