@@ -20,20 +20,20 @@
 
     /* ===== SOCIAL BAR ===== */
     .social-bar {
-      background: var(--cream); padding: 0.4rem 2.5rem;
+      background: #ffffff; padding: 0.4rem 2.5rem;
       position: fixed; top: 0; left: 0; right: 0; z-index: 101;
-      border-bottom: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(255,114,0,0.15);
     }
     .social-bar-inner {
       max-width: 1100px; margin: 0 auto;
       display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
     }
     .social-address {
-      font-size: 0.8rem; color: rgba(255,0,0,0.55);
+      font-size: 0.8rem; color: var(--orange);
       text-decoration: none; transition: color 0.2s;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .social-address:hover { color: var(--gold); }
+    .social-address:hover { color: var(--dark); }
     .social-icons { display: flex; gap: 0.5rem; flex-shrink: 0; }
     .social-btn {
       width: 28px; height: 28px; border-radius: 50%;
@@ -46,66 +46,64 @@
     .social-btn.tt { background: #000; }
     .social-btn.yt { background: #FF0000; }
 
-    /* ===== NAVBAR ===== */
+    /* ===== NAVBAR — orange bg, white text, white button ===== */
     nav {
       position: fixed; top: 36px; width: 100%; z-index: 100;
-      background: #ff7200;
+      background: var(--orange);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2.5rem; height: 72px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.18);
+      box-shadow: 0 2px 16px rgba(255,114,0,0.25);
     }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
     .nav-brand { color: #fff; line-height: 1.25; }
-    .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 700; }
-    .nav-brand .en { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+    .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 800; color: #fff; }
+    .nav-brand .en { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); }
     .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: 4rem; }
     .nav-links a {
-      color: #fff; text-decoration: none; font-size: 1rem; font-weight: 500;
+      color: #ffffff; text-decoration: none; font-size: 1rem; font-weight: 600;
       padding: 0.3rem 0; border-bottom: 2px solid transparent; transition: border-color 0.2s, color 0.2s;
     }
     .nav-links a:hover, .nav-links a.active { border-color: #ffe600; color: #ffe600; }
+    /* ปุ่ม: พื้นขาว ตัวสีส้ม */
     .nav-cta {
-      background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.5);
-      color: #fff; padding: 0.5rem 1.4rem; border-radius: 6px;
-      text-decoration: none; font-size: 0.95rem; font-weight: 600;
-      transition: background 0.2s; white-space: nowrap;
+      background: #ffffff; border: 2px solid #ffffff;
+      color: var(--orange); padding: 0.5rem 1.4rem; border-radius: 8px;
+      text-decoration: none; font-size: 0.95rem; font-weight: 700;
+      transition: background 0.2s, transform 0.15s; white-space: nowrap;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
     }
-    .nav-cta:hover { background: rgba(255,255,255,0.28); }
+    .nav-cta:hover { background: #fff3e0; transform: translateY(-1px); }
 
     /* Hamburger */
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; background: none; border: none; padding: 4px;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Mobile Menu */
     .mobile-menu {
       display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: #ff7200; z-index: 99; flex-direction: column;
+      background: var(--orange); z-index: 99; flex-direction: column;
       align-items: center; justify-content: center; gap: 2rem;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 600; }
     .mobile-menu a:hover { color: #ffe600; }
 
-    /* ===== PAGE HERO ===== */
+    /* ===== PAGE HERO — white/light theme ===== */
     .page-hero {
-      background: linear-gradient(150deg, #3a0202 0%, #7a0808 40%, #3d1a0a 100%);
+      background: #ffffff;
       padding: 9rem 2rem 4rem; position: relative; overflow: hidden; text-align: center;
     }
     .page-hero::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
-      background-image: radial-gradient(circle, rgba(201,168,76,0.18) 1px, transparent 1px);
-      background-size: 40px 40px; opacity: 0.5;
+      background-image: radial-gradient(circle, rgba(255,114,0,0.12) 1px, transparent 1px);
+      background-size: 40px 40px; opacity: 1;
     }
     .page-hero::after {
       content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
       right: -150px; top: -150px;
-      background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(255,114,0,0.07) 0%, transparent 65%);
     }
     .page-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
 
@@ -113,15 +111,15 @@
 
     .page-tag {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      border: 1px solid rgba(201,168,76,0.5); background: rgba(201,168,76,0.08);
-      color: var(--gold-lt); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      border: 1.5px solid rgba(255,114,0,0.35); background: rgba(255,114,0,0.06);
+      color: var(--orange); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
       padding: 0.38rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
       animation: fadeUp 0.7s 0.1s ease both;
     }
-    .page-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-    .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 1rem; animation: fadeUp 0.7s 0.2s ease both; }
-    .page-hero h1 em { font-style: normal; color: var(--gold-lt); }
-    .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.8; animation: fadeUp 0.7s 0.3s ease both; }
+    .page-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+    .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--dark); line-height: 1.25; margin-bottom: 1rem; animation: fadeUp 0.7s 0.2s ease both; }
+    .page-hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--orange), #ff9c44); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 1rem; color: var(--mid); line-height: 1.8; animation: fadeUp 0.7s 0.3s ease both; }
 
     /* ===== SHARED ===== */
     .container { max-width: 1100px; margin: 0 auto; }
@@ -137,9 +135,9 @@
     .ins-card { background: #fff; border: 1px solid rgba(74,55,40,0.08); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.22s, box-shadow 0.22s; }
     .ins-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(26,18,9,0.1); }
     .ins-card-header { padding: 1.6rem 1.75rem 1.2rem; border-bottom: 1px solid rgba(74,55,40,0.06); position: relative; }
-    .ins-card-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--red), var(--gold)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+    .ins-card-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background:#ff7200; transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
     .ins-card:hover .ins-card-header::after { transform: scaleX(1); }
-    .ins-icon-wrap { width: 54px; height: 54px; border-radius: 14px; background: rgba(192,57,43,0.07); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 1rem; }
+    .ins-icon-wrap { width: 54px; height: 54px; border-radius: 14px; background:#ff7200; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 1rem; }
     .ins-card-title { font-size: 1.05rem; font-weight: 800; color: var(--dark); margin-bottom: 0.15rem; }
     .ins-card-title-en { font-size: 0.68rem; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; }
     .ins-badge { position: absolute; top: 1.2rem; right: 1.2rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 100px; }
@@ -156,9 +154,9 @@
     .ins-price-val { font-size: 1.1rem; font-weight: 800; color: var(--red); }
     .ins-price-unit { font-size: 0.68rem; color: var(--mid); }
     .ins-card-footer { padding: 0.9rem 1.75rem 1.5rem; display: flex; gap: 0.75rem; }
-    .btn-inquire { flex: 1; background: var(--red); color: #fff; padding: 0.75rem 1rem; border-radius: 8px; text-align: center; text-decoration: none; font-size: 0.88rem; font-weight: 700; transition: background 0.2s, transform 0.15s; }
-    .btn-inquire:hover { background: var(--dark-red); transform: translateY(-1px); }
-    .btn-more { padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid rgba(192,57,43,0.3); color: var(--red); font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+    .btn-inquire { flex: 1; background: #ff7200; color: #fff; padding: 0.75rem 1rem; border-radius: 8px; text-align: center; text-decoration: none; font-size: 0.88rem; font-weight: 700; transition: background 0.2s, transform 0.15s; }
+    .btn-inquire:hover { background:#ff7200; transform: translateY(-1px); }
+    .btn-more { padding: 0.75rem 1rem; border-radius: 8px; border: 1.5px solid #ff7200; color: var(--red); font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
     .btn-more:hover { background: rgba(192,57,43,0.06); }
 
     /* ===== COMPARE TABLE ===== */
@@ -166,7 +164,7 @@
     .compare-header { margin-bottom: 2rem; }
     .compare-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid rgba(74,55,40,0.1); -webkit-overflow-scrolling: touch; }
     table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: #fff; min-width: 600px; }
-    thead tr { background: linear-gradient(90deg, #7a0808, #b00000); }
+    thead tr { background:#ff7200; }
     thead th { color: #fff; font-weight: 700; padding: 1rem 1.25rem; text-align: left; white-space: nowrap; }
     tbody tr { border-bottom: 1px solid rgba(74,55,40,0.06); transition: background 0.15s; }
     tbody tr:last-child { border-bottom: none; }
@@ -200,10 +198,19 @@
     .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 
     /* ===== FOOTER ===== */
-    footer { background: #efeded; color: #fff; padding: 2.5rem 2rem; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between;align-items: flex-start;gap: 4rem; padding: 2rem 0; }
-    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.2rem; color: #000000; }
+    footer { background: #efeded; padding: 2.5rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 4rem; padding: 2rem 0; }
+    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1rem; color: #000; }
     .footer-contact li { display: flex; align-items: flex-start; gap: 0.75rem; }
+
+    /* Visitor widget */
+    .visitor-widget { background: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; font-size: 16px; color: #333; min-width: 400px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .vw-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #e0e0e0; }
+    .vw-row:last-child { border-bottom: none; }
+    .vw-left { display: flex; align-items: center; gap: 8px; color: #444; }
+    .vw-val { font-weight: 600; color: #222; font-size: 16px; }
+    .vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: var(--orange); border-top: 1px solid #eee; padding-top: 6px; }
+
     /* ===== REVEAL ===== */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -218,8 +225,8 @@
       .hamburger { display: flex; }
       .steps-grid { grid-template-columns: 1fr 1fr; }
       .step:not(:last-child)::after { display: none; }
-      .footer-inner { justify-content: flex-start; }
-      .footer-contact { font-size: 0.85rem; }
+      .footer-inner { flex-direction: column; gap: 1.5rem; }
+      .visitor-widget { min-width: unset; width: 100%; }
     }
     @media (max-width: 480px) {
       .social-bar { padding: 0.3rem 0.75rem; }
@@ -230,29 +237,6 @@
       .steps-grid { grid-template-columns: 1fr; }
       section { padding: 3rem 1.25rem; }
     }
-    /* VISITOR WIDGET */
-.visitor-widget {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 16px;
-  color: #333;
-  min-width: 400px;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.vw-row {
-  display: flex; align-items: center;
-  justify-content: space-between;
-  padding: 5px 0;
-  border-bottom: 1px dotted #e0e0e0;
-}
-.vw-row:last-child { border-bottom: none; }
-.vw-left { display: flex; align-items: center; gap: 8px; color: #444; }
-.vw-val { font-weight: 600; color: #222;font-size: 16px; }
-.vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: #ff7200; border-top: 1px solid #eee; padding-top: 6px; }
-  </style>
   </style>
 </head>
 <body>
@@ -264,11 +248,11 @@
       📍 ສຳນັກງານຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ
     </a>
     <div class="social-icons">
-  <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
-  <a href="https://wa.me/8562054213555" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://www.tiktok.com/@.fis78" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
-  <a href="https://m.youtube.com/channel/UCiovNJcNcy-OHdQHk_bbfkA" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i></a>
-</div>
+      <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/8562054213555" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.tiktok.com/@.fis78" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
+      <a href="https://m.youtube.com/channel/UCiovNJcNcy-OHdQHk_bbfkA" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i></a>
+    </div>
   </div>
 </div>
 
@@ -286,7 +270,7 @@
     <li><a href="products.html">ສິນເຊື່ອ</a></li>
     <li><a href="insurance.html" class="active">ປະກັນໄພ</a></li>
     <li><a href="calculator.html">ຄິດໄລ່</a></li>
-     <li><a href="faq.html">ຄຳຖາມ</a></li>
+    <li><a href="faq.html">ຄຳຖາມ</a></li>
   </ul>
   <a href="apply.html" class="nav-cta">ສະໝັກກູ້ເງິນ</a>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -320,7 +304,7 @@
       <span class="section-tag">ແຜນທີ່ມີ</span>
       <h2 class="section-title">ເລືອກປະກັນໄພ<br/>ທີ່ເໝາະກັບທ່ານ</h2>
       <div class="gold-divider"></div>
-      <p class="section-desc">ທຸກແຜນອອກແບບໂດຍຄໍານຶງເຖິງຄວາມຕ້ອງການຂອງລາວ ດ້ວຍຄ່າເບ້ຍທີ່ສ່ົງໄດ້ ແລະ ຄ່າໄຖ່ຖອນທີ່ຍຸດຕິທໍາ.</p>
+      <p class="section-desc">ທຸກແຜນອອກແບບໂດຍຄໍານຶງເຖິງຄວາມຕ້ອງການຂອງທ່ານ ດ້ວຍຄ່າເບ້ຍທີ່ຈັບຕ້ອງໄດ້ ແລະ ຄ່າໄຖ່ຖອນທີ່ຍຸດຕິທໍາ.</p>
     </div>
     <div class="ins-grid">
       <div class="ins-card reveal">
@@ -333,7 +317,7 @@
         <div class="ins-card-body">
           <p class="ins-card-desc">ຄຸ້ມຄອງຊີວິດຂອງທ່ານ ແລະ ສ້າງຄວາມໝັ້ນໃຈໃຫ້ຄອບຄົວ ດ້ວຍທຶນປະກັນທີ່ຈ່າຍໄວ.</p>
           <ul class="ins-features">
-          <li>ຄຸ້ມຄອງຮອດ 50,000,000-500,000,000 ກີບ</li>
+            <li>ຄຸ້ມຄອງຮອດ 50,000,000-500,000,000 ກີບ</li>
             <li>ຄ້ອງຄອງ 24 ຊົ່ວໂມງ ທັງໃນ ແລະ ຕ່າງປະເທດ</li>
             <li>ຈ່າຍທຶນໄວ ພາຍໃນ 2 ວັນ</li>
             <li>ປ່ຽນຜູ້ຮັບຜົນປະໂຫຍດໄດ້</li>
@@ -345,7 +329,7 @@
           </div>
         </div>
         <div class="ins-card-footer">
-          <a href="apply.html" class="btn-inquire">ສອບຖາມດຽວນີ້</a>
+          <a href="apply.html" class="btn-inquire">ສະໝັກດຽວນີ້</a>
           <a href="#" class="btn-more">ລາຍລະອຽດ</a>
         </div>
       </div>
@@ -362,7 +346,7 @@
             <li>ຄຸ້ມຄອງຄ່າໂຮງໝໍ ທັງ IPD ແລະ OPD</li>
             <li>ຄ່າໝໍ ຄ່າຢາ ຄ່າຜ່າຕັດ</li>
             <li>ຮັກສາທີ່ໂຮງໝໍຮ່ວມໂຄງການ</li>
-           <li>ຄຸ້ມຄອງຮອດ 50,000,000-500,000,000 ກີບ</li>
+            <li>ຄຸ້ມຄອງຮອດ 50,000,000-500,000,000 ກີບ</li>
           </ul>
           <div class="ins-price">
             <span class="ins-price-from">ເລີ່ມຕົ້ນ</span>
@@ -371,7 +355,7 @@
           </div>
         </div>
         <div class="ins-card-footer">
-          <a href="apply.html" class="btn-inquire">ສອບຖາມດຽວນີ້</a>
+          <a href="apply.html" class="btn-inquire">ສະໝັກດຽວນີ້</a>
           <a href="#" class="btn-more">ລາຍລະອຽດ</a>
         </div>
       </div>
@@ -382,7 +366,7 @@
           <div class="ins-card-title-en">Auto Insurance</div>
         </div>
         <div class="ins-card-body">
-          <p class="ins-card-desc">ປ້ອງກັນຄວາມເສຍຫາຍຈາກອຸບັດຕິເຫດ ໄຟໄໝ້ ລັກ ໃຫ້ທ່ານຂັບຂີດ້ວຍຄວາມໝັ້ນໃຈ.</p>
+          <p class="ins-card-desc">ປ້ອງກັນຄວາມເສຍຫາຍຈາກອຸບັດຕິເຫດ ໄຟໄໝ້ ລັກ ໃຫ້ທ່ານຂັບຂີ່ດ້ວຍຄວາມໝັ້ນໃຈ.</p>
           <ul class="ins-features">
             <li>ປະກັນໄພຊັ້ນ 1, 2, 3+ ຄຸ້ມຄອງ</li>
             <li>ຊ່ອມແຊມໄດ້ທຸກບ່ອນ</li>
@@ -396,7 +380,7 @@
           </div>
         </div>
         <div class="ins-card-footer">
-          <a href="apply.html" class="btn-inquire">ສອບຖາມດຽວນີ້</a>
+          <a href="apply.html" class="btn-inquire">ສະໝັກດຽວນີ້</a>
           <a href="#" class="btn-more">ລາຍລະອຽດ</a>
         </div>
       </div>
@@ -422,7 +406,7 @@
           </div>
         </div>
         <div class="ins-card-footer">
-          <a href="apply.html" class="btn-inquire">ສອບຖາມດຽວນີ້</a>
+          <a href="apply.html" class="btn-inquire">ສະໝັກດຽວນີ້</a>
           <a href="#" class="btn-more">ລາຍລະອຽດ</a>
         </div>
       </div>
@@ -494,15 +478,14 @@
 
 <footer>
   <div class="footer-inner">
-  <div class="visitor-widget" id="visitorWidget">
-  <div class="vw-row"><span class="vw-left">📶 User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
-  <div class="vw-row"><span class="vw-left">👁️ View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
-  <div class="vw-row"><span class="vw-left">👤 Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
-  <div class="vw-row"><span class="vw-left">👥 Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
-  <div class="vw-row"><span class="vw-left">👤 Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
-  <div class="vw-footer">📊 sapthavy.com</div>
-</div>
-
+    <div class="visitor-widget" id="visitorWidget">
+      <div class="vw-row"><span class="vw-left">📶 User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
+      <div class="vw-row"><span class="vw-left">👁️ View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
+      <div class="vw-row"><span class="vw-left">👤 Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
+      <div class="vw-row"><span class="vw-left">👥 Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
+      <div class="vw-row"><span class="vw-left">👤 Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
+      <div class="vw-footer">📊 sapthavy.com</div>
+    </div>
     <ul class="footer-contact">
       <li>📍 ສຳນັກງານ ຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ</li>
       <li>📧 ອີເມວ : contact@sapthavy.com</li>
@@ -517,7 +500,6 @@
     document.getElementById('mobileMenu').classList.toggle('open');
     document.getElementById('hamburger').classList.toggle('open');
   }
-
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
@@ -525,37 +507,27 @@
     });
   }, { threshold: 0.05 });
   reveals.forEach(el => observer.observe(el));
-</script>
-<script>
-(function() {
-  const now   = new Date();
-  const today = now.toISOString().slice(0, 10);
-  const month = now.toISOString().slice(0, 7);
-  const year  = now.getFullYear().toString();
 
-  let views = JSON.parse(localStorage.getItem('vw_views') || '{}');
-  views[today] = (views[today] || 0) + 1;
-  localStorage.setItem('vw_views', JSON.stringify(views));
-
-  if (!sessionStorage.getItem('vw_visited')) {
-    sessionStorage.setItem('vw_visited', '1');
-    let vToday = JSON.parse(localStorage.getItem('vw_today') || '{}');
-    vToday[today] = (vToday[today] || 0) + 1;
-    localStorage.setItem('vw_today', JSON.stringify(vToday));
-    let vMonth = JSON.parse(localStorage.getItem('vw_month') || '{}');
-    vMonth[month] = (vMonth[month] || 0) + 1;
-    localStorage.setItem('vw_month', JSON.stringify(vMonth));
-    let vYear = JSON.parse(localStorage.getItem('vw_year') || '{}');
-    vYear[year] = (vYear[year] || 0) + 1;
-    localStorage.setItem('vw_year', JSON.stringify(vYear));
-  }
-
-  function fmt(n) { if (n >= 1000) return (n/1000).toFixed(1).replace('.0','') + 'K'; return n; }
-  document.getElementById('vw-views').textContent = fmt(views[today] || 0);
-  document.getElementById('vw-today').textContent = fmt((JSON.parse(localStorage.getItem('vw_today')||'{}'))[today]||0);
-  document.getElementById('vw-month').textContent = fmt((JSON.parse(localStorage.getItem('vw_month')||'{}'))[month]||0);
-  document.getElementById('vw-year').textContent  = fmt((JSON.parse(localStorage.getItem('vw_year') ||'{}'))[year] ||0);
-})();
+  (function() {
+    const now = new Date();
+    const today = now.toISOString().slice(0,10);
+    const month = now.toISOString().slice(0,7);
+    const year  = now.getFullYear().toString();
+    let views = JSON.parse(localStorage.getItem('vw_views')||'{}');
+    views[today] = (views[today]||0) + 1;
+    localStorage.setItem('vw_views', JSON.stringify(views));
+    if (!sessionStorage.getItem('vw_visited')) {
+      sessionStorage.setItem('vw_visited','1');
+      let vT = JSON.parse(localStorage.getItem('vw_today')||'{}'); vT[today]=(vT[today]||0)+1; localStorage.setItem('vw_today',JSON.stringify(vT));
+      let vM = JSON.parse(localStorage.getItem('vw_month')||'{}'); vM[month]=(vM[month]||0)+1; localStorage.setItem('vw_month',JSON.stringify(vM));
+      let vY = JSON.parse(localStorage.getItem('vw_year') ||'{}'); vY[year] =(vY[year] ||0)+1; localStorage.setItem('vw_year', JSON.stringify(vY));
+    }
+    function fmt(n){ return n>=1000?(n/1000).toFixed(1).replace('.0',')K'):n; }
+    document.getElementById('vw-views').textContent = fmt(views[today]||0);
+    document.getElementById('vw-today').textContent = fmt((JSON.parse(localStorage.getItem('vw_today')||'{}'))[today]||0);
+    document.getElementById('vw-month').textContent = fmt((JSON.parse(localStorage.getItem('vw_month')||'{}'))[month]||0);
+    document.getElementById('vw-year').textContent  = fmt((JSON.parse(localStorage.getItem('vw_year') ||'{}'))[year] ||0);
+  })();
 </script>
 </body>
 </html>

@@ -3,338 +3,264 @@
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <title>ສະໝັກກູ້ເງິນຊັບທະວີ</title>
-<meta name="description" content="ສະໝັກງ່າຍໆ ພຽງເເຕ່ ໃສ່ຂໍ້ມູນຫາພວກເຮົາ">
-<meta name="keywords" content="ສະໝັກງ່າຍ ເງິນອະນຸມັດໄວ">
-  
+  <meta name="description" content="ສະໝັກງ່າຍໆ ພຽງເເຕ່ ໃສ່ຂໍ້ມູນຫາພວກເຮົາ">
+  <meta name="keywords" content="ສະໝັກງ່າຍ ເງິນອະນຸມັດໄວ">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-  @font-face {
-    font-family: 'Noto Sans Lao';
-    src: url('NotoSansLao-VariableFont_wdth,wght.ttf') format('truetype');
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --red:      #C0392B;
-    --dark-red: #922B21;
-    --gold:     #C9A84C;
-    --cream:    #FAF6EF;
-    --dark:     #1A1209;
-    --mid:      #4A3728;
-    --light:    #F0E8D8;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Noto Sans Lao', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange:   #ff7200;
+      --orange-dk:#cc5a00;
+      --orange-lt:#ff9c44;
+      --gold:     #C9A84C;
+      --gold-lt:  #E8C97A;
+      --cream:    #FAF6EF;
+      --dark:     #1A1209;
+      --mid:      #4A3728;
+      --light:    #F0E8D8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans Lao', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
 
-  /* ===== SOCIAL BAR ===== */
-   .social-bar {
-      background: var(--cream);
-      padding: 0.4rem 2.5rem;
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 101;
-      border-bottom: 1px solid rgba(201,168,76,0.2);
+    /* ===== SOCIAL BAR ===== */
+    .social-bar {
+      background: #ffffff; padding: 0.4rem 2.5rem;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 101;
+      border-bottom: 1px solid rgba(255,114,0,0.15);
     }
-    .social-bar-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 0.5rem;
-    }
-    .social-address {
-      font-size: 0.8rem; color: rgba(255,0,0,0.55);
-      text-decoration: none; transition: color 0.2s;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .social-address:hover { color: var(--gold); }
+    .social-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+    .social-address { font-size: 0.8rem; color: var(--orange); text-decoration: none; transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .social-address:hover { color: var(--dark); }
     .social-icons { display: flex; gap: 0.5rem; flex-shrink: 0; }
-    .social-btn {
-      width: 28px; height: 28px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; font-weight: 700;
-      text-decoration: none; color: #fff;
-      transition: transform 0.2s;}
+    .social-btn { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; text-decoration: none; color: #fff; transition: transform 0.2s, opacity 0.2s; }
+    .social-btn:hover { transform: scale(1.15); opacity: 0.9; }
+    .social-btn.fb { background: #1877F2; }
+    .social-btn.wa { background: #25D366; }
+    .social-btn.tt { background: #000; }
+    .social-btn.yt { background: #FF0000; }
 
-  .social-btn:hover { transform: scale(1.15); }
-  .social-btn.fb { background: #1877F2; }
-  .social-btn.wa { background: #25D366; }
-  .social-btn.tt { background: #000; }
-  .social-btn.yt { background: #FF0000; }
-
-  /* ===== NAVBAR ===== */
-  nav {
+    /* ===== NAVBAR ===== */
+    nav {
       position: fixed; top: 36px; width: 100%; z-index: 100;
-      background: #ff7200;
+      background: var(--orange);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2.5rem; height: 72px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.18);
+      box-shadow: 0 2px 16px rgba(255,114,0,0.25);
     }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
     .nav-brand { color: #fff; line-height: 1.25; }
-    .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 700; }
-    .nav-brand .en { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+    .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 800; }
+    .nav-brand .en { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); }
     .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: 4rem; }
-    .nav-links a {
-      color: #fff; text-decoration: none; font-size: 1rem; font-weight: 500;
-      padding: 0.3rem 0; border-bottom: 2px solid transparent;
-      transition: border-color 0.2s, color 0.2s;
+    .nav-links a { color: #fff; text-decoration: none; font-size: 1rem; font-weight: 600; padding: 0.3rem 0; border-bottom: 2px solid transparent; transition: border-color 0.2s, color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { border-color: #ffe600; color: #ffe600; }
+    .nav-cta { background: #fff; border: 2px solid #fff; color: var(--orange); padding: 0.5rem 1.4rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: background 0.2s, transform 0.15s; white-space: nowrap; box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+    .nav-cta:hover { background: #fff3e0; transform: translateY(-1px); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--orange); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 700; }
+    .mobile-menu a:hover { color: #ffe600; }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+      min-height: 280px; background: #ffffff;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 8rem 2rem 3rem;
+      position: relative; overflow: hidden;
     }
-  .nav-links a:hover { border-color: #ffe600; color: #ffe600; }
-  .nav-cta {
-    background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.5);
-    color: #fff; padding: 0.5rem 1.4rem; border-radius: 6px;
-    text-decoration: none; font-size: 0.95rem; font-weight: 600;
-    transition: background 0.2s; white-space: nowrap;
-  }
-  .nav-cta:hover { background: rgba(255,255,255,0.28); }
+    .page-header::before { content: ''; position: absolute; border-radius: 50%; pointer-events: none; width: 700px; height: 700px; right: -220px; top: -180px; background: radial-gradient(circle, rgba(255,114,0,0.08) 0%, transparent 65%); }
+    .page-header::after  { content: ''; position: absolute; border-radius: 50%; pointer-events: none; width: 550px; height: 550px; left: -160px; bottom: -150px; background: radial-gradient(circle, rgba(255,114,0,0.06) 0%, transparent 65%); }
+    .page-header-grid { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, rgba(255,114,0,0.12) 1px, transparent 1px); background-size: 40px 40px; }
+    .page-header-content { position: relative; z-index: 1; }
 
-  /* Hamburger */
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-  .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* Mobile Menu */
-  .mobile-menu {
-    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: #ff7200; z-index: 99; flex-direction: column;
-    align-items: center; justify-content: center; gap: 2rem;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 600; }
-  .mobile-menu a:hover { color: #f0dd08; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1.5px solid rgba(255,114,0,0.35); background: rgba(255,114,0,0.06);
+      color: var(--orange); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 1.25rem;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); display: inline-block; }
+    .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: var(--dark); line-height: 1.3; margin-bottom: 0.5rem; animation: fadeUp 0.7s 0.1s ease both; }
+    .page-header h1 em { font-style: normal; background: linear-gradient(90deg, var(--orange), var(--orange-lt)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-header p { color: var(--mid); font-size: 1rem; animation: fadeUp 0.7s 0.2s ease both; }
 
-  /* ===== PAGE HEADER ===== */
-  .page-header {
-    min-height: 280px;
-    background: linear-gradient(135deg, #480606 0%, #8f0505 50%, #4f2929 100%);
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; padding: 8rem 2rem 3rem;
-    position: relative; overflow: hidden;
-  }
-  .page-header::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(192,57,43,0.18) 0%, transparent 70%);
-  }
-  .page-header-grid {
-    position: absolute; inset: 0; opacity: 0.04;
-    background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  .page-header-content { position: relative; z-index: 1; }
-  .hero-badge {
-    display: inline-block; border: 1px solid var(--gold); color: #fff;
-    font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase;
-    padding: 0.3rem 1rem; border-radius: 2px; margin-bottom: 1rem;
-  }
-  .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: var(--cream); line-height: 1.3; margin-bottom: 0.5rem; }
-  .page-header h1 em { font-style: normal; color: var(--gold); }
-  .page-header p { color: rgba(250,246,239,0.7); font-size: 1rem; }
+    /* ===== STEPS BAR ===== */
+    .steps-bar { background: var(--dark); padding: 1.5rem 2rem; }
+    .steps-inner { max-width: 500px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+    .step-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; flex: 1; position: relative; }
+    .step-item:not(:last-child)::after { content: ''; position: absolute; top: 16px; left: 58%; right: -42%; height: 2px; background: rgba(255,114,0,0.15); transition: background 0.4s; }
+    .step-item.done:not(:last-child)::after { background: var(--orange); }
+    .step-circle {
+      width: 34px; height: 34px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700;
+      background: rgba(255,114,0,0.08); border: 2px solid rgba(255,114,0,0.2);
+      color: rgba(250,246,239,0.35); transition: all 0.35s; position: relative; z-index: 1;
+    }
+    .step-item.active .step-circle { background: var(--orange); border-color: var(--orange); color: #fff; box-shadow: 0 0 0 5px rgba(255,114,0,0.22); }
+    .step-item.done .step-circle { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+    .step-label { font-size: 0.72rem; color: rgba(250,246,239,0.35); text-align: center; line-height: 1.4; transition: color 0.35s; }
+    .step-item.active .step-label { color: rgba(250,246,239,0.9); }
+    .step-item.done .step-label { color: var(--orange); }
 
-  /* ===== STEPS BAR ===== */
-  .steps-bar { background: var(--dark); padding: 1.5rem 2rem; }
-  .steps-inner { max-width: 500px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
-  .step-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; flex: 1; position: relative; }
-  .step-item:not(:last-child)::after {
-    content: ''; position: absolute; top: 16px; left: 58%; right: -42%;
-    height: 2px; background: rgba(201,168,76,0.2); transition: background 0.4s;
-  }
-  .step-item.done:not(:last-child)::after { background: var(--gold); }
-  .step-circle {
-    width: 34px; height: 34px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.85rem; font-weight: 700;
-    background: rgba(201,168,76,0.1); border: 2px solid rgba(201,168,76,0.25);
-    color: rgba(250,246,239,0.35); transition: all 0.35s; position: relative; z-index: 1;
-  }
-  .step-item.active .step-circle { background: var(--red); border-color: var(--red); color: #fff; box-shadow: 0 0 0 5px rgba(192,57,43,0.2); }
-  .step-item.done .step-circle { background: var(--gold); border-color: var(--gold); color: var(--dark); }
-  .step-label { font-size: 0.72rem; color: rgba(250,246,239,0.35); text-align: center; line-height: 1.4; transition: color 0.35s; }
-  .step-item.active .step-label { color: rgba(250,246,239,0.9); }
-  .step-item.done .step-label   { color: var(--gold); }
+    /* ===== FORM SECTION ===== */
+    .form-section { padding: 3rem 2rem 5rem; background: var(--cream); }
+    .apply-layout { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; align-items: start; max-width: 1100px; margin: 0 auto; }
+    .apply-sidebar { position: sticky; top: 120px; }
 
-  /* ===== FORM SECTION ===== */
-  .form-section { padding: 3rem 2rem 5rem; background: var(--cream); }
-  .apply-layout {
-    display: grid; grid-template-columns: 1fr 320px;
-    gap: 2rem; align-items: start; max-width: 1100px; margin: 0 auto;
-  }
-  .apply-sidebar { position: sticky; top: 110px; }
+    /* FORM CARD */
+    .form-card { background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(26,18,9,0.07); }
+    .step-panel { display: none; animation: fadeIn 0.35s ease both; }
+    .step-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* FORM CARD */
-  .form-card {
-    background: #fff; border: 1px solid rgba(74,55,40,0.1);
-    border-radius: 12px; padding: 2.5rem;
-    box-shadow: 0 4px 24px rgba(26,18,9,0.07);
-  }
-  .step-panel { display: none; animation: fadeIn 0.35s ease both; }
-  .step-panel.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .step-title { font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.6rem; }
+    .step-title::before { content: ''; width: 4px; height: 1.2rem; background: var(--orange); border-radius: 2px; display: inline-block; flex-shrink: 0; }
+    .step-sub { font-size: 0.85rem; color: var(--mid); margin-bottom: 2rem; padding-left: 0.9rem; }
 
-  .step-title {
-    font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: 0.35rem;
-    display: flex; align-items: center; gap: 0.6rem;
-  }
-  .step-title::before { content: ''; width: 4px; height: 1.2rem; background: var(--red); border-radius: 2px; display: inline-block; flex-shrink: 0; }
-  .step-sub { font-size: 0.85rem; color: var(--mid); margin-bottom: 2rem; padding-left: 0.9rem; }
+    /* Form fields */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; }
+    .form-label .req { color: var(--orange); margin-left: 2px; }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(74,55,40,0.15); border-radius: 8px;
+      font-family: 'Noto Sans Lao', sans-serif; font-size: 0.9rem; color: var(--dark);
+      background: var(--cream); outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,114,0,0.1); }
+    .form-input.error, .form-select.error { border-color: var(--orange); background: rgba(255,114,0,0.03); }
+    .form-select {
+      -webkit-appearance: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A3728' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center; background-color: var(--cream); cursor: pointer;
+    }
+    .form-textarea { resize: vertical; min-height: 100px; }
+    .error-msg { font-size: 0.75rem; color: var(--orange); margin-top: 0.3rem; display: none; }
+    .form-group.has-error .error-msg { display: block; }
+    .form-hint { font-size: 0.75rem; color: var(--mid); margin-top: 0.3rem; }
 
-  /* Form fields */
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
-  .form-group { margin-bottom: 1.25rem; }
-  .form-label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; }
-  .form-label .req { color: var(--red); margin-left: 2px; }
-  .form-input, .form-select, .form-textarea {
-    width: 100%; padding: 0.75rem 1rem;
-    border: 1.5px solid rgba(74,55,40,0.15); border-radius: 6px;
-    font-family: 'Noto Sans Lao', sans-serif; font-size: 0.9rem; color: var(--dark);
-    background: var(--cream); outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .form-input:focus, .form-select:focus, .form-textarea:focus {
-    border-color: var(--red); box-shadow: 0 0 0 3px rgba(192,57,43,0.08);
-  }
-  .form-input.error, .form-select.error { border-color: var(--red); background: rgba(192,57,43,0.03); }
-  .form-select {
-    -webkit-appearance: none; appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A3728' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 12px center; background-color: var(--cream); cursor: pointer;
-  }
-  .form-textarea { resize: vertical; min-height: 100px; }
-  .error-msg { font-size: 0.75rem; color: var(--red); margin-top: 0.3rem; display: none; }
-  .form-group.has-error .error-msg { display: block; }
-  .form-hint { font-size: 0.75rem; color: var(--mid); margin-top: 0.3rem; }
+    /* Amount preview */
+    .amount-display {
+      background: linear-gradient(135deg, var(--orange-dk), var(--orange));
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.5rem; position: relative; overflow: hidden;
+      box-shadow: 0 4px 18px rgba(255,114,0,0.3);
+    }
+    .amount-display::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 24px 24px; }
+    .amount-display::after { content: ''; position: absolute; top: -50%; left: -60%; width: 40%; height: 200%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); transform: skewX(-15deg); animation: shimmer 3s infinite; }
+    @keyframes shimmer { 0% { left: -60%; } 100% { left: 120%; } }
+    .amount-display .lbl { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-bottom: 0.2rem; }
+    .amount-display .val { font-size: 1.5rem; font-weight: 800; color: #fff; position: relative; z-index: 1; }
+    .amount-display .monthly { text-align: right; position: relative; z-index: 1; }
 
-  /* Amount preview */
-  .amount-display {
-    background: linear-gradient(135deg, #480606, #8f0505);
-    border-radius: 10px; padding: 1.25rem 1.5rem;
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 1.5rem; position: relative; overflow: hidden;
-  }
-  .amount-display::after {
-    content: ''; position: absolute; top: -50%; left: -60%;
-    width: 40%; height: 200%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-    transform: skewX(-15deg); animation: shimmer 3s infinite;
-  }
-  @keyframes shimmer { 0% { left: -60%; } 100% { left: 120%; } }
-  .amount-display .lbl { font-size: 0.78rem; color: rgba(250,246,239,0.55); margin-bottom: 0.2rem; }
-  .amount-display .val { font-size: 1.5rem; font-weight: 700; color: var(--gold); position: relative; z-index: 1; }
-  .amount-display .monthly { text-align: right; position: relative; z-index: 1; }
+    /* Consent */
+    .consent-box { background: var(--light); border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem; border: 1px solid rgba(255,114,0,0.12); }
+    .consent-item { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.75rem; font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
+    .consent-item:last-child { margin-bottom: 0; }
+    .consent-item input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px; cursor: pointer; accent-color: var(--orange); }
 
-  /* Consent */
-  .consent-box { background: var(--light); border-radius: 8px; padding: 1.25rem; margin-top: 1.5rem; border: 1px solid rgba(74,55,40,0.08); }
-  .consent-item { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.75rem; font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
-  .consent-item:last-child { margin-bottom: 0; }
-  .consent-item input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px; cursor: pointer; accent-color: var(--red); }
+    /* Nav buttons */
+    .form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(74,55,40,0.1); }
+    .btn-back { background: none; border: 1.5px solid rgba(74,55,40,0.2); color: var(--mid); padding: 0.75rem 1.75rem; border-radius: 8px; font-family: 'Noto Sans Lao', sans-serif; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+    .btn-back:hover { border-color: var(--mid); color: var(--dark); }
+    .btn-next, .btn-submit {
+      background: var(--orange); color: #fff; border: none; padding: 0.75rem 2rem;
+      border-radius: 8px; font-family: 'Noto Sans Lao', sans-serif;
+      font-size: 0.9rem; font-weight: 700; cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(255,114,0,0.35);
+    }
+    .btn-next:hover, .btn-submit:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255,114,0,0.45); }
+    .btn-next:active, .btn-submit:active { transform: translateY(0); }
+    .btn-submit { padding: 0.85rem 2.5rem; font-size: 1rem; }
 
-  /* Nav buttons */
-  .form-nav {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(74,55,40,0.1);
-  }
-  .btn-back {
-    background: none; border: 1.5px solid rgba(74,55,40,0.2); color: var(--mid);
-    padding: 0.75rem 1.75rem; border-radius: 6px; font-family: 'Noto Sans Lao', sans-serif;
-    font-size: 0.9rem; cursor: pointer; transition: all 0.2s;
-  }
-  .btn-back:hover { border-color: var(--mid); color: var(--dark); }
-  .btn-next, .btn-submit {
-    background: var(--red); color: #fff; border: none; padding: 0.75rem 2rem;
-    border-radius: 6px; font-family: 'Noto Sans Lao', sans-serif;
-    font-size: 0.9rem; font-weight: 600; cursor: pointer;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  }
-  .btn-next:hover, .btn-submit:hover { background: var(--dark-red); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(192,57,43,0.3); }
-  .btn-next:active, .btn-submit:active { transform: translateY(0); }
-  .btn-submit { background: linear-gradient(135deg, var(--red), #8f0505); padding: 0.85rem 2.5rem; font-size: 1rem; }
+    /* ===== SUCCESS ===== */
+    .success-panel { display: none; text-align: center; padding: 2rem 1rem; animation: fadeIn 0.5s ease both; }
+    .success-icon {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(255,114,0,0.1); border: 3px solid var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; margin: 0 auto 1.5rem;
+      animation: popIn 0.5s ease both; color: var(--orange);
+    }
+    @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .success-title { font-size: 1.6rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
+    .success-lao   { font-size: 1.1rem; color: var(--orange); margin-bottom: 1rem; font-weight: 700; }
+    .success-desc  { font-size: 0.9rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.5rem; }
+    .ref-box { background: var(--light); border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; border: 2px dashed rgba(255,114,0,0.35); }
+    .ref-box .ref-label { font-size: 0.78rem; color: var(--mid); margin-bottom: 0.4rem; }
+    .ref-box .ref-num   { font-size: 1.8rem; font-weight: 800; color: var(--orange); letter-spacing: 0.12em; }
+    .success-steps { text-align: left; background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem; }
+    .success-steps .ss-title { font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; font-size: 0.9rem; }
+    .ss-item { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.83rem; color: var(--mid); line-height: 1.6; margin-bottom: 0.6rem; }
+    .ss-num { width: 22px; height: 22px; border-radius: 50%; background: var(--orange); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
-  /* ===== SUCCESS ===== */
-  .success-panel { display: none; text-align: center; padding: 2rem 1rem; animation: fadeIn 0.5s ease both; }
-  .success-icon {
-    width: 80px; height: 80px; border-radius: 50%;
-    background: rgba(192,57,43,0.1); border: 3px solid var(--red);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem; margin: 0 auto 1.5rem;
-    animation: popIn 0.5s ease both; color: var(--red);
-  }
-  @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-  .success-title { font-size: 1.6rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
-  .success-lao   { font-size: 1.1rem; color: var(--red); margin-bottom: 1rem; }
-  .success-desc  { font-size: 0.9rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.5rem; }
-  .ref-box { background: var(--light); border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0; border: 1px dashed rgba(192,57,43,0.35); }
-  .ref-box .ref-label { font-size: 0.78rem; color: var(--mid); margin-bottom: 0.4rem; }
-  .ref-box .ref-num   { font-size: 1.8rem; font-weight: 700; color: var(--red); letter-spacing: 0.12em; }
-  .success-steps { text-align: left; background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem; }
-  .success-steps .ss-title { font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; font-size: 0.9rem; }
-  .ss-item { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.83rem; color: var(--mid); line-height: 1.6; margin-bottom: 0.6rem; }
-  .ss-num { width: 22px; height: 22px; border-radius: 50%; background: var(--red); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    /* ===== SIDEBAR ===== */
+    .sidebar-card { background: linear-gradient(135deg, #1A1209, #2C1810); border-radius: 14px; padding: 1.75rem; margin-bottom: 1.25rem; box-shadow: 0 4px 16px rgba(26,18,9,0.15); border-left: 4px solid var(--orange); }
+    .sidebar-title { color: var(--orange); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
+    .sidebar-list { display: flex; flex-direction: column; gap: 0.65rem; }
+    .sidebar-item { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.82rem; color: rgba(250,246,239,0.65); line-height: 1.6; }
+    .sidebar-item .si-icon { color: var(--orange); flex-shrink: 0; margin-top: 2px; }
+    .contact-card { background: #fff; border: 1px solid rgba(255,114,0,0.12); border-radius: 14px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(255,114,0,0.08); }
+    .contact-title { font-weight: 700; color: var(--dark); margin-bottom: 1rem; font-size: 0.9rem; }
+    .contact-item { display: flex; gap: 0.6rem; align-items: center; font-size: 0.82rem; color: var(--mid); margin-bottom: 0.6rem; line-height: 1.5; }
 
-  /* ===== SIDEBAR ===== */
-  .sidebar-card { background: linear-gradient(135deg, #1A1209, #2C1810); border-radius: 12px; padding: 1.75rem; margin-bottom: 1.25rem; box-shadow: 0 4px 16px rgba(26,18,9,0.15); }
-  .sidebar-title { color: var(--gold); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
-  .sidebar-list { display: flex; flex-direction: column; gap: 0.65rem; }
-  .sidebar-item { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.82rem; color: rgba(250,246,239,0.65); line-height: 1.6; }
-  .sidebar-item .si-icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
-  .contact-card { background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(26,18,9,0.06); }
-  .contact-title { font-weight: 700; color: var(--dark); margin-bottom: 1rem; font-size: 0.9rem; }
-  .contact-item { display: flex; gap: 0.6rem; align-items: center; font-size: 0.82rem; color: var(--mid); margin-bottom: 0.6rem; line-height: 1.5; }
-
-  /* ===== REVEAL ===== */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ===== FOOTER ===== */
+    /* ===== FOOTER ===== */
     footer { background: #efeded; color: #fff; padding: 2.5rem 2rem; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between;align-items: flex-start;gap: 4rem; padding: 2rem 0; }
-    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.2rem; color: #000000; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 4rem; padding: 2rem 0; }
+    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1rem; color: #000; }
     .footer-contact li { display: flex; align-items: flex-start; gap: 0.75rem; }
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    .social-bar { padding: 0.4rem 1rem; }
-    .social-address { font-size: 0.7rem; max-width: 52vw; }
-    nav { padding: 0 1rem; top: 32px; }
-    .nav-links { display: none; }
-    .nav-cta { display: none; }
-    .hamburger { display: flex; }
 
-    .apply-layout { grid-template-columns: 1fr; }
-    .apply-sidebar { position: static; }
-    .form-card { padding: 1.5rem; }
-    .form-row { grid-template-columns: 1fr; }
+    /* Visitor widget */
+    .visitor-widget { background: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; font-size: 16px; color: #333; min-width: 400px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .vw-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #e0e0e0; }
+    .vw-row:last-child { border-bottom: none; }
+    .vw-left { display: flex; align-items: center; gap: 8px; color: #444; }
+    .vw-val { font-weight: 600; color: #222; font-size: 16px; }
+    .vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: var(--orange); border-top: 1px solid #eee; padding-top: 6px; }
 
-    .footer-inner { justify-content: flex-start; }
-    .footer-contact { font-size: 0.85rem; }
-  }
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 480px) {
-    nav { height: 60px; }
-    .nav-brand .lo { font-size: 0.9rem; }
-    .nav-brand .en { display: none; }
-    .form-nav { flex-direction: column; gap: 0.75rem; }
-    .btn-next, .btn-submit, .btn-back { width: 100%; text-align: center; }
-    .amount-display { flex-direction: column; gap: 0.75rem; text-align: center; }
-    .amount-display .monthly { text-align: center; }
-  }
-  /* VISITOR WIDGET */
-.visitor-widget {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 16px;
-  color: #333;
-  min-width: 400px;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.vw-row {
-  display: flex; align-items: center;
-  justify-content: space-between;
-  padding: 5px 0;
-  border-bottom: 1px dotted #e0e0e0;
-}
-.vw-row:last-child { border-bottom: none; }
-.vw-left { display: flex; align-items: center; gap: 8px; color: #444; }
-.vw-val { font-weight: 600; color: #222;font-size: 16px; }
-.vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: #ff7200; border-top: 1px solid #eee; padding-top: 6px; }
-  </style>
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .social-bar { padding: 0.4rem 1rem; }
+      .social-address { font-size: 0.7rem; max-width: 52vw; }
+      nav { padding: 0 1rem; top: 32px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .apply-layout { grid-template-columns: 1fr; }
+      .apply-sidebar { position: static; }
+      .form-card { padding: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; gap: 1.5rem; }
+      .visitor-widget { min-width: unset; width: 100%; }
+    }
+    @media (max-width: 480px) {
+      nav { height: 60px; }
+      .nav-brand .lo { font-size: 0.9rem; }
+      .nav-brand .en { display: none; }
+      .form-nav { flex-direction: column; gap: 0.75rem; }
+      .btn-next, .btn-submit, .btn-back { width: 100%; text-align: center; }
+      .amount-display { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .amount-display .monthly { text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -345,12 +271,12 @@
     <a href="https://maps.google.com/?q=326+Unit+16+Sikhay+Vientiane" target="_blank" class="social-address">
       📍 ສຳນັກງານຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ
     </a>
-   <div class="social-icons">
-  <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
-  <a href="https://wa.me/8562054213555" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://www.tiktok.com/@.fis78" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
-  <a href="https://m.youtube.com/channel/UCiovNJcNcy-OHdQHk_bbfkA" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i></a>
-</div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/8562054213555" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.tiktok.com/@.fis78" target="_blank" class="social-btn tt"><i class="fab fa-tiktok"></i></a>
+      <a href="https://m.youtube.com/channel/UCiovNJcNcy-OHdQHk_bbfkA" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i></a>
+    </div>
   </div>
 </div>
 
@@ -368,9 +294,9 @@
     <li><a href="products.html">ສິນເຊື່ອ</a></li>
     <li><a href="insurance.html">ປະກັນໄພ</a></li>
     <li><a href="calculator.html">ຄິດໄລ່</a></li>
-     <li><a href="faq.html">ຄຳຖາມ</a></li>
+    <li><a href="faq.html">ຄຳຖາມ</a></li>
   </ul>
-  <a href="apply.html" class="nav-cta">ສະໝັກກູ້ເງິນ</a>
+  <a href="apply.html" class="nav-cta active">ສະໝັກກູ້ເງິນ</a>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </button>
@@ -418,7 +344,6 @@
 <section class="form-section">
   <div class="apply-layout">
 
-    <!-- MAIN FORM -->
     <div class="reveal">
       <div class="form-card">
 
@@ -427,68 +352,68 @@
           <div class="step-title">ຂໍ້ມູນສ່ວນຕົວ</div>
           <div class="step-sub">Personal Information — ກະລຸນາຕື່ມຂໍ້ມູນທີ່ຖືກຕ້ອງ</div>
 
-  <div class="form-row">
-  <div class="form-group">
-    <label class="form-label">ຊື່ <span class="req">*</span></label>
-    <input type="text" class="form-input" id="firstName" placeholder="ຊື່ຂອງທ່ານ">
-    <div class="error-msg">ກະລຸນາຕື່ມຊື່</div>
-  </div>
-  <div class="form-group">
-    <label class="form-label">ນາມສະກຸນ <span class="req">*</span></label>
-    <input type="text" class="form-input" id="lastName" placeholder="ນາມສະກຸນ">
-    <div class="error-msg">ກະລຸນາຕື່ມນາມສະກຸນ</div>
-  </div>
-</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">ຊື່ <span class="req">*</span></label>
+              <input type="text" class="form-input" id="firstName" placeholder="ຊື່ຂອງທ່ານ">
+              <div class="error-msg">ກະລຸນາຕື່ມຊື່</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ນາມສະກຸນ <span class="req">*</span></label>
+              <input type="text" class="form-input" id="lastName" placeholder="ນາມສະກຸນ">
+              <div class="error-msg">ກະລຸນາຕື່ມນາມສະກຸນ</div>
+            </div>
+          </div>
 
-<div class="form-row">
-  <div class="form-group">
-    <label class="form-label">ເບີໂທ <span class="req">*</span></label>
-    <input type="tel" class="form-input" id="phone" placeholder="020 XXXX XXXX">
-    <div class="error-msg">ກະລຸນາຕືມເບີໂທ</div>
-  </div>
-  <div class="form-group">
-    <label class="form-label">ອີເມວ <span class="req">*</span></label>
-    <input type="email" class="form-input" id="email" placeholder="example@email.com">
-    <div class="form-hint">ບໍ່ບັງຄັບ</div>
-  </div>
-</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">ເບີໂທ <span class="req">*</span></label>
+              <input type="tel" class="form-input" id="phone" placeholder="020 XXXX XXXX">
+              <div class="error-msg">ກະລຸນາຕື່ມເບີໂທ</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ອີເມວ</label>
+              <input type="email" class="form-input" id="email" placeholder="example@email.com">
+              <div class="form-hint">ບໍ່ບັງຄັບ</div>
+            </div>
+          </div>
 
-<div class="form-row">
-  <div class="form-group">
-    <label class="form-label">ອາຍຸ <span class="req">*</span></label>
-    <input type="number" class="form-input" id="age" placeholder="ອາຍຸຂອງທ່ານ" min="18" max="70">
-    <div class="error-msg">ກະລຸນາຕື່ມອາຍຸ</div>
-  </div>
-  <div class="form-group">
-    <label class="form-label">ເພດ <span class="req">*</span></label>
-    <select class="form-input form-select" id="sex">
-      <option value="">-- ເລືອກເພດ --</option>
-      <option value="male">ຊາຍ</option>
-      <option value="female">ຍິງ</option>
-      <option value="other">ອື່ນໆ</option>
-    </select>
-    <div class="error-msg">ກະລຸນາເລືອກເພດ</div>
-  </div>
-</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">ອາຍຸ <span class="req">*</span></label>
+              <input type="number" class="form-input" id="age" placeholder="ອາຍຸຂອງທ່ານ" min="18" max="70">
+              <div class="error-msg">ກະລຸນາຕື່ມອາຍຸ</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ເພດ <span class="req">*</span></label>
+              <select class="form-input form-select" id="sex">
+                <option value="">-- ເລືອກເພດ --</option>
+                <option value="male">ຊາຍ</option>
+                <option value="female">ຍິງ</option>
+                <option value="other">ອື່ນໆ</option>
+              </select>
+              <div class="error-msg">ກະລຸນາເລືອກເພດ</div>
+            </div>
+          </div>
 
-<div class="form-row">
-  <div class="form-group">
-    <label class="form-label">ເລກບັດປະຈຳຕົວ <span class="req">*</span></label>
-    <input type="text" class="form-input" id="idCard" placeholder="XXXXXXXXXXXXX">
-    <div class="error-msg">ກະລຸນາຕືມເລກບັດ</div>
-  </div>
-  <div class="form-group">
-    <label class="form-label">ວັນເດືອນປີເກີດ <span class="req">*</span></label>
-    <input type="date" class="form-input" id="dob">
-    <div class="error-msg">ກະລຸນາເລືອກວັນເດືອນປີ</div>
-  </div>
-</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">ເລກບັດປະຈຳຕົວ <span class="req">*</span></label>
+              <input type="text" class="form-input" id="idCard" placeholder="XXXXXXXXXXXXX">
+              <div class="error-msg">ກະລຸນາຕື່ມເລກບັດ</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ວັນເດືອນປີເກີດ <span class="req">*</span></label>
+              <input type="date" class="form-input" id="dob">
+              <div class="error-msg">ກະລຸນາເລືອກວັນເດືອນປີ</div>
+            </div>
+          </div>
 
-<div class="form-group">
-  <label class="form-label">ທີ່ຢູ່ປັດຈຸບັນ <span class="req">*</span></label>
-  <textarea class="form-textarea form-input" id="address" placeholder="ບ້ານ, ເມືອງ, ແຂວງ"></textarea>
-  <div class="error-msg">ກະລຸນາຕມທີ່ຢູ່</div>
-</div>
+          <div class="form-group">
+            <label class="form-label">ທີ່ຢູ່ປັດຈຸບັນ <span class="req">*</span></label>
+            <textarea class="form-textarea form-input" id="address" placeholder="ບ້ານ, ເມືອງ, ແຂວງ"></textarea>
+            <div class="error-msg">ກະລຸນາຕື່ມທີ່ຢູ່</div>
+          </div>
 
           <div class="form-nav">
             <div></div>
@@ -564,97 +489,97 @@
           </div>
         </div>
 
-       <!-- STEP 3 -->
-<div class="step-panel" id="panel3">
-  <div class="step-title">ລາຍລະອຽດສິນເຊື່ອ</div>
-  <div class="step-sub">Loan Details — ຂໍ້ມູນຈຳນວນ ແລະ ປະເພດທີ່ຕ້ອງການ</div>
+        <!-- STEP 3 -->
+        <div class="step-panel" id="panel3">
+          <div class="step-title">ລາຍລະອຽດສິນເຊື່ອ</div>
+          <div class="step-sub">Loan Details — ຂໍ້ມູນຈຳນວນ ແລະ ປະເພດທີ່ຕ້ອງການ</div>
 
-  <div class="form-group">
-    <label class="form-label">ປະເພດສິນເຊື່ອ <span class="req">*</span></label>
-    <select class="form-select" id="loanType" onchange="updateAmountDisplay()">
-      <option value="">— ເລືອກ —</option>
-      <option>ສິນເຊືອເພື່ອການສຶກສາ</option>
-      <option>ສິນເຊື່ອເພື່ອທີ່ຢູອາໄສ</option>
-      <option>ສິນເຊື່ອເພື່ອລົດ</option>
-      <option>ສິນເຊື່ອເພື່ອຊາວກະສິກຳ</option>
-      <option>ສິນເຊື່ອທຸລະກິດ</option>
-      <option>ສິນເຊື່ອສ່ວນບຸກຄົນ</option>
-    </select>
-    <div class="error-msg">ກະລຸນາເລືອກປະເພດ</div>
-  </div>
+          <div class="form-group">
+            <label class="form-label">ປະເພດສິນເຊື່ອ <span class="req">*</span></label>
+            <select class="form-select" id="loanType" onchange="updateAmountDisplay()">
+              <option value="">— ເລືອກ —</option>
+              <option>ສິນເຊື່ອເພື່ອການສຶກສາ</option>
+              <option>ສິນເຊື່ອເພື່ອທີ່ຢູ່ອາໄສ</option>
+              <option>ສິນເຊື່ອເພື່ອລົດ</option>
+              <option>ສິນເຊື່ອເພື່ອຊາວກະສິກຳ</option>
+              <option>ສິນເຊື່ອທຸລະກິດ</option>
+              <option>ສິນເຊື່ອສ່ວນບຸກຄົນ</option>
+            </select>
+            <div class="error-msg">ກະລຸນາເລືອກປະເພດ</div>
+          </div>
 
-  <div class="form-group">
-    <label class="form-label">ຈຸດປະສົງ <span class="req">*</span></label>
-    <input type="text" class="form-input" id="purpose" placeholder="ລະບຸຈຸດປະສົງ...">
-    <div class="error-msg">ກະລຸນາຕື່ມຈຸດປະສົງ</div>
-  </div>
+          <div class="form-group">
+            <label class="form-label">ຈຸດປະສົງ <span class="req">*</span></label>
+            <input type="text" class="form-input" id="purpose" placeholder="ລະບຸຈຸດປະສົງ...">
+            <div class="error-msg">ກະລຸນາຕື່ມຈຸດປະສົງ</div>
+          </div>
 
-  <div class="form-row">
-    <div class="form-group">
-      <label class="form-label">ຈຳນວນທີ່ຕ້ອງການ (ກີບ) <span class="req">*</span></label>
-      <input type="number" class="form-input" id="loanAmount" placeholder="ຕົວຢ່າງ: 50000000" oninput="updateAmountDisplay()">
-      <div class="error-msg">ກະລຸນາຕື່ມຈຳນວນ</div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">ໄລຍະຜ່ອນ <span class="req">*</span></label>
-      <select class="form-select" id="loanTerm" onchange="updateAmountDisplay()">
-        <option value="">— ເລືອກ —</option>
-        <option value="1">1 ເດືອນ</option>
-        <option value="2">2 ເດືອນ</option>
-        <option value="3">3 ເດືອນ</option>
-        <option value="4">4 ເດືອນ</option>
-        <option value="5">5 ເດືອນ</option>
-        <option value="6">6 ເດືອນ</option>
-        <option value="12">12 ເດືອນ (1 ປີ)</option>
-        <option value="24">24 ເດືອນ (2 ປີ)</option>
-        <option value="36">36 ເດືອນ (3 ປີ)</option>
-        <option value="48">48 ເດືອນ (4 ປີ)</option>
-        <option value="60">60 ເດືອນ (5 ປີ)</option>
-        <option value="84">84 ເດືອນ (7 ປີ)</option>
-        <option value="120">120 ເດືອນ (10 ປີ)</option>
-      </select>
-      <div class="error-msg">ກະລຸນາເລືອກໄລຍະ</div>
-    </div>
-  </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">ຈຳນວນທີ່ຕ້ອງການ (ກີບ) <span class="req">*</span></label>
+              <input type="number" class="form-input" id="loanAmount" placeholder="ຕົວຢ່າງ: 50000000" oninput="updateAmountDisplay()">
+              <div class="error-msg">ກະລຸນາຕື່ມຈຳນວນ</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ໄລຍະຜ່ອນ <span class="req">*</span></label>
+              <select class="form-select" id="loanTerm" onchange="updateAmountDisplay()">
+                <option value="">— ເລືອກ —</option>
+                <option value="1">1 ເດືອນ</option>
+                <option value="2">2 ເດືອນ</option>
+                <option value="3">3 ເດືອນ</option>
+                <option value="4">4 ເດືອນ</option>
+                <option value="5">5 ເດືອນ</option>
+                <option value="6">6 ເດືອນ</option>
+                <option value="12">12 ເດືອນ (1 ປີ)</option>
+                <option value="24">24 ເດືອນ (2 ປີ)</option>
+                <option value="36">36 ເດືອນ (3 ປີ)</option>
+                <option value="48">48 ເດືອນ (4 ປີ)</option>
+                <option value="60">60 ເດືອນ (5 ປີ)</option>
+                <option value="84">84 ເດືອນ (7 ປີ)</option>
+                <option value="120">120 ເດືອນ (10 ປີ)</option>
+              </select>
+              <div class="error-msg">ກະລຸນາເລືອກໄລຍະ</div>
+            </div>
+          </div>
 
-  <div class="amount-display" id="amountPreview" style="display:none;">
-    <div style="position:relative;z-index:1;">
-      <div class="lbl">ຈຳນວນກູ້</div>
-      <div class="val" id="previewAmount">—</div>
-    </div>
-    <div class="monthly">
-      <div class="lbl">ຜ່ອນ/ເດືອນ (ປະມານ)</div>
-      <div class="val" id="previewMonthly">—</div>
-    </div>
-  </div>
+          <div class="amount-display" id="amountPreview" style="display:none;">
+            <div style="position:relative;z-index:1;">
+              <div class="lbl">ຈຳນວນກູ້</div>
+              <div class="val" id="previewAmount">—</div>
+            </div>
+            <div class="monthly">
+              <div class="lbl">ຜ່ອນ/ເດືອນ (ປະມານ)</div>
+              <div class="val" id="previewMonthly">—</div>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <label class="form-label">ຂໍ້ມູນເພີ່ມເຕີມ</label>
-    <textarea class="form-textarea form-input" id="notes" placeholder="ລາຍລະອຽດເພີ່ມເຕີມ ຫຼື ຄຳຖາມ (ຖ້າມີ)"></textarea>
-  </div>
+          <div class="form-group">
+            <label class="form-label">ຂໍ້ມູນເພີ່ມເຕີມ</label>
+            <textarea class="form-textarea form-input" id="notes" placeholder="ລາຍລະອຽດເພີ່ມເຕີມ ຫຼື ຄຳຖາມ (ຖ້າມີ)"></textarea>
+          </div>
 
-  <div class="consent-box">
-    <div class="consent-item">
-      <input type="checkbox" id="consent1">
-      <label for="consent1">ຂ້ອຍຢືນຢັນວ່າຂໍ້ມູນທີ່ຕື່ມທັງໝົດຖືກຕ້ອງ ແລະ ເປັນຄວາມຈິງ</label>
-    </div>
-    <div class="consent-item">
-      <input type="checkbox" id="consent2">
-      <label for="consent2">ຂ້ອຍຍິນຍອມໃຫ້ ສະຖາບັນການເງິນ ສັບທະວີ ເກັບກຳ ແລະ ໃຊ້ຂໍ້ມູນຂ້ອຍ</label>
-    </div>
-  </div>
+          <div class="consent-box">
+            <div class="consent-item">
+              <input type="checkbox" id="consent1">
+              <label for="consent1">ຂ້ອຍຢືນຢັນວ່າຂໍ້ມູນທີ່ຕື່ມທັງໝົດຖືກຕ້ອງ ແລະ ເປັນຄວາມຈິງ</label>
+            </div>
+            <div class="consent-item">
+              <input type="checkbox" id="consent2">
+              <label for="consent2">ຂ້ອຍຍິນຍອມໃຫ້ ສະຖາບັນການເງິນ ຊັບທະວີ ເກັບກຳ ແລະ ໃຊ້ຂໍ້ມູນຂ້ອຍ</label>
+            </div>
+          </div>
 
-  <div class="form-nav">
-    <button class="btn-back" onclick="prevStep(3)">← ກັບ</button>
-    <button class="btn-submit" onclick="submitForm()">✓ ສົ່ງຄຳຮ້ອງ</button>
-  </div>
-</div>
+          <div class="form-nav">
+            <button class="btn-back" onclick="prevStep(3)">← ກັບ</button>
+            <button class="btn-submit" onclick="submitForm()">✓ ສົ່ງຄຳຮ້ອງ</button>
+          </div>
+        </div>
 
         <!-- SUCCESS -->
         <div class="success-panel" id="successPanel">
           <div class="success-icon">✓</div>
           <div class="success-title">Application Sent!</div>
-          <div class="success-lao">ສົ່ງຄຳຮ້ອງສຳເລັດ</div>
+          <div class="success-lao">ສົ່ງຄຳຮ້ອງສຳເລັດ 🎉</div>
           <p class="success-desc">ທີມງານຂອງເຮົາໄດ້ຮັບຄຳຮ້ອງຂອງທ່ານແລ້ວ ແລະ ຈະຕິດຕໍ່ກັບທ່ານ ພາຍໃນ 1 ວັນທຳການ</p>
           <div class="ref-box">
             <div class="ref-label">ເລກທີຄຳຮ້ອງ / Reference Number</div>
@@ -666,7 +591,7 @@
             <div class="ss-item"><div class="ss-num">2</div><span>ກຽມເອກະສານ: ບັດປະຈຳຕົວ, ໜັງສືຢັ້ງຢືນລາຍຮັບ, ຮູບຖ່າຍ 2 ໃບ</span></div>
             <div class="ss-item"><div class="ss-num">3</div><span>ນັດໝາຍເຊັນສັນຍາ ແລະ ຮັບເງິນ</span></div>
           </div>
-          <a href="index.html" style="display:inline-block; margin-top:1.5rem; color:var(--red); font-size:0.9rem; text-decoration:none;">← ກັບໜ້າຫຼັກ</a>
+          <a href="index.html" style="display:inline-block; margin-top:1.5rem; color:var(--orange); font-size:0.9rem; font-weight:700; text-decoration:none;">← ກັບໜ້າຫຼັກ</a>
         </div>
 
       </div>
@@ -694,7 +619,7 @@
       </div>
       <div class="contact-card">
         <div class="contact-title">📞 ຕິດຕໍ່ພວກເຮົາ</div>
-        <div class="contact-item">📱 <span> (+85621)520722, 02054213555</span></div>
+        <div class="contact-item">📱 <span>(+85621)520722, 02054213555</span></div>
         <div class="contact-item">📧 <span>contact@sapthavy.com</span></div>
         <div class="contact-item">🕐 <span>ຈ-ສ: 8:00 - 17:00</span></div>
       </div>
@@ -706,17 +631,16 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-  <div class="visitor-widget" id="visitorWidget">
-  <div class="vw-row"><span class="vw-left">📶 User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
-  <div class="vw-row"><span class="vw-left">👁️ View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
-  <div class="vw-row"><span class="vw-left">👤 Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
-  <div class="vw-row"><span class="vw-left">👥 Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
-  <div class="vw-row"><span class="vw-left">👤 Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
-  <div class="vw-footer">📊 sapthavy.com</div>
-</div>
-
+    <div class="visitor-widget" id="visitorWidget">
+      <div class="vw-row"><span class="vw-left">📶 User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
+      <div class="vw-row"><span class="vw-left">👁️ View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
+      <div class="vw-row"><span class="vw-left">👤 Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
+      <div class="vw-row"><span class="vw-left">👥 Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
+      <div class="vw-row"><span class="vw-left">👤 Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
+      <div class="vw-footer">📊 sapthavy.com</div>
+    </div>
     <ul class="footer-contact">
-      <li>📍 ສຳນກງານ ຕັ້ງຢ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫວງວຽງຈັນ</li>
+      <li>📍 ສຳນັກງານ ຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ</li>
       <li>📧 ອີເມວ : contact@sapthavy.com</li>
       <li>📞 ໂທລະສັບ : (+85621)520722, 02054213555</li>
       <li>🌐 ເວັບໄຊ້ : www.sapthavy.com</li>
@@ -732,12 +656,10 @@
     currentStep = from + 1;
     updateSteps(from, currentStep);
   }
-
   function prevStep(from) {
     currentStep = from - 1;
     updateSteps(from, currentStep);
   }
-
   function updateSteps(from, to) {
     document.getElementById('panel' + from).classList.remove('active');
     document.getElementById('panel' + to).classList.add('active');
@@ -761,28 +683,21 @@
       const el  = document.getElementById(id);
       const grp = el.closest('.form-group');
       if (!el.value.trim()) {
-        el.classList.add('error');
-        grp.classList.add('has-error');
-        valid = false;
+        el.classList.add('error'); grp.classList.add('has-error'); valid = false;
       } else {
-        el.classList.remove('error');
-        grp.classList.remove('has-error');
+        el.classList.remove('error'); grp.classList.remove('has-error');
       }
     });
     if (step === 3 && valid) {
       if (!document.getElementById('consent1').checked || !document.getElementById('consent2').checked) {
-        alert('ກະລຸນາຍອມຮັບເງື່ອນໄຂທັງໝົດ');
-        valid = false;
+        alert('ກະລຸນາຍອມຮັບເງື່ອນໄຂທັງໝົດ'); valid = false;
       }
     }
     return valid;
   }
 
   document.querySelectorAll('.form-input, .form-select').forEach(el => {
-    el.addEventListener('input', () => {
-      el.classList.remove('error');
-      el.closest('.form-group')?.classList.remove('has-error');
-    });
+    el.addEventListener('input', () => { el.classList.remove('error'); el.closest('.form-group')?.classList.remove('has-error'); });
   });
 
   function updateAmountDisplay() {
@@ -790,7 +705,7 @@
     const term    = parseInt(document.getElementById('loanTerm').value);
     const preview = document.getElementById('amountPreview');
     if (amount > 0 && term > 0) {
-      const r       = 0.03;
+      const r = 0.03;
       const monthly = amount * r * Math.pow(1+r, term) / (Math.pow(1+r, term) - 1);
       document.getElementById('previewAmount').textContent  = Math.round(amount).toLocaleString('en-US') + ' ກີບ';
       document.getElementById('previewMonthly').textContent = Math.round(monthly).toLocaleString('en-US') + ' ກີບ';
@@ -842,42 +757,37 @@
   }
 
   const observer = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100);
-    });
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-<script>
-(function() {
-  const now   = new Date();
-  const today = now.toISOString().slice(0, 10);
-  const month = now.toISOString().slice(0, 7);
-  const year  = now.getFullYear().toString();
 
-  let views = JSON.parse(localStorage.getItem('vw_views') || '{}');
-  views[today] = (views[today] || 0) + 1;
-  localStorage.setItem('vw_views', JSON.stringify(views));
-
-  if (!sessionStorage.getItem('vw_visited')) {
-    sessionStorage.setItem('vw_visited', '1');
-    let vToday = JSON.parse(localStorage.getItem('vw_today') || '{}');
-    vToday[today] = (vToday[today] || 0) + 1;
-    localStorage.setItem('vw_today', JSON.stringify(vToday));
-    let vMonth = JSON.parse(localStorage.getItem('vw_month') || '{}');
-    vMonth[month] = (vMonth[month] || 0) + 1;
-    localStorage.setItem('vw_month', JSON.stringify(vMonth));
-    let vYear = JSON.parse(localStorage.getItem('vw_year') || '{}');
-    vYear[year] = (vYear[year] || 0) + 1;
-    localStorage.setItem('vw_year', JSON.stringify(vYear));
-  }
-
-  function fmt(n) { if (n >= 1000) return (n/1000).toFixed(1).replace('.0','') + 'K'; return n; }
-  document.getElementById('vw-views').textContent = fmt(views[today] || 0);
-  document.getElementById('vw-today').textContent = fmt((JSON.parse(localStorage.getItem('vw_today')||'{}'))[today]||0);
-  document.getElementById('vw-month').textContent = fmt((JSON.parse(localStorage.getItem('vw_month')||'{}'))[month]||0);
-  document.getElementById('vw-year').textContent  = fmt((JSON.parse(localStorage.getItem('vw_year') ||'{}'))[year] ||0);
-})();
+  // Visitor Widget
+  (function() {
+    const now   = new Date();
+    const today = now.toISOString().slice(0, 10);
+    const month = now.toISOString().slice(0, 7);
+    const year  = now.getFullYear().toString();
+    let views = JSON.parse(localStorage.getItem('vw_views') || '{}');
+    views[today] = (views[today] || 0) + 1;
+    localStorage.setItem('vw_views', JSON.stringify(views));
+    if (!sessionStorage.getItem('vw_visited')) {
+      sessionStorage.setItem('vw_visited', '1');
+      let vToday = JSON.parse(localStorage.getItem('vw_today') || '{}');
+      vToday[today] = (vToday[today] || 0) + 1;
+      localStorage.setItem('vw_today', JSON.stringify(vToday));
+      let vMonth = JSON.parse(localStorage.getItem('vw_month') || '{}');
+      vMonth[month] = (vMonth[month] || 0) + 1;
+      localStorage.setItem('vw_month', JSON.stringify(vMonth));
+      let vYear = JSON.parse(localStorage.getItem('vw_year') || '{}');
+      vYear[year] = (vYear[year] || 0) + 1;
+      localStorage.setItem('vw_year', JSON.stringify(vYear));
+    }
+    function fmt(n) { if (n >= 1000) return (n/1000).toFixed(1).replace('.0','') + 'K'; return n; }
+    document.getElementById('vw-views').textContent = fmt(views[today] || 0);
+    document.getElementById('vw-today').textContent = fmt((JSON.parse(localStorage.getItem('vw_today')||'{}'))[today]||0);
+    document.getElementById('vw-month').textContent = fmt((JSON.parse(localStorage.getItem('vw_month')||'{}'))[month]||0);
+    document.getElementById('vw-year').textContent  = fmt((JSON.parse(localStorage.getItem('vw_year') ||'{}'))[year] ||0);
+  })();
 </script>
 </body>
 </html>
