@@ -109,6 +109,25 @@
     .badge-popular { background: #fff3f2; color: var(--red); border: 1px solid rgba(192,57,43,0.2); }
     .badge-new     { background: #eef5ff; color: #1a5fa8; border: 1px solid rgba(26,95,168,0.2); }
     .badge-low     { background: #f0faf5; color: #187048; border: 1px solid rgba(24,112,72,0.2); }
+    .card-promo-img {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-promo-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.card-promo-img img {
+  transition: transform 0.3s ease;
+}
+
+.card-promo-img:hover img {
+  transform: scale(1.2);
+}
 
     /* WHY US */
     #why { background: linear-gradient(160deg, #1a0d04, #2e1007, #1a1209); padding: 4rem 2rem; }
@@ -252,12 +271,17 @@
 
       <div class="product-card reveal" data-cat="business">
         <div class="card-header">
-          <div class="card-icon-wrap">💼</div>
+          <div class="card-icon-wrap">
+            <img src="images/loan.png" alt="loan" style="width: 480px; height:48px;">
+          </div>
           <div class="card-meta">
             <div class="card-title-lo">ສິນເຊື່ອ SME</div>
             <div class="card-title-en">SME Business Loan</div>
           </div>
           <span class="card-badge badge-popular">ນິຍົມ</span>
+        </div>
+        <div class="card-promo-img">
+          <img src="images/WhatsApp Image 2026-06-23 at 14.40.51.jpeg" alt="SME promotion">
         </div>
         <div class="card-body">
           <p class="card-desc">ສ້າງ ຫຼື ຂະຫຍາຍທຸລະກິດ SME ດ້ວຍເງິນທຶນທີ່ພ້ອມສະໜັບສະໜູນ ທຸກຂັ້ນຕອນ.</p>
@@ -282,11 +306,16 @@
       
       <div class="product-card reveal" data-cat="personal">
         <div class="card-header">
-          <div class="card-icon-wrap">🔄</div>
+          <div class="card-icon-wrap">
+            <img src="images/refinance.png" alt="refinance" style="width: 48px;height: 48px;">
+          </div>
           <div class="card-meta">
             <div class="card-title-lo">ສິນເຊື່ອຫັນຊັບເປັນທືນ</div>
             <div class="card-title-en">Asset Conversion Loan</div>
           </div>
+        </div>
+        <div class="card-promo-img">
+          <img src="images/WhatsApp Image 2026-06-23 at 16.18.34.jpeg" alt="">
         </div>
         <div class="card-body">
           <p class="card-desc">ແປງຊັບສິນທີ່ມີຢູ່ໃຫ້ກາຍເປັນທຶນໝູນວຽນ ດ້ວຍຂັ້ນຕອນທີ່ງ່າຍ ອະນຸມັດໄວ.</p>
@@ -308,12 +337,17 @@
 
       <div class="product-card reveal" data-cat="personal">
         <div class="card-header">
-          <div class="card-icon-wrap">💳</div>
+          <div class="card-icon-wrap">
+            <img src="images/personal.png" alt="personal" style="width: 48px;height: 48px;">
+          </div>
           <div class="card-meta">
             <div class="card-title-lo">ສິນເຊື່ອລາຍບຸກຄົນ</div>
             <div class="card-title-en">Personal Loan</div>
           </div>
           <span class="card-badge badge-low">ດອກເບ້ຍຕໍ່າ</span>
+        </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອສ່ວນບຸກຄົນ.jpeg" alt="">
         </div>
         <div class="card-body">
           <p class="card-desc">ໃຊ້ຈ່າຍສ່ວນຕົວ ຫຼື ສຸກເສີນ ດ້ວຍຂັ້ນຕອນທີ່ງ່າຍ ອະນຸມັດໄວ ບໍ່ຕ້ອງມີຫຼັກຊັບ.</p>
@@ -341,6 +375,9 @@
             <div class="card-title-lo">ສິນເຊື່ອເພື່ອການສຶກສາ</div>
             <div class="card-title-en">Education Loan</div>
           </div>
+        </div>
+        <div class="card-promo-img">
+          <img src="images/WhatsApp Image 2026-06-23 at 16.18.34 (1).jpeg" alt="">
         </div>
         <div class="card-body">
           <p class="card-desc">ສະໜັບສະໜູນການສຶກສາທຸກລະດັບ ທັງໃນ ແລະ ຕ່າງປະເທດ ດ້ວຍດອກເບ້ຍຕໍ່າ.</p>
@@ -370,6 +407,9 @@
           </div>
           <span class="card-badge badge-popular">ນິຍົມ</span>
         </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອເພື່ອທີ່ຢູ່ອາໄສ.jpeg" alt="">
+        </div>
         <div class="card-body">
           <p class="card-desc">ເປີດໂອກາດເປັນເຈົ້າຂອງທີ່ດິນ ຫຼື ທີ່ພັກອາໄສ ດ້ວຍວົງເງິນສູງ ແລະ ດອກເບ້ຍທ່ຽງທຳ.</p>
           <div class="card-specs">
@@ -397,6 +437,9 @@
           </div>
         </div>
         <div class="card-body">
+          <div class="card-promo-img">
+            <img src="images/ສິນເຊື່ອ ຊາວກະສິກຳ.jpeg" alt="">
+          </div>
           <p class="card-desc">ສ້າງໂອກາດຊາວກະສິກຳ ຂະຫຍາຍກິດຈະການ ດ້ວຍທຶນທີ່ເໝາະສົມ ແລະ ໄລຍະຜ່ອນທີ່ຍືດຫຍຸ່ນ.</p>
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
@@ -423,6 +466,9 @@
             <div class="card-title-en">Government Employee Loan</div>
           </div>
           <span class="card-badge badge-low">ດອກເບ້ຍຕໍ່າ</span>
+        </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອເພື່ອພະນັກງານລັດ.jpeg" alt="">
         </div>
         <div class="card-body">
           <p class="card-desc">ສໍາລັບຂ້າລາດຊະການ ແລະ ພະນັກງານລັດ ດ້ວຍດອກເບ້ຍພິເສດຕໍ່າກວ່າ 3% ຜ່ອນສະບາຍ.</p>
@@ -452,6 +498,9 @@
             <div class="card-title-en">Private Employee Loan</div>
           </div>
         </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອພະນັກງານເອກະຊົນ.jpeg" alt="">
+        </div>
         <div class="card-body">
           <p class="card-desc">ສໍາລັບພະນັກງານບໍລິສັດເອກະຊົນ ດ້ວຍເງື່ອນໄຂງ່າຍ ອະນຸມັດໄວ ໃຊ້ເງິນເດືອນຄໍ້າ.</p>
           <div class="card-specs">
@@ -476,9 +525,12 @@
         <div class="card-header">
           <div class="card-icon-wrap">🛒</div>
           <div class="card-meta">
-            <div class="card-title-lo">ສິນເຊື່ອເພື່ອຄ້າຂາຍ</div>
+            <div class="card-title-lo">ສິນເຊື່ອເພື່ອຄ້າຂາຍທີ່ມີໜ້າຮ້ານ</div>
             <div class="card-title-en">Trade / Commerce Loan</div>
           </div>
+        </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອເພື່ອຮ້ານຂາຍທີ່ມີໜ້າຮ້ານ.jpeg" alt="">
         </div>
         <div class="card-body">
           <p class="card-desc">ສໍາລັບຜູ້ປະກອບການຄ້າຂາຍ ເພີ່ມທຶນໝູນວຽນ ຂະຫຍາຍກິດຈະການ ດ້ວຍດອກເບ້ຍທ່ຽງທຳ.</p>
@@ -508,6 +560,9 @@
           </div>
           <span class="card-badge badge-popular">ນິຍົມ</span>
         </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອເງິນດ່ວນ.jpeg" alt="">
+        </div>
         <div class="card-body">
           <p class="card-desc">ຕ້ອງການເງິນດ່ວນສຸກເສີນ ອະນຸມັດໄວທີ່ສຸດ ເອກະສານໜ້ອຍ ໄດ້ເງິນທັນທີ.</p>
           <div class="card-specs">
@@ -535,6 +590,9 @@
             <div class="card-title-en">Comfort Loan</div>
           </div>
           <span class="card-badge badge-new">ໃໝ່</span>
+        </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອເເສນສະບາຍ.jpeg" alt="">
         </div>
         <div class="card-body">
           <p class="card-desc">ສິນເຊື່ອເພື່ອຄຸນນະພາບຊີວິດທີ່ດີ ຜ່ອນສະບາຍ ດອກເບ້ຍຕໍ່າ ບໍ່ກົດດັນ.</p>
@@ -564,6 +622,9 @@
           </div>
           <span class="card-badge badge-low">ດອກເບ້ຍຕໍ່າ</span>
         </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອ ຝາກຄຳ.jpeg" alt="">
+        </div>
         <div class="card-body">
           <p class="card-desc">ໃຊ້ຄຳເປັນຫຼັກຊັບຄໍ້າປະກັນ ໄດ້ວົງເງິນສູງ ດອກເບ້ຍຕໍ່າ ອະນຸມັດໄວ.</p>
           <div class="card-specs">
@@ -590,6 +651,9 @@
             <div class="card-title-lo">ສິນເຊື່ອເງິນຝາກປະຈຳ</div>
             <div class="card-title-en">Fixed Deposit Collateral Loan</div>
           </div>
+        </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອເງິນຝາກປະຈຳປີ.jpeg" alt="">
         </div>
         <div class="card-body">
           <p class="card-desc">ໃຊ້ເງິນຝາກປະຈຳເປັນຫຼັກຊັບ ໄດ້ວົງເງິນກູ້ສູງ ດອກເບ້ຍຕໍ່າ ອະນຸມັດທັນທີ.</p>
@@ -619,6 +683,9 @@
           </div>
           <span class="card-badge badge-popular">ນິຍົມ</span>
         </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອຈຳໃບ້ຕາດິນ.jpeg" alt="">
+        </div>
         <div class="card-body">
           <p class="card-desc">ໃຊ້ໃບຕາດິນຄໍ້າປະກັນ ໄດ້ວົງເງິນສູງ ດອກເບ້ຍຕໍ່າ ເໝາະສໍາລັບທຸກຈຸດປະສົງ.</p>
           <div class="card-specs">
@@ -645,6 +712,9 @@
             <div class="card-title-en">Vehicle Registration Mortgage</div>
           </div>
           <span class="card-badge badge-popular">ນິຍົມ</span>
+        </div>
+        <div class="card-promo-img">
+          <img src="images/ສິນເຊື່ອໃບ້ທະບຽນລົດ.jpeg" alt="">
         </div>
         <div class="card-body">
           <p class="card-desc">ໃຊ້ທະບຽນລົດຄໍ້າປະກັນ ໄດ້ວົງເງິນໄວ ດອກເບ້ຍຕໍ່າ ໂດຍທີ່ຍັງໃຊ້ລົດໄດ້ຕາມປົກກະຕິ.</p>
