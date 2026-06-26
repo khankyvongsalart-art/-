@@ -5,50 +5,31 @@
   <title>ສະໝັກກູ້ເງິນຊັບທະວີ</title>
   <meta name="description" content="ສະໝັກງ່າຍໆ ພຽງເເຕ່ ໃສ່ຂໍ້ມູນຫາພວກເຮົາ">
   <meta name="keywords" content="ສະໝັກງ່າຍ ເງິນອະນຸມັດໄວ">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --orange:   #ff7200;
-      --orange-dk:#cc5a00;
-      --orange-lt:#ff9c44;
-      --gold:     #C9A84C;
-      --gold-lt:  #E8C97A;
-      --cream:    #FAF6EF;
-      --dark:     #1A1209;
-      --mid:      #4A3728;
-      --light:    #F0E8D8;
+      --orange:   #ff7200; --orange-dk:#cc5a00; --orange-lt:#ff9c44;
+      --gold:     #C9A84C; --gold-lt:  #E8C97A; --cream:    #FAF6EF;
+      --dark:     #1A1209; --mid:      #4A3728; --light:    #F0E8D8;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Noto Sans Lao', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
 
-    /* ===== SOCIAL BAR ===== */
-    .social-bar {
-      background: #ffffff; padding: 0.4rem 2.5rem;
-      position: fixed; top: 0; left: 0; right: 0; z-index: 101;
-      border-bottom: 1px solid rgba(255,114,0,0.15);
-    }
+    .social-bar { background: #ffffff; padding: 0.4rem 2.5rem; position: fixed; top: 0; left: 0; right: 0; z-index: 101; border-bottom: 1px solid rgba(255,114,0,0.15); }
     .social-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
     .social-address { font-size: 0.8rem; color: var(--orange); text-decoration: none; transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .social-address:hover { color: var(--dark); }
     .social-icons { display: flex; gap: 0.5rem; flex-shrink: 0; }
     .social-btn { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; text-decoration: none; color: #fff; transition: transform 0.2s, opacity 0.2s; }
     .social-btn:hover { transform: scale(1.15); opacity: 0.9; }
-    .social-btn.fb { background: #1877F2; }
-    .social-btn.wa { background: #25D366; }
-    .social-btn.tt { background: #000; }
-    .social-btn.yt { background: #FF0000; }
+    .social-btn.fb { background: #1877F2; } .social-btn.wa { background: #25D366; }
+    .social-btn.tt { background: #000; }   .social-btn.yt { background: #FF0000; }
 
-    /* ===== NAVBAR ===== */
-    nav {
-      position: fixed; top: 36px; width: 100%; z-index: 100;
-      background: var(--orange);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2.5rem; height: 72px;
-      box-shadow: 0 2px 16px rgba(255,114,0,0.25);
-    }
+    nav { position: fixed; top: 36px; width: 100%; z-index: 100; background: var(--orange); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; box-shadow: 0 2px 16px rgba(255,114,0,0.25); }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
     .nav-brand { color: #fff; line-height: 1.25; }
     .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 800; }
@@ -58,146 +39,81 @@
     .nav-links a:hover, .nav-links a.active { border-color: #ffe600; color: #ffe600; }
     .nav-cta { background: #fff; border: 2px solid #fff; color: var(--orange); padding: 0.5rem 1.4rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: background 0.2s, transform 0.15s; white-space: nowrap; box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
     .nav-cta:hover { background: #fff3e0; transform: translateY(-1px); }
-
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
     .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--orange); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 700; }
     .mobile-menu a:hover { color: #ffe600; }
 
-    /* ===== PAGE HEADER ===== */
-    .page-header {
-      min-height: 280px; background: #ffffff;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 8rem 2rem 3rem;
-      position: relative; overflow: hidden;
-    }
+    .page-header { min-height: 280px; background: #ffffff; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 3rem; position: relative; overflow: hidden; }
     .page-header::before { content: ''; position: absolute; border-radius: 50%; pointer-events: none; width: 700px; height: 700px; right: -220px; top: -180px; background: radial-gradient(circle, rgba(255,114,0,0.08) 0%, transparent 65%); }
     .page-header::after  { content: ''; position: absolute; border-radius: 50%; pointer-events: none; width: 550px; height: 550px; left: -160px; bottom: -150px; background: radial-gradient(circle, rgba(255,114,0,0.06) 0%, transparent 65%); }
     .page-header-grid { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, rgba(255,114,0,0.12) 1px, transparent 1px); background-size: 40px 40px; }
     .page-header-content { position: relative; z-index: 1; }
-
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      border: 1.5px solid rgba(255,114,0,0.35); background: rgba(255,114,0,0.06);
-      color: var(--orange); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
-      padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 1.25rem;
-      animation: fadeUp 0.7s ease both;
-    }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; border: 1.5px solid rgba(255,114,0,0.35); background: rgba(255,114,0,0.06); color: var(--orange); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 1.25rem; animation: fadeUp 0.7s ease both; }
     .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); display: inline-block; }
     .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: var(--dark); line-height: 1.3; margin-bottom: 0.5rem; animation: fadeUp 0.7s 0.1s ease both; }
     .page-header h1 em { font-style: normal; background: linear-gradient(90deg, var(--orange), var(--orange-lt)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .page-header p { color: var(--mid); font-size: 1rem; animation: fadeUp 0.7s 0.2s ease both; }
 
-    /* ===== STEPS BAR ===== */
     .steps-bar { background: var(--dark); padding: 1.5rem 2rem; }
     .steps-inner { max-width: 500px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
     .step-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; flex: 1; position: relative; }
     .step-item:not(:last-child)::after { content: ''; position: absolute; top: 16px; left: 58%; right: -42%; height: 2px; background: rgba(255,114,0,0.15); transition: background 0.4s; }
     .step-item.done:not(:last-child)::after { background: var(--orange); }
-    .step-circle {
-      width: 34px; height: 34px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; font-weight: 700;
-      background: rgba(255,114,0,0.08); border: 2px solid rgba(255,114,0,0.2);
-      color: rgba(250,246,239,0.35); transition: all 0.35s; position: relative; z-index: 1;
-    }
+    .step-circle { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; background: rgba(255,114,0,0.08); border: 2px solid rgba(255,114,0,0.2); color: rgba(250,246,239,0.35); transition: all 0.35s; position: relative; z-index: 1; }
     .step-item.active .step-circle { background: var(--orange); border-color: var(--orange); color: #fff; box-shadow: 0 0 0 5px rgba(255,114,0,0.22); }
     .step-item.done .step-circle { background: var(--gold); border-color: var(--gold); color: var(--dark); }
     .step-label { font-size: 0.72rem; color: rgba(250,246,239,0.35); text-align: center; line-height: 1.4; transition: color 0.35s; }
     .step-item.active .step-label { color: rgba(250,246,239,0.9); }
     .step-item.done .step-label { color: var(--orange); }
 
-    /* ===== FORM SECTION ===== */
     .form-section { padding: 3rem 2rem 5rem; background: var(--cream); }
     .apply-layout { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; align-items: start; max-width: 1100px; margin: 0 auto; }
     .apply-sidebar { position: sticky; top: 120px; }
-
-    /* FORM CARD */
     .form-card { background: #fff; border: 1px solid rgba(74,55,40,0.1); border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(26,18,9,0.07); }
     .step-panel { display: none; animation: fadeIn 0.35s ease both; }
     .step-panel.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
     .step-title { font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.6rem; }
     .step-title::before { content: ''; width: 4px; height: 1.2rem; background: var(--orange); border-radius: 2px; display: inline-block; flex-shrink: 0; }
     .step-sub { font-size: 0.85rem; color: var(--mid); margin-bottom: 2rem; padding-left: 0.9rem; }
-
-    /* Form fields */
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
     .form-group { margin-bottom: 1.25rem; }
     .form-label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; }
     .form-label .req { color: var(--orange); margin-left: 2px; }
-    .form-input, .form-select, .form-textarea {
-      width: 100%; padding: 0.75rem 1rem;
-      border: 1.5px solid rgba(74,55,40,0.15); border-radius: 8px;
-      font-family: 'Noto Sans Lao', sans-serif; font-size: 0.9rem; color: var(--dark);
-      background: var(--cream); outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-    }
+    .form-input, .form-select, .form-textarea { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid rgba(74,55,40,0.15); border-radius: 8px; font-family: 'Noto Sans Lao', sans-serif; font-size: 0.9rem; color: var(--dark); background: var(--cream); outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
     .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,114,0,0.1); }
     .form-input.error, .form-select.error { border-color: var(--orange); background: rgba(255,114,0,0.03); }
-    .form-select {
-      -webkit-appearance: none; appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A3728' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 12px center; background-color: var(--cream); cursor: pointer;
-    }
+    .form-select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A3728' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-color: var(--cream); cursor: pointer; }
     .form-textarea { resize: vertical; min-height: 100px; }
     .error-msg { font-size: 0.75rem; color: var(--orange); margin-top: 0.3rem; display: none; }
     .form-group.has-error .error-msg { display: block; }
     .form-hint { font-size: 0.75rem; color: var(--mid); margin-top: 0.3rem; }
-
-    /* Amount preview */
-    .amount-display {
-      background: linear-gradient(135deg, var(--orange-dk), var(--orange));
-      border-radius: 12px; padding: 1.25rem 1.5rem;
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 1.5rem; position: relative; overflow: hidden;
-      box-shadow: 0 4px 18px rgba(255,114,0,0.3);
-    }
+    .amount-display { background: linear-gradient(135deg, var(--orange-dk), var(--orange)); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; position: relative; overflow: hidden; box-shadow: 0 4px 18px rgba(255,114,0,0.3); }
     .amount-display::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 24px 24px; }
     .amount-display::after { content: ''; position: absolute; top: -50%; left: -60%; width: 40%; height: 200%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); transform: skewX(-15deg); animation: shimmer 3s infinite; }
     @keyframes shimmer { 0% { left: -60%; } 100% { left: 120%; } }
     .amount-display .lbl { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-bottom: 0.2rem; }
     .amount-display .val { font-size: 1.5rem; font-weight: 800; color: #fff; position: relative; z-index: 1; }
     .amount-display .monthly { text-align: right; position: relative; z-index: 1; }
-
-    /* Consent */
     .consent-box { background: var(--light); border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem; border: 1px solid rgba(255,114,0,0.12); }
     .consent-item { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.75rem; font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
     .consent-item:last-child { margin-bottom: 0; }
     .consent-item input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px; cursor: pointer; accent-color: var(--orange); }
-
-    /* Nav buttons */
     .form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(74,55,40,0.1); }
     .btn-back { background: none; border: 1.5px solid rgba(74,55,40,0.2); color: var(--mid); padding: 0.75rem 1.75rem; border-radius: 8px; font-family: 'Noto Sans Lao', sans-serif; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
     .btn-back:hover { border-color: var(--mid); color: var(--dark); }
-    .btn-next, .btn-submit {
-      background: var(--orange); color: #fff; border: none; padding: 0.75rem 2rem;
-      border-radius: 8px; font-family: 'Noto Sans Lao', sans-serif;
-      font-size: 0.9rem; font-weight: 700; cursor: pointer;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 4px 14px rgba(255,114,0,0.35);
-    }
+    .btn-next, .btn-submit { background: var(--orange); color: #fff; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-family: 'Noto Sans Lao', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 14px rgba(255,114,0,0.35); }
     .btn-next:hover, .btn-submit:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255,114,0,0.45); }
-    .btn-next:active, .btn-submit:active { transform: translateY(0); }
     .btn-submit { padding: 0.85rem 2.5rem; font-size: 1rem; }
-
-    /* ===== SUCCESS ===== */
     .success-panel { display: none; text-align: center; padding: 2rem 1rem; animation: fadeIn 0.5s ease both; }
-    .success-icon {
-      width: 80px; height: 80px; border-radius: 50%;
-      background: rgba(255,114,0,0.1); border: 3px solid var(--orange);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem; margin: 0 auto 1.5rem;
-      animation: popIn 0.5s ease both; color: var(--orange);
-    }
+    .success-icon { width: 80px; height: 80px; border-radius: 50%; background: rgba(255,114,0,0.1); border: 3px solid var(--orange); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1.5rem; animation: popIn 0.5s ease both; color: var(--orange); }
     @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     .success-title { font-size: 1.6rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
     .success-lao   { font-size: 1.1rem; color: var(--orange); margin-bottom: 1rem; font-weight: 700; }
@@ -209,8 +125,6 @@
     .success-steps .ss-title { font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; font-size: 0.9rem; }
     .ss-item { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.83rem; color: var(--mid); line-height: 1.6; margin-bottom: 0.6rem; }
     .ss-num { width: 22px; height: 22px; border-radius: 50%; background: var(--orange); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-
-    /* ===== SIDEBAR ===== */
     .sidebar-card { background: linear-gradient(135deg, #1A1209, #2C1810); border-radius: 14px; padding: 1.75rem; margin-bottom: 1.25rem; box-shadow: 0 4px 16px rgba(26,18,9,0.15); border-left: 4px solid var(--orange); }
     .sidebar-title { color: var(--orange); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
     .sidebar-list { display: flex; flex-direction: column; gap: 0.65rem; }
@@ -220,13 +134,11 @@
     .contact-title { font-weight: 700; color: var(--dark); margin-bottom: 1rem; font-size: 0.9rem; }
     .contact-item { display: flex; gap: 0.6rem; align-items: center; font-size: 0.82rem; color: var(--mid); margin-bottom: 0.6rem; line-height: 1.5; }
 
-    /* ===== FOOTER ===== */
+    /* FOOTER — ຕົ້ນສະບັບ ບໍ່ແຕະ */
     footer { background: #efeded; color: #fff; padding: 2.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 4rem; padding: 2rem 0; }
     .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1rem; color: #000; }
     .footer-contact li { display: flex; align-items: flex-start; gap: 0.75rem; }
-
-    /* Visitor widget */
     .visitor-widget { background: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; font-size: 16px; color: #333; min-width: 400px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
     .vw-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #e0e0e0; }
     .vw-row:last-child { border-bottom: none; }
@@ -234,11 +146,10 @@
     .vw-val { font-weight: 600; color: #222; font-size: 16px; }
     .vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: var(--orange); border-top: 1px solid #eee; padding-top: 6px; }
 
-    /* REVEAL */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE — ຕົ້ນສະບັບ */
     @media (max-width: 768px) {
       .social-bar { padding: 0.4rem 1rem; }
       .social-address { font-size: 0.7rem; max-width: 52vw; }
@@ -260,6 +171,17 @@
       .btn-next, .btn-submit, .btn-back { width: 100%; text-align: center; }
       .amount-display { flex-direction: column; gap: 0.75rem; text-align: center; }
       .amount-display .monthly { text-align: center; }
+    }
+
+    /* ===== MOBILE PATCH ===== */
+    @media (max-width: 768px) {
+      .social-address { display: none; }
+      .social-bar-inner { justify-content: flex-end; }
+      .social-btn { width: 36px; height: 36px; font-size: 0.85rem; }
+      .hamburger { padding: 8px; margin-right: -8px; }
+    }
+    @media (max-width: 390px) {
+      .page-header { padding: 7.5rem 1rem 2.5rem; }
     }
   </style>
 </head>
@@ -294,9 +216,7 @@
   <ul class="nav-links">
     <li><a href="index.html">ໜ້າຫລັກ</a></li>
     <li><a href="products.html">ສິນເຊື່ອ</a></li>
-   
     <li><a href="calculator.html">ຄິດໄລ່</a></li>
-    
   </ul>
   <a href="apply.html" class="nav-cta active">ສະໝັກກູ້ເງິນ</a>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -327,25 +247,15 @@
 <!-- STEPS BAR -->
 <div class="steps-bar">
   <div class="steps-inner">
-    <div class="step-item active" id="stepItem1">
-      <div class="step-circle">1</div>
-      <div class="step-label">ຂໍ້ມູນ<br>ສ່ວນຕົວ</div>
-    </div>
-    <div class="step-item" id="stepItem2">
-      <div class="step-circle">2</div>
-      <div class="step-label">ຂໍ້ມູນ<br>ການເງິນ</div>
-    </div>
-    <div class="step-item" id="stepItem3">
-      <div class="step-circle">3</div>
-      <div class="step-label">ລາຍ<br>ລະອຽດ</div>
-    </div>
+    <div class="step-item active" id="stepItem1"><div class="step-circle">1</div><div class="step-label">ຂໍ້ມູນ<br>ສ່ວນຕົວ</div></div>
+    <div class="step-item" id="stepItem2"><div class="step-circle">2</div><div class="step-label">ຂໍ້ມູນ<br>ການເງິນ</div></div>
+    <div class="step-item" id="stepItem3"><div class="step-circle">3</div><div class="step-label">ລາຍ<br>ລະອຽດ</div></div>
   </div>
 </div>
 
 <!-- FORM -->
 <section class="form-section">
   <div class="apply-layout">
-
     <div class="reveal">
       <div class="form-card">
 
@@ -353,236 +263,65 @@
         <div class="step-panel active" id="panel1">
           <div class="step-title">ຂໍ້ມູນສ່ວນຕົວ</div>
           <div class="step-sub">Personal Information — ກະລຸນາຕື່ມຂໍ້ມູນທີ່ຖືກຕ້ອງ</div>
-
           <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ຊື່ <span class="req">*</span></label>
-              <input type="text" class="form-input" id="firstName" placeholder="ຊື່ຂອງທ່ານ">
-              <div class="error-msg">ກະລຸນາຕື່ມຊື່</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ນາມສະກຸນ <span class="req">*</span></label>
-              <input type="text" class="form-input" id="lastName" placeholder="ນາມສະກຸນ">
-              <div class="error-msg">ກະລຸນາຕື່ມນາມສະກຸນ</div>
-            </div>
+            <div class="form-group"><label class="form-label">ຊື່ <span class="req">*</span></label><input type="text" class="form-input" id="firstName" placeholder="ຊື່ຂອງທ່ານ"><div class="error-msg">ກະລຸນາຕື່ມຊື່</div></div>
+            <div class="form-group"><label class="form-label">ນາມສະກຸນ <span class="req">*</span></label><input type="text" class="form-input" id="lastName" placeholder="ນາມສະກຸນ"><div class="error-msg">ກະລຸນາຕື່ມນາມສະກຸນ</div></div>
           </div>
-
           <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ເບີໂທ <span class="req">*</span></label>
-              <input type="tel" class="form-input" id="phone" placeholder="020 XXXX XXXX">
-              <div class="error-msg">ກະລຸນາຕື່ມເບີໂທ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ອີເມວ</label>
-              <input type="email" class="form-input" id="email" placeholder="example@email.com">
-              <div class="form-hint">ບໍ່ບັງຄັບ</div>
-            </div>
+            <div class="form-group"><label class="form-label">ເບີໂທ <span class="req">*</span></label><input type="tel" class="form-input" id="phone" placeholder="020 XXXX XXXX"><div class="error-msg">ກະລຸນາຕື່ມເບີໂທ</div></div>
+            <div class="form-group"><label class="form-label">ອີເມວ</label><input type="email" class="form-input" id="email" placeholder="example@email.com"><div class="form-hint">ບໍ່ບັງຄັບ</div></div>
           </div>
-
           <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ອາຍຸ <span class="req">*</span></label>
-              <input type="number" class="form-input" id="age" placeholder="ອາຍຸຂອງທ່ານ" min="18" max="70">
-              <div class="error-msg">ກະລຸນາຕື່ມອາຍຸ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ເພດ <span class="req">*</span></label>
-              <select class="form-input form-select" id="sex">
-                <option value="">-- ເລືອກເພດ --</option>
-                <option value="male">ຊາຍ</option>
-                <option value="female">ຍິງ</option>
-                <option value="other">ອື່ນໆ</option>
-              </select>
-              <div class="error-msg">ກະລຸນາເລືອກເພດ</div>
-            </div>
+            <div class="form-group"><label class="form-label">ອາຍຸ <span class="req">*</span></label><input type="number" class="form-input" id="age" placeholder="ອາຍຸຂອງທ່ານ" min="18" max="70"><div class="error-msg">ກະລຸນາຕື່ມອາຍຸ</div></div>
+            <div class="form-group"><label class="form-label">ເພດ <span class="req">*</span></label><select class="form-input form-select" id="sex"><option value="">-- ເລືອກເພດ --</option><option value="male">ຊາຍ</option><option value="female">ຍິງ</option><option value="other">ອື່ນໆ</option></select><div class="error-msg">ກະລຸນາເລືອກເພດ</div></div>
           </div>
-
           <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ເລກບັດປະຈຳຕົວ <span class="req">*</span></label>
-              <input type="text" class="form-input" id="idCard" placeholder="XXXXXXXXXXXXX">
-              <div class="error-msg">ກະລຸນາຕື່ມເລກບັດ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ວັນເດືອນປີເກີດ <span class="req">*</span></label>
-              <input type="date" class="form-input" id="dob">
-              <div class="error-msg">ກະລຸນາເລືອກວັນເດືອນປີ</div>
-            </div>
+            <div class="form-group"><label class="form-label">ເລກບັດປະຈຳຕົວ <span class="req">*</span></label><input type="text" class="form-input" id="idCard" placeholder="XXXXXXXXXXXXX"><div class="error-msg">ກະລຸນາຕື່ມເລກບັດ</div></div>
+            <div class="form-group"><label class="form-label">ວັນເດືອນປີເກີດ <span class="req">*</span></label><input type="date" class="form-input" id="dob"><div class="error-msg">ກະລຸນາເລືອກວັນເດືອນປີ</div></div>
           </div>
-
-          <div class="form-group">
-            <label class="form-label">ທີ່ຢູ່ປັດຈຸບັນ <span class="req">*</span></label>
-            <textarea class="form-textarea form-input" id="address" placeholder="ບ້ານ, ເມືອງ, ແຂວງ"></textarea>
-            <div class="error-msg">ກະລຸນາຕື່ມທີ່ຢູ່</div>
-          </div>
-
-          <div class="form-nav">
-            <div></div>
-            <button class="btn-next" onclick="nextStep(1)">ຕໍ່ໄປ →</button>
-          </div>
+          <div class="form-group"><label class="form-label">ທີ່ຢູ່ປັດຈຸບັນ <span class="req">*</span></label><textarea class="form-textarea form-input" id="address" placeholder="ບ້ານ, ເມືອງ, ແຂວງ"></textarea><div class="error-msg">ກະລຸນາຕື່ມທີ່ຢູ່</div></div>
+          <div class="form-nav"><div></div><button class="btn-next" onclick="nextStep(1)">ຕໍ່ໄປ →</button></div>
         </div>
 
         <!-- STEP 2 -->
         <div class="step-panel" id="panel2">
           <div class="step-title">ຂໍ້ມູນການເງິນ</div>
           <div class="step-sub">Financial Information — ຂໍ້ມູນດ້ານລາຍຮັບ ແລະ ການເຮັດວຽກ</div>
-
           <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ສະຖານະການເຮັດວຽກ <span class="req">*</span></label>
-              <select class="form-select" id="employment">
-                <option value="">— ເລືອກ —</option>
-                <option>ພະນັກງານລັດ</option>
-                <option>ພະນັກງານບໍລິສັດ</option>
-                <option>ນັກທຸລະກິດ</option>
-                <option>ຄ້າຂາຍ</option>
-                <option>ເກສຕຣ</option>
-                <option>ປະຊາຊົນ</option>
-                <option>ນັກສຶກສາ</option>
-                <option>ອື່ນໆ</option>
-              </select>
-              <div class="error-msg">ກະລຸນາເລືອກສະຖານະ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ຊື່ບ່ອນເຮັດວຽກ</label>
-              <input type="text" class="form-input" id="employer" placeholder="ຊື່ອົງກອນ / ບໍລິສັດ">
-            </div>
+            <div class="form-group"><label class="form-label">ສະຖານະການເຮັດວຽກ <span class="req">*</span></label><select class="form-select" id="employment"><option value="">— ເລືອກ —</option><option>ພະນັກງານລັດ</option><option>ພະນັກງານບໍລິສັດ</option><option>ນັກທຸລະກິດ</option><option>ຄ້າຂາຍ</option><option>ເກສຕຣ</option><option>ປະຊາຊົນ</option><option>ນັກສຶກສາ</option><option>ອື່ນໆ</option></select><div class="error-msg">ກະລຸນາເລືອກສະຖານະ</div></div>
+            <div class="form-group"><label class="form-label">ຊື່ບ່ອນເຮັດວຽກ</label><input type="text" class="form-input" id="employer" placeholder="ຊື່ອົງກອນ / ບໍລິສັດ"></div>
           </div>
-
           <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ລາຍຮັບ/ເດືອນ (ກີບ) <span class="req">*</span></label>
-              <input type="number" class="form-input" id="income" placeholder="ຕົວຢ່າງ: 3000000">
-              <div class="error-msg">ກະລຸນາຕື່ມລາຍຮັບ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ລາຍຮັບອື່ນ (ກີບ)</label>
-              <input type="number" class="form-input" id="otherIncome" placeholder="ຖ້າມີ">
-              <div class="form-hint">ບໍ່ບັງຄັບ</div>
-            </div>
+            <div class="form-group"><label class="form-label">ລາຍຮັບ/ເດືອນ (ກີບ) <span class="req">*</span></label><input type="number" class="form-input" id="income" placeholder="ຕົວຢ່າງ: 3000000"><div class="error-msg">ກະລຸນາຕື່ມລາຍຮັບ</div></div>
+            <div class="form-group"><label class="form-label">ລາຍຮັບອື່ນ (ກີບ)</label><input type="number" class="form-input" id="otherIncome" placeholder="ຖ້າມີ"><div class="form-hint">ບໍ່ບັງຄັບ</div></div>
           </div>
-
           <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ໜີ້ສິນ/ເດືອນ (ກີບ)</label>
-              <input type="number" class="form-input" id="debt" placeholder="ຖ້າມີ">
-              <div class="form-hint">ຍອດຜ່ອນໜີ້ທີ່ມີຢູ່ແລ້ວ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ຫຼັກຊັບຄ້ຳປະກັນ</label>
-              <select class="form-select" id="collateral">
-                <option value="">— ເລືອກ —</option>
-                <option>ບໍ່ມີ</option>
-                <option>ໂຕະດິນ / ທີ່ດິນ</option>
-                <option>ເຮືອນ</option>
-                <option>ລົດ</option>
-                <option>ມືຖື(ໄອໂຟນ)</option>
-                <option>ກົນຈັກ</option>
-                <option>ອຸປະກອນເຄື່ອງໃຊ້ຕ່າງໆ</option>
-                <option>ອື່ນໆ</option>
-              </select>
-            </div>
+            <div class="form-group"><label class="form-label">ໜີ້ສິນ/ເດືອນ (ກີບ)</label><input type="number" class="form-input" id="debt" placeholder="ຖ້າມີ"><div class="form-hint">ຍອດຜ່ອນໜີ້ທີ່ມີຢູ່ແລ້ວ</div></div>
+            <div class="form-group"><label class="form-label">ຫຼັກຊັບຄ້ຳປະກັນ</label><select class="form-select" id="collateral"><option value="">— ເລືອກ —</option><option>ບໍ່ມີ</option><option>ໂຕະດິນ / ທີ່ດິນ</option><option>ເຮືອນ</option><option>ລົດ</option><option>ມືຖື(ໄອໂຟນ)</option><option>ກົນຈັກ</option><option>ອຸປະກອນເຄື່ອງໃຊ້ຕ່າງໆ</option><option>ອື່ນໆ</option></select></div>
           </div>
-
-          <div class="form-nav">
-            <button class="btn-back" onclick="prevStep(2)">← ກັບ</button>
-            <button class="btn-next" onclick="nextStep(2)">ຕໍ່ໄປ →</button>
-          </div>
+          <div class="form-nav"><button class="btn-back" onclick="prevStep(2)">← ກັບ</button><button class="btn-next" onclick="nextStep(2)">ຕໍ່ໄປ →</button></div>
         </div>
 
         <!-- STEP 3 -->
         <div class="step-panel" id="panel3">
           <div class="step-title">ລາຍລະອຽດສິນເຊື່ອ</div>
           <div class="step-sub">Loan Details — ຂໍ້ມູນຈຳນວນ ແລະ ປະເພດທີ່ຕ້ອງການ</div>
-
-          <div class="form-group">
-            <label class="form-label">ປະເພດສິນເຊື່ອ <span class="req">*</span></label>
-            <select class="form-select" id="loanType" onchange="updateAmountDisplay()">
-              <option value="">— ເລືອກ —</option>
-              <option>ສິນເຊື່ອເພື່ອການສຶກສາ</option>
-              <option>ສິນເຊື່ອເພື່ອທີ່ຢູ່ອາໄສ</option>
-              <option>ສິນເຊື່ອເພື່ອກະສິກຳ</option>
-              <option>ສິນເຊື່ອSME</option>
-              <option>ສິນເຊື່ອເພຶ່ອຄ້າຂາຍ</option>
-              <option>ສິນເຊື່ອເງິນດ່ວນ</option>
-              <option>ສິນເຊື່ອເງິນກູ້ພະນັງານ</option>
-              <option>ສິນເຊື່ອເງິນກູ້ພະນັກງານເອກະຊົນ</option>
-              <option>ສິນເຊື່ອເເສນສະບາຍ</option>
-              <option>ສິນເຊື່ອລາຍບຸກຄົນ</option>
-              <option>ສິນເຊື່ອຝາກຄຳ(ຄຳປະກັນຄຳ)</option>
-              <option>ສິນເຊື່ອເງິນຝາກປະຈຳ</option>
-              <option>ສິນເຊື່ອຈຳທະບຽນລົດ</option>
-              <option>ສິນເຊື່ອຈຳໃບຕາດິນ</option>
-            </select>
-            <div class="error-msg">ກະລຸນາເລືອກປະເພດ</div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">ຈຸດປະສົງ <span class="req">*</span></label>
-            <input type="text" class="form-input" id="purpose" placeholder="ລະບຸຈຸດປະສົງ...">
-            <div class="error-msg">ກະລຸນາຕື່ມຈຸດປະສົງ</div>
-          </div>
-
+          <div class="form-group"><label class="form-label">ປະເພດສິນເຊື່ອ <span class="req">*</span></label><select class="form-select" id="loanType" onchange="updateAmountDisplay()"><option value="">— ເລືອກ —</option><option>ສິນເຊື່ອເພື່ອການສຶກສາ</option><option>ສິນເຊື່ອເພື່ອທີ່ຢູ່ອາໄສ</option><option>ສິນເຊື່ອເພື່ອກະສິກຳ</option><option>ສິນເຊື່ອSME</option><option>ສິນເຊື່ອເພຶ່ອຄ້າຂາຍ</option><option>ສິນເຊື່ອເງິນດ່ວນ</option><option>ສິນເຊື່ອເງິນກູ້ພະນັງານ</option><option>ສິນເຊື່ອເງິນກູ້ພະນັກງານເອກະຊົນ</option><option>ສິນເຊື່ອເເສນສະບາຍ</option><option>ສິນເຊື່ອລາຍບຸກຄົນ</option><option>ສິນເຊື່ອຝາກຄຳ(ຄຳປະກັນຄຳ)</option><option>ສິນເຊື່ອເງິນຝາກປະຈຳ</option><option>ສິນເຊື່ອຈຳທະບຽນລົດ</option><option>ສິນເຊື່ອຈຳໃບຕາດິນ</option></select><div class="error-msg">ກະລຸນາເລືອກປະເພດ</div></div>
+          <div class="form-group"><label class="form-label">ຈຸດປະສົງ <span class="req">*</span></label><input type="text" class="form-input" id="purpose" placeholder="ລະບຸຈຸດປະສົງ..."><div class="error-msg">ກະລຸນາຕື່ມຈຸດປະສົງ</div></div>
           <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">ຈຳນວນທີ່ຕ້ອງການ (ກີບ) <span class="req">*</span></label>
-              <input type="number" class="form-input" id="loanAmount" placeholder="ຕົວຢ່າງ: 50000000" oninput="updateAmountDisplay()">
-              <div class="error-msg">ກະລຸນາຕື່ມຈຳນວນ</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">ໄລຍະຜ່ອນ <span class="req">*</span></label>
-              <select class="form-select" id="loanTerm" onchange="updateAmountDisplay()">
-                <option value="">— ເລືອກ —</option>
-                <option value="1">1 ເດືອນ</option>
-                <option value="2">2 ເດືອນ</option>
-                <option value="3">3 ເດືອນ</option>
-                <option value="4">4 ເດືອນ</option>
-                <option value="5">5 ເດືອນ</option>
-                <option value="6">6 ເດືອນ</option>
-                <option value="12">12 ເດືອນ (1 ປີ)</option>
-                <option value="24">24 ເດືອນ (2 ປີ)</option>
-                <option value="36">36 ເດືອນ (3 ປີ)</option>
-                <option value="48">48 ເດືອນ (4 ປີ)</option>
-                <option value="60">60 ເດືອນ (5 ປີ)</option>
-                <option value="84">84 ເດືອນ (7 ປີ)</option>
-                <option value="120">120 ເດືອນ (10 ປີ)</option>
-              </select>
-              <div class="error-msg">ກະລຸນາເລືອກໄລຍະ</div>
-            </div>
+            <div class="form-group"><label class="form-label">ຈຳນວນທີ່ຕ້ອງການ (ກີບ) <span class="req">*</span></label><input type="number" class="form-input" id="loanAmount" placeholder="ຕົວຢ່າງ: 50000000" oninput="updateAmountDisplay()"><div class="error-msg">ກະລຸນາຕື່ມຈຳນວນ</div></div>
+            <div class="form-group"><label class="form-label">ໄລຍະຜ່ອນ <span class="req">*</span></label><select class="form-select" id="loanTerm" onchange="updateAmountDisplay()"><option value="">— ເລືອກ —</option><option value="1">1 ເດືອນ</option><option value="2">2 ເດືອນ</option><option value="3">3 ເດືອນ</option><option value="4">4 ເດືອນ</option><option value="5">5 ເດືອນ</option><option value="6">6 ເດືອນ</option><option value="12">12 ເດືອນ (1 ປີ)</option><option value="24">24 ເດືອນ (2 ປີ)</option><option value="36">36 ເດືອນ (3 ປີ)</option><option value="48">48 ເດືອນ (4 ປີ)</option><option value="60">60 ເດືອນ (5 ປີ)</option><option value="84">84 ເດືອນ (7 ປີ)</option><option value="120">120 ເດືອນ (10 ປີ)</option></select><div class="error-msg">ກະລຸນາເລືອກໄລຍະ</div></div>
           </div>
-
           <div class="amount-display" id="amountPreview" style="display:none;">
-            <div style="position:relative;z-index:1;">
-              <div class="lbl">ຈຳນວນກູ້</div>
-              <div class="val" id="previewAmount">—</div>
-            </div>
-            <div class="monthly">
-              <div class="lbl">ຜ່ອນ/ເດືອນ (ປະມານ)</div>
-              <div class="val" id="previewMonthly">—</div>
-            </div>
+            <div style="position:relative;z-index:1;"><div class="lbl">ຈຳນວນກູ້</div><div class="val" id="previewAmount">—</div></div>
+            <div class="monthly"><div class="lbl">ຜ່ອນ/ເດືອນ (ປະມານ)</div><div class="val" id="previewMonthly">—</div></div>
           </div>
-
-          <div class="form-group">
-            <label class="form-label">ຂໍ້ມູນເພີ່ມເຕີມ</label>
-            <textarea class="form-textarea form-input" id="notes" placeholder="ລາຍລະອຽດເພີ່ມເຕີມ ຫຼື ຄຳຖາມ (ຖ້າມີ)"></textarea>
-          </div>
-
+          <div class="form-group"><label class="form-label">ຂໍ້ມູນເພີ່ມເຕີມ</label><textarea class="form-textarea form-input" id="notes" placeholder="ລາຍລະອຽດເພີ່ມເຕີມ ຫຼື ຄຳຖາມ (ຖ້າມີ)"></textarea></div>
           <div class="consent-box">
-            <div class="consent-item">
-              <input type="checkbox" id="consent1">
-              <label for="consent1">ຂ້ອຍຢືນຢັນວ່າຂໍ້ມູນທີ່ຕື່ມທັງໝົດຖືກຕ້ອງ ແລະ ເປັນຄວາມຈິງ</label>
-            </div>
-            <div class="consent-item">
-              <input type="checkbox" id="consent2">
-              <label for="consent2">ຂ້ອຍຍິນຍອມໃຫ້ ສະຖາບັນການເງິນ ຊັບທະວີ ເກັບກຳ ແລະ ໃຊ້ຂໍ້ມູນຂ້ອຍ</label>
-            </div>
+            <div class="consent-item"><input type="checkbox" id="consent1"><label for="consent1">ຂ້ອຍຢືນຢັນວ່າຂໍ້ມູນທີ່ຕື່ມທັງໝົດຖືກຕ້ອງ ແລະ ເປັນຄວາມຈິງ</label></div>
+            <div class="consent-item"><input type="checkbox" id="consent2"><label for="consent2">ຂ້ອຍຍິນຍອມໃຫ້ ສະຖາບັນການເງິນ ຊັບທະວີ ເກັບກຳ ແລະ ໃຊ້ຂໍ້ມູນຂ້ອຍ</label></div>
           </div>
-
-          <div class="form-nav">
-            <button class="btn-back" onclick="prevStep(3)">← ກັບ</button>
-            <button class="btn-submit" onclick="submitForm()">✓ ສົ່ງຄຳຮ້ອງ</button>
-          </div>
+          <div class="form-nav"><button class="btn-back" onclick="prevStep(3)">← ກັບ</button><button class="btn-submit" onclick="submitForm()">✓ ສົ່ງຄຳຮ້ອງ</button></div>
         </div>
 
         <!-- SUCCESS -->
@@ -591,10 +330,7 @@
           <div class="success-title">Application Sent!</div>
           <div class="success-lao">ສົ່ງຄຳຮ້ອງສຳເລັດ 🎉</div>
           <p class="success-desc">ທີມງານຂອງເຮົາໄດ້ຮັບຄຳຮ້ອງຂອງທ່ານແລ້ວ ແລະ ຈະຕິດຕໍ່ກັບທ່ານ ພາຍໃນ 1 ວັນທຳການ</p>
-          <div class="ref-box">
-            <div class="ref-label">ເລກທີຄຳຮ້ອງ / Reference Number</div>
-            <div class="ref-num" id="refNumber">—</div>
-          </div>
+          <div class="ref-box"><div class="ref-label">ເລກທີຄຳຮ້ອງ / Reference Number</div><div class="ref-num" id="refNumber">—</div></div>
           <div class="success-steps">
             <div class="ss-title">ຂັ້ນຕອນຕໍ່ໄປ</div>
             <div class="ss-item"><div class="ss-num">1</div><span>ທີມງານຈະໂທຫາທ່ານ ພາຍໃນ 24 ຊົ່ວໂມງ ເພື່ອຢືນຢັນຂໍ້ມູນ</span></div>
@@ -634,11 +370,10 @@
         <div class="contact-item">🕐 <span>ຈ-ສ: 8:00 - 17:00</span></div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER — ຕົ້ນສະບັບ ບໍ່ແຕະ -->
 <footer>
   <div class="footer-inner">
     <div class="visitor-widget" id="visitorWidget">
@@ -660,16 +395,8 @@
 
 <script>
   let currentStep = 1;
-
-  function nextStep(from) {
-    if (!validateStep(from)) return;
-    currentStep = from + 1;
-    updateSteps(from, currentStep);
-  }
-  function prevStep(from) {
-    currentStep = from - 1;
-    updateSteps(from, currentStep);
-  }
+  function nextStep(from) { if (!validateStep(from)) return; currentStep = from + 1; updateSteps(from, currentStep); }
+  function prevStep(from) { currentStep = from - 1; updateSteps(from, currentStep); }
   function updateSteps(from, to) {
     document.getElementById('panel' + from).classList.remove('active');
     document.getElementById('panel' + to).classList.add('active');
@@ -681,68 +408,43 @@
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
   function validateStep(step) {
-    const required = {
-      1: ['firstName','lastName','phone','idCard','dob','address','age','sex'],
-      2: ['employment','income'],
-      3: ['loanType','purpose','loanAmount','loanTerm'],
-    };
+    const required = { 1: ['firstName','lastName','phone','idCard','dob','address','age','sex'], 2: ['employment','income'], 3: ['loanType','purpose','loanAmount','loanTerm'] };
     let valid = true;
     (required[step] || []).forEach(id => {
-      const el  = document.getElementById(id);
-      const grp = el.closest('.form-group');
-      if (!el.value.trim()) {
-        el.classList.add('error'); grp.classList.add('has-error'); valid = false;
-      } else {
-        el.classList.remove('error'); grp.classList.remove('has-error');
-      }
+      const el = document.getElementById(id); const grp = el.closest('.form-group');
+      if (!el.value.trim()) { el.classList.add('error'); grp.classList.add('has-error'); valid = false; }
+      else { el.classList.remove('error'); grp.classList.remove('has-error'); }
     });
-    if (step === 3 && valid) {
-      if (!document.getElementById('consent1').checked || !document.getElementById('consent2').checked) {
-        alert('ກະລຸນາຍອມຮັບເງື່ອນໄຂທັງໝົດ'); valid = false;
-      }
-    }
+    if (step === 3 && valid) { if (!document.getElementById('consent1').checked || !document.getElementById('consent2').checked) { alert('ກະລຸນາຍອມຮັບເງື່ອນໄຂທັງໝົດ'); valid = false; } }
     return valid;
   }
-
-  document.querySelectorAll('.form-input, .form-select').forEach(el => {
-    el.addEventListener('input', () => { el.classList.remove('error'); el.closest('.form-group')?.classList.remove('has-error'); });
-  });
-
+  document.querySelectorAll('.form-input, .form-select').forEach(el => { el.addEventListener('input', () => { el.classList.remove('error'); el.closest('.form-group')?.classList.remove('has-error'); }); });
   function updateAmountDisplay() {
-    const amount  = parseFloat(document.getElementById('loanAmount').value);
-    const term    = parseInt(document.getElementById('loanTerm').value);
+    const amount = parseFloat(document.getElementById('loanAmount').value);
+    const term = parseInt(document.getElementById('loanTerm').value);
     const preview = document.getElementById('amountPreview');
     if (amount > 0 && term > 0) {
-      const r = 0.03;
-      const monthly = amount * r * Math.pow(1+r, term) / (Math.pow(1+r, term) - 1);
+      const r = 0.03; const monthly = amount * r * Math.pow(1+r, term) / (Math.pow(1+r, term) - 1);
       document.getElementById('previewAmount').textContent  = Math.round(amount).toLocaleString('en-US') + ' ກີບ';
       document.getElementById('previewMonthly').textContent = Math.round(monthly).toLocaleString('en-US') + ' ກີບ';
       preview.style.display = 'flex';
-    } else {
-      preview.style.display = 'none';
-    }
+    } else { preview.style.display = 'none'; }
   }
-
   function submitForm() {
     if (!validateStep(3)) return;
     const ref = 'FIS-' + new Date().getFullYear() + '-' + Math.floor(10000 + Math.random() * 90000);
     const data = {
       ຊື່: (document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value).trim(),
-      ເບີໂທ: document.getElementById('phone').value,
-      ອີເມວ: document.getElementById('email').value || 'ບໍ່ມີ',
-      ເລກບັດ: document.getElementById('idCard').value,
-      ວັນເກີດ: document.getElementById('dob').value,
-      ທີ່ຢູ່: document.getElementById('address').value,
-      ການເຮັດວຽກ: document.getElementById('employment').value,
+      ເບີໂທ: document.getElementById('phone').value, ອີເມວ: document.getElementById('email').value || 'ບໍ່ມີ',
+      ເລກບັດ: document.getElementById('idCard').value, ວັນເກີດ: document.getElementById('dob').value,
+      ທີ່ຢູ່: document.getElementById('address').value, ການເຮັດວຽກ: document.getElementById('employment').value,
       ບ່ອນເຮັດວຽກ: document.getElementById('employer').value || 'ບໍ່ລະບຸ',
       ລາຍຮັບ: Number(document.getElementById('income').value).toLocaleString('en-US') + ' ກີບ',
       ລາຍຮັບອື່ນ: document.getElementById('otherIncome').value ? Number(document.getElementById('otherIncome').value).toLocaleString('en-US') + ' ກີບ' : 'ບໍ່ມີ',
       ໜີ້ສິນ: document.getElementById('debt').value ? Number(document.getElementById('debt').value).toLocaleString('en-US') + ' ກີບ' : 'ບໍ່ມີ',
       ຫຼັກຊັບ: document.getElementById('collateral').value || 'ບໍ່ມີ',
-      ປະເພດສິນເຊື່ອ: document.getElementById('loanType').value,
-      ຈຸດປະສົງ: document.getElementById('purpose').value,
+      ປະເພດສິນເຊື່ອ: document.getElementById('loanType').value, ຈຸດປະສົງ: document.getElementById('purpose').value,
       ຈຳນວນກູ້: Number(document.getElementById('loanAmount').value).toLocaleString('en-US') + ' ກີບ',
       ໄລຍະຜ່ອນ: document.getElementById('loanTerm').options[document.getElementById('loanTerm').selectedIndex].text,
       ໝາຍເຫດ: document.getElementById('notes').value || 'ບໍ່ມີ',
@@ -752,45 +454,22 @@
     msg += '*💼 ຂໍ້ມູນການເງິນ*\n• ການເຮັດວຽກ: ' + data['ການເຮັດວຽກ'] + '\n• ລາຍຮັບ: ' + data['ລາຍຮັບ'] + '\n• ໜີ້ສິນ: ' + data['ໜີ້ສິນ'] + '\n• ຫຼັກຊັບ: ' + data['ຫຼັກຊັບ'] + '\n─────────────────\n';
     msg += '*💰 ລາຍລະອຽດສິນເຊື່ອ*\n• ປະເພດ: ' + data['ປະເພດສິນເຊື່ອ'] + '\n• ຈຸດປະສົງ: ' + data['ຈຸດປະສົງ'] + '\n• ຈຳນວນ: ' + data['ຈຳນວນກູ້'] + '\n• ໄລຍະ: ' + data['ໄລຍະຜ່ອນ'] + '\n• ໝາຍເຫດ: ' + data['ໝາຍເຫດ'];
     window.open('https://wa.me/8562054213555?text=' + encodeURIComponent(msg), '_blank');
-    for (let i = 1; i <= 3; i++) {
-      document.getElementById('panel' + i).classList.remove('active');
-      document.getElementById('stepItem' + i).classList.add('done');
-    }
+    for (let i = 1; i <= 3; i++) { document.getElementById('panel' + i).classList.remove('active'); document.getElementById('stepItem' + i).classList.add('done'); }
     document.getElementById('successPanel').style.display = 'block';
     document.getElementById('refNumber').textContent = ref;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-    document.getElementById('hamburger').classList.toggle('open');
-  }
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
-  }, { threshold: 0.08 });
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); document.getElementById('hamburger').classList.toggle('open'); }
+  const observer = new IntersectionObserver(entries => { entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); }); }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Visitor Widget
   (function() {
-    const now   = new Date();
-    const today = now.toISOString().slice(0, 10);
-    const month = now.toISOString().slice(0, 7);
-    const year  = now.getFullYear().toString();
-    let views = JSON.parse(localStorage.getItem('vw_views') || '{}');
-    views[today] = (views[today] || 0) + 1;
-    localStorage.setItem('vw_views', JSON.stringify(views));
+    const now = new Date(); const today = now.toISOString().slice(0, 10); const month = now.toISOString().slice(0, 7); const year = now.getFullYear().toString();
+    let views = JSON.parse(localStorage.getItem('vw_views') || '{}'); views[today] = (views[today] || 0) + 1; localStorage.setItem('vw_views', JSON.stringify(views));
     if (!sessionStorage.getItem('vw_visited')) {
       sessionStorage.setItem('vw_visited', '1');
-      let vToday = JSON.parse(localStorage.getItem('vw_today') || '{}');
-      vToday[today] = (vToday[today] || 0) + 1;
-      localStorage.setItem('vw_today', JSON.stringify(vToday));
-      let vMonth = JSON.parse(localStorage.getItem('vw_month') || '{}');
-      vMonth[month] = (vMonth[month] || 0) + 1;
-      localStorage.setItem('vw_month', JSON.stringify(vMonth));
-      let vYear = JSON.parse(localStorage.getItem('vw_year') || '{}');
-      vYear[year] = (vYear[year] || 0) + 1;
-      localStorage.setItem('vw_year', JSON.stringify(vYear));
+      let vToday = JSON.parse(localStorage.getItem('vw_today') || '{}'); vToday[today] = (vToday[today] || 0) + 1; localStorage.setItem('vw_today', JSON.stringify(vToday));
+      let vMonth = JSON.parse(localStorage.getItem('vw_month') || '{}'); vMonth[month] = (vMonth[month] || 0) + 1; localStorage.setItem('vw_month', JSON.stringify(vMonth));
+      let vYear  = JSON.parse(localStorage.getItem('vw_year')  || '{}'); vYear[year]  = (vYear[year]  || 0) + 1; localStorage.setItem('vw_year',  JSON.stringify(vYear));
     }
     function fmt(n) { if (n >= 1000) return (n/1000).toFixed(1).replace('.0','') + 'K'; return n; }
     document.getElementById('vw-views').textContent = fmt(views[today] || 0);

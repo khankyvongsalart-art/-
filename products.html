@@ -5,6 +5,7 @@
   <title>ບໍລິການສິນເຊື່ອ ກູ້ເງິນດ່ວນ - ສະຖາບັນການເງິນ ຊັບທະວີ</title>
   <meta name="description" content="ເລືອກສິນເຊື່ອທີ່ເໝາະກັບທ່ານ ສິນເຊື່ອທຸລະກິດ SME ສິນເຊື່ອຊື້ລົດ ແລະ ສິນເຊື່ອອຸປະໂພກບໍລິໂພກ ດອກເບ້ຍຕໍ່າ ອະນຸມັດໄວ">
   <meta name="keywords" content="ກູ້ເງິນ, ສິນເຊື່ອ, ກູ້ເງິນດ່ວນ, ສິນເຊື່ອSME, ຊັບທະວີ">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -29,7 +30,7 @@
     .social-btn.fb { background: #1877F2; } .social-btn.wa { background: #25D366; }
     .social-btn.tt { background: #000; }   .social-btn.yt { background: #FF0000; }
 
-    /* NAVBAR — orange bg, white links, white button */
+    /* NAVBAR */
     nav { position: fixed; top: 36px; width: 100%; z-index: 100; background: var(--orange); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; box-shadow: 0 2px 16px rgba(255,114,0,0.25); }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
     .nav-brand { color: #fff; line-height: 1.25; }
@@ -52,7 +53,7 @@
     .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 600; }
     .mobile-menu a:hover { color: #ffe600; }
 
-    /* PAGE HERO — white/light */
+    /* PAGE HERO */
     .page-hero { background: #ffffff; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; text-align: center; }
     .page-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, rgba(255,114,0,0.12) 1px, transparent 1px); background-size: 40px 40px; opacity: 1; }
     .page-hero::after { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; right: -150px; top: -150px; background: radial-gradient(circle, rgba(255,114,0,0.07) 0%, transparent 65%); }
@@ -109,25 +110,9 @@
     .badge-popular { background: #fff3f2; color: var(--red); border: 1px solid rgba(192,57,43,0.2); }
     .badge-new     { background: #eef5ff; color: #1a5fa8; border: 1px solid rgba(26,95,168,0.2); }
     .badge-low     { background: #f0faf5; color: #187048; border: 1px solid rgba(24,112,72,0.2); }
-    .card-promo-img {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-
-.card-promo-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.card-promo-img img {
-  transition: transform 0.3s ease;
-}
-
-.card-promo-img:hover img {
-  transform: scale(1.2);
-}
+    .card-promo-img { width: 100%; height: 200px; overflow: hidden; }
+    .card-promo-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+    .card-promo-img:hover img { transform: scale(1.2); }
 
     /* WHY US */
     #why { background: linear-gradient(160deg, #1a0d04, #2e1007, #1a1209); padding: 4rem 2rem; }
@@ -151,13 +136,11 @@
     .btn-cta { display: inline-block; background: #fff; color: var(--orange); padding: 1rem 2.6rem; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.05rem; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
     .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 
-    /* FOOTER */
+    /* FOOTER — ຕົ້ນສະບັບ ບໍ່ແຕະ */
     footer { background: #efeded; padding: 2.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 4rem; padding: 2rem 0; }
     .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1rem; color: #000; }
     .footer-contact li { display: flex; align-items: flex-start; gap: 0.75rem; }
-
-    /* VISITOR WIDGET */
     .visitor-widget { background: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; font-size: 16px; color: #333; min-width: 400px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
     .vw-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #e0e0e0; }
     .vw-row:last-child { border-bottom: none; }
@@ -169,7 +152,7 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE — ຕົ້ນສະບັບ */
     @media (max-width: 768px) {
       .social-bar { padding: 0.4rem 1rem; }
       .social-address { font-size: 0.7rem; max-width: 52vw; }
@@ -188,6 +171,21 @@
       .nav-brand .en { display: none; }
       .why-grid { grid-template-columns: 1fr; }
       section { padding: 3rem 1.25rem; }
+    }
+
+    /* ===== MOBILE PATCH ===== */
+    @media (max-width: 768px) {
+      /* FIX 1: Social icons ໃຫຍ່ຂຶ້ນ, ຊ່ອນ address */
+      .social-address { display: none; }
+      .social-bar-inner { justify-content: flex-end; }
+      .social-btn { width: 36px; height: 36px; font-size: 0.85rem; }
+      /* FIX 2: Hamburger tap area */
+      .hamburger { padding: 8px; margin-right: -8px; }
+      /* FIX 3: filter bar sticky ຕ່ຳລົງ (nav 60px + social 32px) */
+      .filter-bar { top: 92px; }
+    }
+    @media (max-width: 390px) {
+      .page-hero { padding: 7.5rem 1rem 2.5rem; }
     }
   </style>
 </head>
@@ -222,9 +220,7 @@
   <ul class="nav-links">
     <li><a href="index.html">ໜ້າຫລັກ</a></li>
     <li><a href="products.html" class="active">ສິນເຊື່ອ</a></li>
-    
     <li><a href="calculator.html">ຄິດໄລ່</a></li>
-    
   </ul>
   <a href="apply.html" class="nav-cta">ສະໝັກກູ້ເງິນ</a>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -269,8 +265,6 @@
   <div class="container">
     <div class="products-grid">
 
-     
-
       <div class="product-card reveal" data-cat="business">
         <div class="card-header">
           <div class="card-icon-wrap">
@@ -290,7 +284,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">3ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
-             
           </div>
           <ul class="card-features">
             <li>ທຶນໝູນວຽນ ແລະ ທຶນລົງທຶນ SME</li>
@@ -305,7 +298,7 @@
           <a href="#" class="btn-detail">ລາຍລະອຽດ</a>
         </div>
       </div>
-      
+
       <div class="product-card reveal" data-cat="personal">
         <div class="card-header">
           <div class="card-icon-wrap">
@@ -356,7 +349,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
-            
           </div>
           <ul class="card-features">
             <li>ບໍ່ຕ້ອງມີຫຼັກຊັບຄໍ້າປະກັນ</li>
@@ -439,8 +431,8 @@
           </div>
         </div>
         <div class="card-promo-img">
-            <img src="images/ສິນເຊື່ອ ຊາວກະສິກຳ.jpeg" alt="">
-          </div>
+          <img src="images/ສິນເຊື່ອ ຊາວກະສິກຳ.jpeg" alt="">
+        </div>
         <div class="card-body">
           <p class="card-desc">ສ້າງໂອກາດຊາວກະສິກຳ ຂະຫຍາຍກິດຈະການ ດ້ວຍທຶນທີ່ເໝາະສົມ ແລະ ໄລຍະຜ່ອນທີ່ຍືດຫຍຸ່ນ.</p>
           <div class="card-specs">
@@ -477,7 +469,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">2.99%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">36 ງວດ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
-            
           </div>
           <ul class="card-features">
             <li>ສໍາລັບພະນັກງານລັດ / ຂ້າລາດຊະການ</li>
@@ -508,7 +499,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">36 ງວດ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
-            
           </div>
           <ul class="card-features">
             <li>ສໍາລັບພະນັກງານບໍລິສັດເອກະຊົນ</li>
@@ -539,7 +529,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ໄລຍະ</div></div>
-            
           </div>
           <ul class="card-features">
             <li>ທຶນໝູນວຽນສໍາລັບຮ້ານຄ້າ</li>
@@ -570,7 +559,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">5%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">5ເດືອນ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
-            
           </div>
           <ul class="card-features">
             <li>ອະນຸມັດດ່ວນທີ່ສຸດ</li>
@@ -601,7 +589,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
-           
           </div>
           <ul class="card-features">
             <li>ຜ່ອນງ່າຍ ສະບາຍໃຈ</li>
@@ -632,7 +619,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">2%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
-    
           </div>
           <ul class="card-features">
             <li>ໃຊ້ຄຳທອງເປັນຫຼັກຊັບ</li>
@@ -662,7 +648,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
-           
           </div>
           <ul class="card-features">
             <li>ໃຊ້ປຶ້ມຝາກເງິນປະຈຳຄໍ້າ</li>
@@ -693,7 +678,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">3 ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
-            
           </div>
           <ul class="card-features">
             <li>ໃຊ້ໃບຕາດິນ (ນສ.3, ນສ.4) ຄໍ້າ</li>
@@ -706,6 +690,7 @@
           <a href="#" class="btn-detail">ລາຍລະອຽດ</a>
         </div>
       </div>
+
       <div class="product-card reveal" data-cat="auto">
         <div class="card-header">
           <div class="card-icon-wrap">🚘</div>
@@ -723,7 +708,6 @@
           <div class="card-specs">
             <div class="spec-item"><div class="spec-val">3%</div><div class="spec-lbl">ດອກເບ້ຍ/ປີ</div></div>
             <div class="spec-item"><div class="spec-val">3ປີ</div><div class="spec-lbl">ຜ່ອນໄດ້</div></div>
-            
           </div>
           <ul class="card-features">
             <li>ໃຊ້ທະບຽນລົດຄໍ້າ ບໍ່ຕ້ອງຝາກລົດ</li>
@@ -737,6 +721,7 @@
           <a href="#" class="btn-detail">ລາຍລະອຽດ</a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -763,7 +748,7 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER — ຕົ້ນສະບັບ ບໍ່ແຕະ -->
 <footer>
   <div class="footer-inner">
     <div class="visitor-widget" id="visitorWidget">

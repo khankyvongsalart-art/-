@@ -5,6 +5,7 @@
   <title>ສະຖາບັນການເງິນ ຊັບທະວີ - ບໍລິການສິນເຊື່ອ ແລະ ປະກັນໄພ</title>
   <meta name="description" content="ສະຖາບັນການເງິນ ຊັບທະວີ ບໍລິການສິນເຊື່ອອຸປະໂພກ ບໍລິໂພກ, ສິນເຊື່ອທຸລະກິດ ແລະ ປະກັນໄພ ອະນຸມັດໄວ ເງື່ອນໄຂງ່າຍດາຍ">
   <meta name="keywords" content="ກູ້ເງິນ, ສິນເຊື່ອ, ປະກັນໄພ, ຊັບທະວີ, ສະຖາບັນການເງິນ">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -81,7 +82,6 @@
       border-color: #ffe600; color: #ffe600;
     }
 
-    /* CTA button: white bg, orange text */
     .nav-cta {
       background: #ffffff;
       border: 2px solid #ffffff;
@@ -94,7 +94,6 @@
     }
     .nav-cta:hover { background: #fff3e0; transform: translateY(-1px); }
 
-    /* Hamburger */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       cursor: pointer; background: none; border: none; padding: 4px;
@@ -104,7 +103,6 @@
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Mobile Menu — keep orange bg for mobile */
     .mobile-menu {
       display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: var(--orange); z-index: 99;
@@ -114,7 +112,7 @@
     .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 700; }
     .mobile-menu a:hover { color: #ffe600; }
 
-    /* ===== HERO — light / white theme ===== */
+    /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       background: #ffffff;
@@ -123,12 +121,10 @@
       position: relative; overflow: hidden;
       padding: 10rem 2rem 5rem;
     }
-    /* soft orange glow blobs */
     .hero::before, .hero::after { content: ''; position: absolute; border-radius: 50%; pointer-events: none; }
     .hero::before { width: 700px; height: 700px; right: -220px; top: -180px; background: radial-gradient(circle, rgba(255,114,0,0.08) 0%, transparent 65%); }
     .hero::after  { width: 550px; height: 550px; left: -160px; bottom: -150px; background: radial-gradient(circle, rgba(255,114,0,0.06) 0%, transparent 65%); }
 
-    /* subtle dot grid */
     .hero-grid {
       position: absolute; inset: 0; pointer-events: none;
       background-image: radial-gradient(circle, rgba(255,114,0,0.12) 1px, transparent 1px);
@@ -191,7 +187,6 @@
     }
     .btn-outline:hover { background: rgba(255,114,0,0.06); border-color: var(--orange); transform: translateY(-2px); }
 
-    /* Stats Bar */
     .stats-bar {
       position: relative; z-index: 2; width: 100%; max-width: 700px;
       display: flex; justify-content: center; margin-top: 4.5rem;
@@ -255,24 +250,10 @@
     .promo-card.fast-card .promo-expire { color:rgba(255,255,255,0.38); }
     .promo-card.fast-card .promo-link   { color:var(--gold-lt); }
     .fast-icon { font-size:2.2rem; display:block; margin-bottom:0.5rem; }
-    /* ===== CARD PROMO IMAGE ===== */
-.card-promo-img {
-  width: 100%;
-  height: 100px;
-  overflow: hidden;
-}
+    .card-promo-img { width: 100%; height: 100px; overflow: hidden; }
+    .card-promo-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s ease; }
+    .product-card:hover .card-promo-img img { transform: scale(1.05); }
 
-.card-promo-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.45s ease;
-}
-
-.product-card:hover .card-promo-img img {
-  transform: scale(1.05);
-}
     /* ===== SERVICES ===== */
     #services { background: var(--cream); }
     .services-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
@@ -298,13 +279,11 @@
     .btn-cta { display: inline-block; background: #fff; color: var(--orange); padding: 1rem 2.6rem; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.05rem; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
     .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 
-    /* ===== FOOTER ===== */
+    /* ===== FOOTER — ຕົ້ນສະບັບ ບໍ່ແຕະ ===== */
     footer { background: #efeded; color: #fff; padding: 2.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 4rem; padding: 2rem 0; }
     .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1rem; color: #000; }
     .footer-contact li { display: flex; align-items: flex-start; gap: 0.75rem; }
-
-    /* Visitor widget */
     .visitor-widget { background: #ffffff; border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; font-size: 16px; color: #333; min-width: 400px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
     .vw-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #e0e0e0; }
     .vw-row:last-child { border-bottom: none; }
@@ -343,6 +322,27 @@
       .services-grid { grid-template-columns: 1fr; }
       section { padding: 3rem 1.25rem; }
     }
+
+    /* ===== MOBILE PATCH — ເພີ່ມສະເພາະ 3 ຈຸດທີ່ບໍ່ກ່ຽວ footer ===== */
+    @media (max-width: 768px) {
+      /* FIX 1: Social icons ໃຫຍ່ຂຶ້ນ tap target */
+      .social-address { display: none; }
+      .social-bar-inner { justify-content: flex-end; }
+      .social-btn { width: 36px; height: 36px; font-size: 0.85rem; }
+      /* FIX 2: Stats bar 3 cols ແທນ vertical stack */
+      .stats-bar { flex-direction: row !important; width: 92%; margin-top: 2rem; }
+      .stat { border-right: 1px solid rgba(255,114,0,0.12) !important; border-bottom: none !important; padding: 0.9rem 0.5rem; }
+      .stat:last-child { border-right: none !important; }
+      .stat-num { font-size: 1.5rem; }
+      .stat-label { font-size: 0.72rem; }
+      /* FIX 3: Hamburger tap area */
+      .hamburger { padding: 8px; margin-right: -8px; }
+    }
+    @media (max-width: 390px) {
+      .hero { padding: 7.5rem 1rem 2.5rem; }
+      .stat-num { font-size: 1.25rem; }
+      .stat-label { font-size: 0.65rem; }
+    }
   </style>
 </head>
 <body>
@@ -376,9 +376,7 @@
   <ul class="nav-links">
     <li><a href="index.html">ໜ້າຫລັກ</a></li>
     <li><a href="products.html">ສິນເຊື່ອ</a></li>
-    
     <li><a href="calculator.html">ຄິດໄລ່</a></li>
-   
   </ul>
   <a href="apply.html" class="nav-cta">ສະໝັກກູ້ເງິນ</a>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -511,9 +509,6 @@
     </div>
   </div>
 </section>
-
-<!-- TESTIMONIALS -->
-
 
 <!-- CTA -->
 <section id="cta">
