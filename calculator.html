@@ -50,8 +50,6 @@
     .nav-links a:hover, .nav-links a.active { border-color: #ffe600; color: #ffe600; }
     .nav-cta { background: #ffffff; border: 2px solid #ffffff; color: var(--orange); padding: 0.5rem 1.4rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: background 0.2s, transform 0.15s; white-space: nowrap; box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
     .nav-cta:hover { background: #fff3e0; transform: translateY(-1px); }
-
-    /* Hamburger */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -98,7 +96,6 @@
     select.form-input-text { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A3728' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-color: var(--cream); cursor: pointer; }
     .calc-btn { width: 100%; padding: 0.9rem; background: var(--orange); color: #fff; border: none; border-radius: 8px; font-family: 'Noto Sans Lao', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; margin-top: 0.5rem; box-shadow: 0 4px 18px rgba(255,114,0,0.38); }
     .calc-btn:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 6px 22px rgba(255,114,0,0.45); }
-    .calc-btn:active { transform: translateY(0); }
     .result-panel { display: flex; flex-direction: column; gap: 1.25rem; }
     .result-highlight { background: linear-gradient(135deg, #cc5a00, #ff7200); border-radius: 16px; padding: 2rem; text-align: center; position: relative; overflow: hidden; box-shadow: 0 8px 28px rgba(255,114,0,0.38); }
     .result-highlight::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 28px 28px; }
@@ -176,7 +173,7 @@
     tr.last-row td { font-weight: 700; color: var(--orange); background: rgba(255,114,0,0.06); }
     .more-rows { text-align: center; padding: 0.75rem; font-size: 0.78rem; color: var(--mid); background: var(--light); }
 
-    /* FOOTER — ຕົ້ນສະບັບ ບໍ່ແຕະ */
+    /* FOOTER */
     footer { background: #efeded; color: #fff; padding: 2.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 4rem; padding: 2rem 0; }
     .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1rem; color: #000; }
@@ -202,7 +199,6 @@
     @media (max-width: 900px) { .summary-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 768px) {
       .social-bar { padding: 0.4rem 1rem; }
-      .social-address { font-size: 0.7rem; max-width: 52vw; }
       nav { padding: 0 1rem; top: 32px; }
       .nav-links { display: none; }
       .nav-cta { display: none; }
@@ -228,11 +224,13 @@
 
     /* ===== MOBILE PATCH ===== */
     @media (max-width: 768px) {
-      .social-address { display: none; }
-      .social-bar-inner { justify-content: flex-end; }
+      /* FIX 1: Social bar — ສະແດງ GPS ແຕ່ຫຍໍ້ text, icons ໃຫຍ່ຂຶ້ນ */
+      .social-address { display: block; font-size: 0.68rem; max-width: 55vw; }
+      .social-bar-inner { justify-content: space-between; }
       .social-btn { width: 36px; height: 36px; font-size: 0.85rem; }
+      /* FIX 2: Hamburger tap area */
       .hamburger { padding: 8px; margin-right: -8px; }
-      /* FIX: Nav top offset ໃຫ້ພໍດີກັບ social bar ທີ່ icon ໃຫຍ່ຂຶ້ນ (ແກ້ໂລໂກ້ຖືກບັງ/ຕັດເທິງ) */
+      /* FIX 3: Nav top offset ສຳລັບ social bar ສູງ 50px */
       nav { top: 50px; }
     }
     @media (max-width: 390px) {
@@ -259,14 +257,15 @@
 
 <!-- NAVBAR -->
 <nav>
-  <a href="index.html" style="text-decoration:none; color: inherit;">
-  <div class="nav-logo">
-    <img src="images/LOGO-FINAL-01.png" alt="logo" style="height:56px;">
-    <div class="nav-brand">
-      <span class="lo">ສະຖາບັນການເງິນ ຊັບທະວີ</span>
-      <span class="en">Financial Institutes Sapthavy</span>
+  <!-- FIX: display:contents ແກ້ gap ລະຫວ່າງ logo ແລະ nav links -->
+  <a href="index.html" style="text-decoration:none; color:inherit; display:contents;">
+    <div class="nav-logo">
+      <img src="images/LOGO-FINAL-01.png" alt="logo" style="height:56px;">
+      <div class="nav-brand">
+        <span class="lo">ສະຖາບັນການເງິນ ຊັບທະວີ</span>
+        <span class="en">Financial Institutes Sapthavy</span>
+      </div>
     </div>
-  </div>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">ໜ້າຫລັກ</a></li>
@@ -408,7 +407,7 @@
   </div>
 </section>
 
-<!-- FOOTER — ຕົ້ນສະບັບ ບໍ່ແຕະ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="visitor-widget" id="visitorWidget">
