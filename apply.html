@@ -134,7 +134,7 @@
     .contact-title { font-weight: 700; color: var(--dark); margin-bottom: 1rem; font-size: 0.9rem; }
     .contact-item { display: flex; gap: 0.6rem; align-items: center; font-size: 0.82rem; color: var(--mid); margin-bottom: 0.6rem; line-height: 1.5; }
 
-    /* FOOTER — ຕົ້ນສະບັບ ບໍ່ແຕະ */
+    /* FOOTER */
     footer { background: #efeded; color: #fff; padding: 2.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 4rem; padding: 2rem 0; }
     .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1rem; color: #000; }
@@ -149,7 +149,6 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* RESPONSIVE — ຕົ້ນສະບັບ */
     @media (max-width: 768px) {
       .social-bar { padding: 0.4rem 1rem; }
       .social-address { font-size: 0.7rem; max-width: 52vw; }
@@ -175,11 +174,11 @@
 
     /* ===== MOBILE PATCH ===== */
     @media (max-width: 768px) {
-      .social-address { display: none; }
-      .social-bar-inner { justify-content: flex-end; }
+      /* FIX: GPS ສະແດງ, icons ໃຫຍ່ຂຶ້ນ */
+      .social-address { display: block; font-size: 0.68rem; max-width: 55vw; }
+      .social-bar-inner { justify-content: space-between; }
       .social-btn { width: 36px; height: 36px; font-size: 0.85rem; }
       .hamburger { padding: 8px; margin-right: -8px; }
-      /* FIX: Nav top offset ໃຫ້ພໍດີກັບ social bar ທີ່ icon ໃຫຍ່ຂຶ້ນ (ແກ້ໂລໂກ້ຖືກບັງ/ຕັດເທິງ) */
       nav { top: 50px; }
     }
     @media (max-width: 390px) {
@@ -206,14 +205,14 @@
 
 <!-- NAVBAR -->
 <nav>
-  <a href="index.html" style="text-decoration:none; color: inherit;">
-  <div class="nav-logo">
-    <img src="images/LOGO-FINAL-01.png" alt="logo" style="height:56px;">
-    <div class="nav-brand">
-      <span class="lo">ສະຖາບັນການເງິນ ຊັບທະວີ</span>
-      <span class="en">Financial Institutes Sapthavy</span>
+  <a href="index.html" style="text-decoration:none; color:inherit; display:contents;">
+    <div class="nav-logo">
+      <img src="images/LOGO-FINAL-01.png" alt="logo" style="height:56px;">
+      <div class="nav-brand">
+        <span class="lo">ສະຖາບັນການເງິນ ຊັບທະວີ</span>
+        <span class="en">Financial Institutes Sapthavy</span>
+      </div>
     </div>
-  </div>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">ໜ້າຫລັກ</a></li>
@@ -373,7 +372,7 @@
   </div>
 </section>
 
-<!-- FOOTER — ຕົ້ນສະບັບ ບໍ່ແຕະ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="visitor-widget" id="visitorWidget">
