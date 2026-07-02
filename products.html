@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="lo">
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -19,8 +19,11 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Noto Sans Lao', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
 
+    /* ===== HEADER WRAP (social-bar + nav stacked together, fixed as one unit) ===== */
+    .header-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 101; -webkit-transform: translateZ(0); transform: translateZ(0); will-change: transform; }
+
     /* SOCIAL BAR */
-    .social-bar { background: #ffffff; padding: 0.4rem 2.5rem; position: fixed; top: 0; left: 0; right: 0; z-index: 101; border-bottom: 1px solid rgba(255,114,0,0.15); }
+    .social-bar { background: #ffffff; padding: 0.4rem 2.5rem; position: relative; border-bottom: 1px solid rgba(255,114,0,0.15); }
     .social-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
     .social-address { font-size: 0.8rem; color: var(--orange); text-decoration: none; transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .social-address:hover { color: var(--dark); }
@@ -31,7 +34,7 @@
     .social-btn.tt { background: #000; }   .social-btn.yt { background: #FF0000; }
 
     /* NAVBAR */
-    nav { position: fixed; top: 36px; width: 100%; z-index: 100; background: var(--orange); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; box-shadow: 0 2px 16px rgba(255,114,0,0.25); }
+    nav { position: relative; width: 100%; z-index: 100; background: var(--orange); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; box-shadow: 0 2px 16px rgba(255,114,0,0.25); }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
     .nav-brand { color: #fff; line-height: 1.25; }
     .nav-brand .lo { display: block; font-size: 1.05rem; font-weight: 800; color: #fff; }
@@ -52,7 +55,7 @@
     .mobile-menu a:hover { color: #ffe600; }
 
     /* PAGE HERO */
-    .page-hero { background: #ffffff; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; text-align: center; }
+    .page-hero { background: #ffffff; padding: calc(var(--header-h, 108px) + 2rem) 2rem 4rem; position: relative; overflow: hidden; text-align: center; }
     .page-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, rgba(255,114,0,0.12) 1px, transparent 1px); background-size: 40px 40px; }
     .page-hero::after { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; right: -150px; top: -150px; background: radial-gradient(circle, rgba(255,114,0,0.07) 0%, transparent 65%); }
     .page-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
@@ -64,7 +67,7 @@
     .page-hero p { font-size: 1rem; color: var(--mid); line-height: 1.8; animation: fadeUp 0.7s 0.3s ease both; }
 
     /* FILTER TABS */
-    .filter-bar { background: #fff; border-bottom: 1px solid rgba(74,55,40,0.08); position: sticky; top: 108px; z-index: 50; padding: 0 2rem; }
+    .filter-bar { background: #fff; border-bottom: 1px solid rgba(74,55,40,0.08); position: sticky; top: var(--header-h, 108px); z-index: 50; padding: 0 2rem; }
     .filter-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
     .filter-inner::-webkit-scrollbar { display: none; }
     .filter-btn { flex-shrink: 0; background: none; border: none; cursor: pointer; font-family: 'Noto Sans Lao', sans-serif; font-size: 0.88rem; font-weight: 500; color: var(--mid); padding: 1rem 1.4rem; border-bottom: 2.5px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
@@ -148,7 +151,7 @@
 
     @media (max-width: 768px) {
       .social-bar { padding: 0.4rem 1rem; }
-      nav { padding: 0 1rem; top: 32px; }
+      nav { padding: 0 1rem; }
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .hamburger { display: flex; }
@@ -173,23 +176,20 @@
       .social-btn { width: 36px; height: 36px; font-size: 0.85rem; }
       /* FIX 2: Hamburger tap area */
       .hamburger { padding: 8px; margin-right: -8px; }
-      /* FIX 3: filter bar sticky ຕ່ຳລົງ */
-      .filter-bar { top: 120px; }
-      /* FIX 4: Nav top offset */
-      nav { top: 50px; }
     }
     @media (max-width: 390px) {
-      .page-hero { padding: 7.5rem 1rem 2.5rem; }
+      .page-hero { padding: calc(var(--header-h, 100px) + 1rem) 1rem 2.5rem; }
     }
   </style>
 </head>
 <body>
 
+<div class="header-wrap">
 <!-- SOCIAL BAR -->
 <div class="social-bar">
   <div class="social-bar-inner">
     <a href="https://maps.google.com/?q=326+Unit+16+Sikhay+Vientiane" target="_blank" class="social-address">
-      📍 ສຳນັກງານຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ
+      <img src="images/location.png" alt="location" style="height: 25px;"> ສຳນັກງານຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ
     </a>
     <div class="social-icons">
       <a href="https://www.facebook.com/SapthavyFIS/" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
@@ -202,7 +202,7 @@
 
 <!-- NAVBAR -->
 <nav>
-  <a href="index.html" style="text-decoration:none; color:inherit; display:contents;">
+  <a href="index.html" style="text-decoration:none; color:inherit; display:flex; align-items:center;">
     <div class="nav-logo">
       <img src="images/LOGO-FINAL-01.png" alt="logo" style="height:56px;">
       <div class="nav-brand">
@@ -221,6 +221,7 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
+</div>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
@@ -744,23 +745,31 @@
 <footer>
   <div class="footer-inner">
     <div class="visitor-widget" id="visitorWidget">
-      <div class="vw-row"><span class="vw-left">📶 User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
-      <div class="vw-row"><span class="vw-left">👁️ View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
-      <div class="vw-row"><span class="vw-left">👤 Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
-      <div class="vw-row"><span class="vw-left">👥 Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
-      <div class="vw-row"><span class="vw-left">👤 Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
+      <div class="vw-row"><span class="vw-left"><img src="images/inter.png" alt="inter" style="height: 20px;"> User Online Now</span><span class="vw-val" id="vw-online">1</span></div>
+      <div class="vw-row"><span class="vw-left"><img src="images/eye.png" alt="eye" style="height: 20px;"> View Page for today</span><span class="vw-val" id="vw-views">0</span></div>
+      <div class="vw-row"><span class="vw-left"><img src="images/single.png" alt="s" style="height: 20px;"> Visitors for today</span><span class="vw-val" id="vw-today">0</span></div>
+      <div class="vw-row"><span class="vw-left"><img src="images/group.png" alt="" style="height: 20px;"> Visitors for this month</span><span class="vw-val" id="vw-month">0</span></div>
+      <div class="vw-row"><span class="vw-left"><img src="images/single.png" alt="" style="height: 20px;"> Visitors for this year</span><span class="vw-val" id="vw-year">0</span></div>
       <div class="vw-footer">📊 sapthavy.com</div>
     </div>
     <ul class="footer-contact">
-      <li>📍 ສຳນັກງານ ຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ</li>
-      <li>📧 ອີເມວ : contact@sapthavy.com</li>
-      <li>📞 ໂທລະສັບ : (+85621)520722, 02054213555</li>
-      <li>🌐 ເວັບໄຊ້ : www.sapthavy.com</li>
+       <li><img src="images/lo.png" alt="location" style="height: 30px;"> ສຳນັກງານ ຕັ້ງຢູ່ ບ້ານ ສີໄຄທົ່ງ, ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ</li>
+      <li><img src="images/email (2).png" alt="email" style="height: 30px;"> ອີເມວ : contact@sapthavy.com</li>
+      <li><img src="images/phone (1).png" alt="phone" style="height: 30px;"> ໂທລະສັບ : (+85621)520722, 02054213555</li>
+      <li><img src="images/internet.png" alt="globe" style="height: 30px;"> ເວັບໄຊ້ : www.sapthavy.com</li>
     </ul>
   </div>
 </footer>
 
 <script>
+  function setHeaderOffset() {
+    const hw = document.querySelector('.header-wrap');
+    if (hw) document.documentElement.style.setProperty('--header-h', hw.offsetHeight + 'px');
+  }
+  window.addEventListener('DOMContentLoaded', setHeaderOffset);
+  window.addEventListener('load', setHeaderOffset);
+  window.addEventListener('resize', setHeaderOffset);
+
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
     document.getElementById('hamburger').classList.toggle('open');
