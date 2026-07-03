@@ -803,8 +803,8 @@
     db.ref('stats/views/' + today).transaction((v) => (v || 0) + 1);
 
     // ---- ນັບຄົນ unique (ຄັ້ງດຽວຕໍ່ session) ----
-    if (!sessionStorage.getItem('vw_visited')) {
-      sessionStorage.setItem('vw_visited', '1');
+    if (!sessionStorage.getItem('vw_visited_v2')) {
+      sessionStorage.setItem('vw_visited_2', '1');
       db.ref('stats/today/' + today).transaction((v) => (v || 0) + 1);
       db.ref('stats/month/' + month).transaction((v) => (v || 0) + 1);
       db.ref('stats/year/' + year).transaction((v) => (v || 0) + 1);
