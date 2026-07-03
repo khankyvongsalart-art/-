@@ -760,7 +760,75 @@
     </ul>
   </div>
 </footer>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCsXTkMud5NXdygV6x29Mb_zAk_TEz4H5E",
+    authDomain: "sapthavy-wab.firebaseapp.com",
+    databaseURL: "https://sapthavy-wab-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "sapthavy-wab",
+    storageBucket: "sapthavy-wab.firebasestorage.app",
+    messagingSenderId: "238613325403",
+    appId: "1:238613325403:web:57b2fd4c956f901b99817e"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  (function () {
+    const now = new Date();
+    const today = now.toISOString().slice(0, 10);
+    const month = now.toISOString().slice(0, 7);
+    const year = now.getFullYear().toString();
+
+    function fmt(n) {
+      return n >= 1000 ? (n / 1000).toFixed(1).replace('.0', '') + 'K' : n;
+    }
+
+    // ---- ຄົນອອນລາຍ ຕອນນີ້ (Real-time) ----
+    const myKey = db.ref('status').push().key;
+    const statusRef = db.ref('status/' + myKey);
+    statusRef.set(true);
+    statusRef.onDisconnect().remove(); // ອອກຈາກເວັບ = ຫຼຸດອັດຕະໂນມັດ
+
+    db.ref('status').on('value', (snap) => {
+      const count = snap.numChildren();
+      const el = document.getElementById('vw-online');
+      if (el) el.textContent = fmt(count || 1);
+    });
+
+    // ---- ນັບ view (ທຸກຄັ້ງທີ່ໂຫຼດໜ້າ) ----
+    db.ref('stats/views/' + today).transaction((v) => (v || 0) + 1);
+
+    // ---- ນັບຄົນ unique (ຄັ້ງດຽວຕໍ່ session) ----
+    if (!sessionStorage.getItem('vw_visited')) {
+      sessionStorage.setItem('vw_visited', '1');
+      db.ref('stats/today/' + today).transaction((v) => (v || 0) + 1);
+      db.ref('stats/month/' + month).transaction((v) => (v || 0) + 1);
+      db.ref('stats/year/' + year).transaction((v) => (v || 0) + 1);
+    }
+
+    // ---- ສະແດງຕົວເລກ (ອັບເດດ real-time) ----
+    db.ref('stats/views/' + today).on('value', (s) => {
+      const el = document.getElementById('vw-views');
+      if (el) el.textContent = fmt(s.val() || 0);
+    });
+    db.ref('stats/today/' + today).on('value', (s) => {
+      const el = document.getElementById('vw-today');
+      if (el) el.textContent = fmt(s.val() || 0);
+    });
+    db.ref('stats/month/' + month).on('value', (s) => {
+      const el = document.getElementById('vw-month');
+      if (el) el.textContent = fmt(s.val() || 0);
+    });
+    db.ref('stats/year/' + year).on('value', (s) => {
+      const el = document.getElementById('vw-year');
+      if (el) el.textContent = fmt(s.val() || 0);
+    });
+  })();
+</script>
 <script>
   function setHeaderOffset() {
     const hw = document.querySelector('.header-wrap');
@@ -786,21 +854,7 @@
       card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
     });
   }
-  (function() {
-    const now = new Date(); const today = now.toISOString().slice(0,10); const month = now.toISOString().slice(0,7); const year = now.getFullYear().toString();
-    let views = JSON.parse(localStorage.getItem('vw_views')||'{}'); views[today]=(views[today]||0)+1; localStorage.setItem('vw_views',JSON.stringify(views));
-    if (!sessionStorage.getItem('vw_visited')) {
-      sessionStorage.setItem('vw_visited','1');
-      let vT=JSON.parse(localStorage.getItem('vw_today')||'{}'); vT[today]=(vT[today]||0)+1; localStorage.setItem('vw_today',JSON.stringify(vT));
-      let vM=JSON.parse(localStorage.getItem('vw_month')||'{}'); vM[month]=(vM[month]||0)+1; localStorage.setItem('vw_month',JSON.stringify(vM));
-      let vY=JSON.parse(localStorage.getItem('vw_year') ||'{}'); vY[year] =(vY[year] ||0)+1; localStorage.setItem('vw_year', JSON.stringify(vY));
-    }
-    function fmt(n){ return n>=1000?(n/1000).toFixed(1).replace('.0','')+'K':n; }
-    document.getElementById('vw-views').textContent=fmt(views[today]||0);
-    document.getElementById('vw-today').textContent=fmt((JSON.parse(localStorage.getItem('vw_today')||'{}'))[today]||0);
-    document.getElementById('vw-month').textContent=fmt((JSON.parse(localStorage.getItem('vw_month')||'{}'))[month]||0);
-    document.getElementById('vw-year').textContent =fmt((JSON.parse(localStorage.getItem('vw_year') ||'{}'))[year] ||0);
-  })();
+  
 </script>
 </body>
 </html>

@@ -27,10 +27,7 @@
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Noto Sans Lao', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
-
-    /* HEADER WRAP */
     .header-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 101; -webkit-transform: translateZ(0); transform: translateZ(0); will-change: transform; }
-    /* SOCIAL BAR */
     .social-bar { background: #ffffff; padding: 0.4rem 2.5rem; position: relative; border-bottom: 1px solid rgba(255,114,0,0.15); }
     .social-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
     .social-address { font-size: 0.8rem; color: var(--orange); text-decoration: none; transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -40,8 +37,6 @@
     .social-btn:hover { transform: scale(1.15); opacity: 0.9; }
     .social-btn.fb { background: #1877F2; } .social-btn.wa { background: #25D366; }
     .social-btn.tt { background: #000; }   .social-btn.yt { background: #FF0000; }
-
-    /* NAVBAR */
     nav { position: relative; width: 100%; z-index: 100; background: var(--orange); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; box-shadow: 0 2px 16px rgba(255,114,0,0.25); }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
     .nav-brand { color: #fff; line-height: 1.25; }
@@ -61,8 +56,6 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 700; }
     .mobile-menu a:hover { color: #ffe600; }
-
-    /* PAGE HEADER */
     .page-header { min-height: 280px; background: #ffffff; display: flex; align-items: center; justify-content: center; text-align: center; padding: calc(var(--header-h, 108px) + 2rem) 2rem 3rem; position: relative; overflow: hidden; }
     .page-header::before { content: ''; position: absolute; border-radius: 50%; pointer-events: none; width: 700px; height: 700px; right: -220px; top: -180px; background: radial-gradient(circle, rgba(255,114,0,0.08) 0%, transparent 65%); }
     .page-header::after { content: ''; position: absolute; border-radius: 50%; pointer-events: none; width: 550px; height: 550px; left: -160px; bottom: -150px; background: radial-gradient(circle, rgba(255,114,0,0.06) 0%, transparent 65%); }
@@ -73,8 +66,6 @@
     .page-header h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: var(--dark); line-height: 1.3; margin-bottom: 0.5rem; }
     .page-header h1 em { font-style: normal; background: linear-gradient(90deg, var(--orange), var(--orange-lt)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .page-header p { color: var(--mid); font-size: 1.1rem; }
-
-    /* CALC */
     .calc-section { padding: 4rem 2rem 5rem; background: var(--cream); }
     .container { max-width: 1100px; margin: 0 auto; }
     .loan-tabs { display: flex; gap: 0.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
@@ -174,8 +165,6 @@
     tr:hover td { background: rgba(255,114,0,0.04); }
     tr.last-row td { font-weight: 700; color: var(--orange); background: rgba(255,114,0,0.06); }
     .more-rows { text-align: center; padding: 0.75rem; font-size: 0.78rem; color: var(--mid); background: var(--light); }
-
-    /* FOOTER */
     footer { background: #efeded; color: #fff; padding: 2.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 4rem; padding: 2rem 0; }
     .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 1rem; color: #000; }
@@ -186,10 +175,8 @@
     .vw-left { display: flex; align-items: center; gap: 8px; color: #444; }
     .vw-val { font-weight: 600; color: #222; font-size: 16px; }
     .vw-footer { margin-top: 8px; text-align: center; font-size: 11px; color: var(--orange); border-top: 1px solid #eee; padding-top: 6px; }
-
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
     @media print {
       nav, .social-bar, .loan-tabs, .calc-btn, .amort-toggle, .print-btn, .amort-actions, .tips-box, .apply-cta-wrap { display: none !important; }
       body { background: #fff; }
@@ -197,7 +184,6 @@
       .calc-section { padding: 1rem; }
       .reveal { opacity: 1 !important; transform: none !important; }
     }
-
     @media (max-width: 900px) { .summary-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 768px) {
       .social-bar { padding: 0.4rem 1rem; }
@@ -223,14 +209,10 @@
       .loan-tabs { gap: 0.35rem; }
       .loan-tab { font-size: 0.78rem; padding: 0.5rem 0.9rem; }
     }
-
-    /* ===== MOBILE PATCH ===== */
     @media (max-width: 768px) {
-      /* FIX 1: Social bar — ສະແດງ GPS ແຕ່ຫຍໍ້ text, icons ໃຫຍ່ຂຶ້ນ */
       .social-address { display: block; font-size: 0.68rem; max-width: 55vw; }
       .social-bar-inner { justify-content: space-between; }
       .social-btn { width: 36px; height: 36px; font-size: 0.85rem; }
-      /* FIX 2: Hamburger tap area */
       .hamburger { padding: 8px; margin-right: -8px; }
     }
     @media (max-width: 390px) {
@@ -241,7 +223,6 @@
 <body>
 
 <div class="header-wrap">
-<!-- SOCIAL BAR -->
 <div class="social-bar">
   <div class="social-bar-inner">
      <a href="https://maps.google.com/?q=326+Unit+16+Sikhay+Vientiane" target="_blank" class="social-address">
@@ -256,7 +237,6 @@
   </div>
 </div>
 
-<!-- NAVBAR -->
 <nav>
   <a href="index.html" style="text-decoration:none; color:inherit; display:flex; align-items:center;">
     <div class="nav-logo">
@@ -279,7 +259,6 @@
 </nav>
 </div>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html" onclick="toggleMenu()">ໜ້າຫລັກ</a>
   <a href="products.html" onclick="toggleMenu()">ສິນເຊື່ອ</a>
@@ -287,7 +266,6 @@
   <a href="apply.html" onclick="toggleMenu()">ສະໝັກກູ້ເງິນ</a>
 </div>
 
-<!-- PAGE HEADER -->
 <div class="page-header">
   <div class="page-header-grid"></div>
   <div class="page-header-content reveal">
@@ -299,12 +277,24 @@
 
 <section class="calc-section">
   <div class="container">
-    <div class="loan-tabs reveal">
-      <button class="loan-tab active" onclick="setLoanType('personal', this)">ສິນເຊື່ອສ່ວນບຸກຄົນ</button>
-      <button class="loan-tab" onclick="setLoanType('business', this)">ສິນເຊື່ອທຸລະກິດ</button>
-      <button class="loan-tab" onclick="setLoanType('mortgage', this)">ສິນເຊື່ອທີ່ດິນ / ເຮືອນ</button>
-      <button class="loan-tab" onclick="setLoanType('car', this)">ສິນເຊື່ອລົດ</button>
-      
+    <div class="loan-tabs reveal" style="max-width:520px;">
+      <select class="form-input-text" id="loanTypeSelect" onchange="setLoanType(this.value)" style="width:100%;">
+        <option value="sme">ສິນເຊື່ອ SME</option>
+        <option value="asset">ສິນເຊື່ອຫັນຊັບເປັນທຶນ</option>
+        <option value="personal" selected>ສິນເຊື່ອລາຍບຸກຄົນ</option>
+        <option value="edu">ສິນເຊື່ອເພື່ອການສຶກສາ</option>
+        <option value="home">ສິນເຊື່ອເພື່ອທີ່ຢູ່ອາໄສ</option>
+        <option value="agri">ສິນເຊື່ອເພື່ອກະສິກຳ</option>
+        <option value="govEmp">ເງິນກູ້ພະນັກງານລັດ</option>
+        <option value="privEmp">ເງິນກູ້ພະນັກງານເອກະຊົນ</option>
+        <option value="trade">ສິນເຊື່ອເພື່ອຄ້າຂາຍທີ່ມີໜ້າຮ້ານ</option>
+        <option value="express">ສິນເຊື່ອເງິນດ່ວນ</option>
+        <option value="comfort">ສິນເຊື່ອແສນສະບາຍ</option>
+        <option value="gold">ສິນເຊື່ອຝາກຄຳ / ຄຳປະກັນ</option>
+        <option value="deposit">ສິນເຊື່ອເງິນຝາກປະຈຳ</option>
+        <option value="landTitle">ສິນເຊື່ອຈຳໃບຕາດິນ</option>
+        <option value="vehicle">ສິນເຊື່ອຈຳທະບຽນລົດ</option>
+      </select>
     </div>
 
     <div class="calc-layout">
@@ -312,18 +302,18 @@
         <div class="calc-panel-title">ຂໍ້ມູນສິນເຊື່ອ</div>
         <div class="form-group">
           <div class="form-label"><span>ຈຳນວນເງິນກູ້ (ກີບ)</span><span class="val" id="amountDisplay">50,000,000</span></div>
-          <input type="range" id="amountSlider" min="5000000" max="500000000" step="5000000" value="50000000" oninput="updateAmount(this.value)">
-          <div class="range-marks"><span>5 ລ້ານ</span><span>250 ລ້ານ</span><span>1000 ລ້ານ</span></div>
+          <input type="range" id="amountSlider" min="5000000" max="500000000" step="1000000" value="50000000" oninput="updateAmount(this.value)">
+          <div class="range-marks"><span id="amountMarkMin">5 ລ້ານ</span><span id="amountMarkMid">250 ລ້ານ</span><span id="amountMarkMax">500 ລ້ານ</span></div>
         </div>
         <div class="form-group">
           <div class="form-label"><span>ໄລຍະຜ່ອນ</span><span class="val" id="termDisplay">24 ເດືອນ</span></div>
-          <input type="range" id="termSlider" min="3" max="120" step="3" value="24" oninput="updateTerm(this.value)">
-          <div class="range-marks"><span>3 ເດືອນ</span><span>5 ປີ</span><span>10 ປີ</span></div>
+          <input type="range" id="termSlider" min="3" max="120" step="1" value="24" oninput="updateTerm(this.value)">
+          <div class="range-marks"><span id="termMarkMin">3 ເດືອນ</span><span id="termMarkMid">18 ເດືອນ</span><span id="termMarkMax">36 ເດືອນ</span></div>
         </div>
         <div class="form-group">
           <div class="form-label"><span>ດອກເບ້ຍ / ເດືອນ (%)</span><span class="val" id="rateDisplay">0.80%</span></div>
-          <input type="range" id="rateSlider" min="0.3" max="5.0" step="0.05" value="0.80" oninput="updateRate(this.value)">
-          <div class="range-marks"><span>0.3%</span><span>2.0%</span><span>5.0%</span></div>
+          <input type="range" id="rateSlider" min="0.1" max="5.0" step="0.01" value="0.80" oninput="updateRate(this.value)">
+          <div class="range-marks"><span>0.1%</span><span>2.5%</span><span>5.0%</span></div>
         </div>
         <div class="form-group">
           <div class="form-label"><span>ວິທີຄິດໄລ່</span></div>
@@ -409,7 +399,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="visitor-widget" id="visitorWidget">
@@ -428,7 +417,75 @@
     </ul>
   </div>
 </footer>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCsXTkMud5NXdygV6x29Mb_zAk_TEz4H5E",
+    authDomain: "sapthavy-wab.firebaseapp.com",
+    databaseURL: "https://sapthavy-wab-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "sapthavy-wab",
+    storageBucket: "sapthavy-wab.firebasestorage.app",
+    messagingSenderId: "238613325403",
+    appId: "1:238613325403:web:57b2fd4c956f901b99817e"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  (function () {
+    const now = new Date();
+    const today = now.toISOString().slice(0, 10);
+    const month = now.toISOString().slice(0, 7);
+    const year = now.getFullYear().toString();
+
+    function fmt(n) {
+      return n >= 1000 ? (n / 1000).toFixed(1).replace('.0', '') + 'K' : n;
+    }
+
+    // ---- ຄົນອອນລາຍ ຕອນນີ້ (Real-time) ----
+    const myKey = db.ref('status').push().key;
+    const statusRef = db.ref('status/' + myKey);
+    statusRef.set(true);
+    statusRef.onDisconnect().remove(); // ອອກຈາກເວັບ = ຫຼຸດອັດຕະໂນມັດ
+
+    db.ref('status').on('value', (snap) => {
+      const count = snap.numChildren();
+      const el = document.getElementById('vw-online');
+      if (el) el.textContent = fmt(count || 1);
+    });
+
+    // ---- ນັບ view (ທຸກຄັ້ງທີ່ໂຫຼດໜ້າ) ----
+    db.ref('stats/views/' + today).transaction((v) => (v || 0) + 1);
+
+    // ---- ນັບຄົນ unique (ຄັ້ງດຽວຕໍ່ session) ----
+    if (!sessionStorage.getItem('vw_visited')) {
+      sessionStorage.setItem('vw_visited', '1');
+      db.ref('stats/today/' + today).transaction((v) => (v || 0) + 1);
+      db.ref('stats/month/' + month).transaction((v) => (v || 0) + 1);
+      db.ref('stats/year/' + year).transaction((v) => (v || 0) + 1);
+    }
+
+    // ---- ສະແດງຕົວເລກ (ອັບເດດ real-time) ----
+    db.ref('stats/views/' + today).on('value', (s) => {
+      const el = document.getElementById('vw-views');
+      if (el) el.textContent = fmt(s.val() || 0);
+    });
+    db.ref('stats/today/' + today).on('value', (s) => {
+      const el = document.getElementById('vw-today');
+      if (el) el.textContent = fmt(s.val() || 0);
+    });
+    db.ref('stats/month/' + month).on('value', (s) => {
+      const el = document.getElementById('vw-month');
+      if (el) el.textContent = fmt(s.val() || 0);
+    });
+    db.ref('stats/year/' + year).on('value', (s) => {
+      const el = document.getElementById('vw-year');
+      if (el) el.textContent = fmt(s.val() || 0);
+    });
+  })();
+</script>
 <script>
   function setHeaderOffset() {
     const hw = document.querySelector('.header-wrap');
@@ -439,24 +496,66 @@
   window.addEventListener('resize', setHeaderOffset);
 
   const presets = {
-    personal: { rate: 3.0, maxAmount: 50000000,   maxTerm: 60  },
-    business: { rate: 3.0, maxAmount: 5000000000,  maxTerm: 120 },
-    mortgage: { rate: 3.0, maxAmount: 500000000,   maxTerm: 120 },
-    car:      { rate: 3.0, maxAmount: 500000000,   maxTerm: 84  },
+    sme:      { name: 'ສິນເຊື່ອ SME',                       rate: 3.0,   minAmount: 1000000, maxAmount: 500000000,   maxTerm: 36 },
+    asset:    { name: 'ສິນເຊື່ອຫັນຊັບເປັນທຶນ',                rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    personal: { name: 'ສິນເຊື່ອລາຍບຸກຄົນ',                    rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    edu:      { name: 'ສິນເຊື່ອເພື່ອການສຶກສາ',                rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    home:     { name: 'ສິນເຊື່ອເພື່ອທີ່ຢູ່ອາໄສ',                 rate:   3.0,  minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    agri:     { name: 'ສິນເຊື່ອເພື່ອກະສິກຳ',                  rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    govEmp:   { name: 'ເງິນກູ້ພະນັກງານລັດ',                   rate: 2.99, minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
+    privEmp:  { name: 'ເງິນກູ້ພະນັກງານເອກະຊົນ',                rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
+    trade:    { name: 'ສິນເຊື່ອເພື່ອຄ້າຂາຍທີ່ມີໜ້າຮ້ານ',        rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
+    express:  { name: 'ສິນເຊື່ອເງິນດ່ວນ',                     rate: 5.0, minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 5  },
+    comfort:  { name: 'ສິນເຊື່ອແສນສະບາຍ',                     rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
+    gold:     { name: 'ສິນເຊື່ອຝາກຄຳ / ຄຳປະກັນ',              rate: 2.0, minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
+    deposit:  { name: 'ສິນເຊື່ອເງິນຝາກປະຈຳ',                  rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
+    landTitle:{ name: 'ສິນເຊື່ອຈຳໃບຕາດິນ',                    rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
+    vehicle:  { name: 'ສິນເຊື່ອຈຳທະບຽນລົດ',                   rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
   };
   let showAmort = true;
   let doughnutChart = null;
   let barChartInstance = null;
 
-  function setLoanType(type, btn) {
-    document.querySelectorAll('.loan-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
+  function fmtMillionLabel(n) {
+    const m = n / 1000000;
+    return (Number.isInteger(m) ? m : m.toFixed(1)) + ' ລ້ານ';
+  }
+  function fmtMonthLabel(m) {
+    if (m >= 12 && m % 12 === 0) return (m/12) + ' ປີ';
+    return m + ' ເດືອນ';
+  }
+  function updateRangeMarks(p) {
+    document.getElementById('amountMarkMin').textContent = fmtMillionLabel(p.minAmount);
+    document.getElementById('amountMarkMid').textContent = fmtMillionLabel(Math.round((p.minAmount + p.maxAmount) / 2 / 1000000) * 1000000);
+    document.getElementById('amountMarkMax').textContent = fmtMillionLabel(p.maxAmount);
+    document.getElementById('termMarkMin').textContent  = fmtMonthLabel(3);
+    document.getElementById('termMarkMid').textContent  = fmtMonthLabel(Math.round((3 + p.maxTerm) / 2));
+    document.getElementById('termMarkMax').textContent  = fmtMonthLabel(p.maxTerm);
+  }
+
+  function setLoanType(type) {
     const p = presets[type];
+    if (!p) return;
+    const amountSlider = document.getElementById('amountSlider');
+    const termSlider = document.getElementById('termSlider');
+
+    amountSlider.min = p.minAmount;
+    amountSlider.max = p.maxAmount;
+    termSlider.max = p.maxTerm;
+    updateRangeMarks(p);
+
+    amountSlider.value = p.minAmount;
+    updateAmount(p.minAmount);
+
+    const defaultTerm = Math.min(24, p.maxTerm);
+    termSlider.value = defaultTerm;
+    updateTerm(defaultTerm);
+
+    amountSlider.dispatchEvent(new Event('input'));
+    termSlider.dispatchEvent(new Event('input'));
+
     document.getElementById('rateSlider').value = p.rate;
     updateRate(p.rate);
-    document.getElementById('amountSlider').max = p.maxAmount;
-    document.getElementById('termSlider').max   = p.maxTerm;
-    calculate();
   }
 
   function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
@@ -483,8 +582,16 @@
     const r = rInput / 100;
     const method = document.getElementById('methodSelect').value;
     let monthly, totalInterest, totalPay;
-    if (method === 'reducing') { monthly = P * r * Math.pow(1+r,n) / (Math.pow(1+r,n) - 1); totalPay = monthly * n; totalInterest = totalPay - P; }
-    else { totalInterest = P * r * n; totalPay = P + totalInterest; monthly = totalPay / n; }
+    if (method === 'reducing') {
+      if (r === 0) { monthly = P / n; }
+      else { monthly = P * r * Math.pow(1+r,n) / (Math.pow(1+r,n) - 1); }
+      totalPay = monthly * n;
+      totalInterest = totalPay - P;
+    } else {
+      totalInterest = P * r * n;
+      totalPay = P + totalInterest;
+      monthly = totalPay / n;
+    }
     const monthlyEl = document.getElementById('monthlyResult');
     if (monthlyEl) { monthlyEl.textContent = fmt(monthly); monthlyEl.classList.remove('amount-updated'); void monthlyEl.offsetWidth; monthlyEl.classList.add('amount-updated'); }
     document.getElementById('principalResult').textContent  = fmt(P);
@@ -518,13 +625,13 @@
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (barChartInstance) barChartInstance.destroy();
-    const step = n <= 60 ? 1 : Math.ceil(n / 60);
     const labels = [], principals = [], interests = [];
     let balance = P;
-    for (let i = 1; i <= n; i += step) {
+    for (let i = 1; i <= n; i++) {
       let intPart, prinPart;
-      if (method === 'reducing') { intPart = balance * r; prinPart = monthly - intPart; } else { intPart = P * r; prinPart = monthly - intPart; }
-      balance = Math.max(balance - prinPart * step, 0);
+      if (method === 'reducing') { intPart = balance * r; prinPart = monthly - intPart; }
+      else { intPart = P * r; prinPart = monthly - intPart; }
+      balance = Math.max(balance - prinPart, 0);
       labels.push(i); principals.push(Math.round(prinPart)); interests.push(Math.round(intPart));
     }
     barChartInstance = new Chart(ctx, { type: 'bar', data: { labels, datasets: [{ label: 'ຕັດຕົ້ນ', data: principals, backgroundColor: '#ff7200', borderRadius: 2, borderSkipped: false }, { label: 'ດອກເບ້ຍ', data: interests, backgroundColor: '#C9A84C', borderRadius: 2, borderSkipped: false }] }, options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top', labels: { font: { family: 'Noto Sans Lao', size: 11 }, color: '#4A3728', boxWidth: 12, boxHeight: 12 } }, tooltip: { callbacks: { label: c => ' ' + c.dataset.label + ': ' + fmt(c.raw) + ' ກີບ' } } }, scales: { x: { stacked: true, ticks: { color: '#4A3728', font: { size: 10 }, maxTicksLimit: 15 }, grid: { display: false }, title: { display: true, text: 'ເດືອນ', color: '#4A3728', font: { size: 11 } } }, y: { stacked: true, ticks: { color: '#4A3728', font: { size: 10 }, callback: v => (v/1000000).toFixed(0) + 'M' }, grid: { color: 'rgba(74,55,40,0.06)' }, title: { display: true, text: 'ກີບ', color: '#4A3728', font: { size: 11 } } } } } });
@@ -553,6 +660,10 @@
   function toggleAllRows() { showAllRows = !showAllRows; calculate(); }
   function goApply() { window.location.href = 'apply.html'; }
   function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); document.getElementById('hamburger').classList.toggle('open'); }
+  function toggleAmort() {
+    showAmort = !showAmort;
+    document.getElementById('amortBody').style.display = showAmort ? '' : 'none';
+  }
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
@@ -560,30 +671,12 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   window.addEventListener('DOMContentLoaded', () => {
+    setLoanType(document.getElementById('loanTypeSelect').value);
     ['amountSlider','termSlider','rateSlider'].forEach(id => { const el = document.getElementById(id); if (el) updateSliderBg(el); });
     calculate();
   });
 
-  (function() {
-    const now = new Date();
-    const today = now.toISOString().slice(0, 10);
-    const month = now.toISOString().slice(0, 7);
-    const year  = now.getFullYear().toString();
-    let views = JSON.parse(localStorage.getItem('vw_views') || '{}');
-    views[today] = (views[today] || 0) + 1;
-    localStorage.setItem('vw_views', JSON.stringify(views));
-    if (!sessionStorage.getItem('vw_visited')) {
-      sessionStorage.setItem('vw_visited', '1');
-      let vToday = JSON.parse(localStorage.getItem('vw_today') || '{}'); vToday[today] = (vToday[today] || 0) + 1; localStorage.setItem('vw_today', JSON.stringify(vToday));
-      let vMonth = JSON.parse(localStorage.getItem('vw_month') || '{}'); vMonth[month] = (vMonth[month] || 0) + 1; localStorage.setItem('vw_month', JSON.stringify(vMonth));
-      let vYear  = JSON.parse(localStorage.getItem('vw_year')  || '{}'); vYear[year]   = (vYear[year]   || 0) + 1; localStorage.setItem('vw_year',  JSON.stringify(vYear));
-    }
-    function fmtV(n) { if (n >= 1000) return (n/1000).toFixed(1).replace('.0','') + 'K'; return n; }
-    document.getElementById('vw-views').textContent = fmtV(views[today] || 0);
-    document.getElementById('vw-today').textContent = fmtV((JSON.parse(localStorage.getItem('vw_today')||'{}'))[today]||0);
-    document.getElementById('vw-month').textContent = fmtV((JSON.parse(localStorage.getItem('vw_month')||'{}'))[month]||0);
-    document.getElementById('vw-year').textContent  = fmtV((JSON.parse(localStorage.getItem('vw_year') ||'{}'))[year] ||0);
-  })();
+  
 </script>
 </body>
 </html>
