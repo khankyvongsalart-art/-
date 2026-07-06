@@ -302,13 +302,13 @@
         <div class="calc-panel-title">ຂໍ້ມູນສິນເຊື່ອ</div>
         <div class="form-group">
           <div class="form-label"><span>ຈຳນວນເງິນກູ້ (ກີບ)</span><span class="val" id="amountDisplay">50,000,000</span></div>
-          <input type="range" id="amountSlider" min="5000000" max="500000000" step="1000000" value="50000000" oninput="updateAmount(this.value)">
-          <div class="range-marks"><span id="amountMarkMin">5 ລ້ານ</span><span id="amountMarkMid">250 ລ້ານ</span><span id="amountMarkMax">500 ລ້ານ</span></div>
+          <input type="range" id="amountSlider" min="1000000" max="500000000" step="1000000" value="50000000" oninput="updateAmount(this.value)">
+          <div class="range-marks"><span id="amountMarkMin">1 ລ້ານ</span><span id="amountMarkMid">250 ລ້ານ</span><span id="amountMarkMax">500 ລ້ານ</span></div>
         </div>
         <div class="form-group">
           <div class="form-label"><span>ໄລຍະຜ່ອນ</span><span class="val" id="termDisplay">24 ເດືອນ</span></div>
-          <input type="range" id="termSlider" min="3" max="120" step="1" value="24" oninput="updateTerm(this.value)">
-          <div class="range-marks"><span id="termMarkMin">3 ເດືອນ</span><span id="termMarkMid">18 ເດືອນ</span><span id="termMarkMax">36 ເດືອນ</span></div>
+          <input type="range" id="termSlider" min="1" max="120" step="1" value="24" oninput="updateTerm(this.value)">
+          <div class="range-marks"><span id="termMarkMin">1 ເດືອນ</span><span id="termMarkMid">18 ເດືອນ</span><span id="termMarkMax">36 ເດືອນ</span></div>
         </div>
         <div class="form-group">
           <div class="form-label"><span>ດອກເບ້ຍ / ເດືອນ (%)</span><span class="val" id="rateDisplay">0.80%</span></div>
@@ -431,6 +431,10 @@
     messagingSenderId: "238613325403",
     appId: "1:238613325403:web:57b2fd4c956f901b99817e"
   };
+  if (typeof firebase === 'undefined') {
+    console.warn('Firebase SDK ບໍ່ໄດ້ໂຫຼດ (ອາດຖືກບລັອກໂດຍເຄືອຄ່າຍ ຫຼື Ad-blocker) — ຂ້າມການນັບ Visitor, ໂປຣແກຣມຄິດໄລ່ຍັງໃຊ້ງານໄດ້ປົກກະຕິ');
+  } else {
+  try {
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
 
@@ -444,11 +448,10 @@
       return n >= 1000 ? (n / 1000).toFixed(1).replace('.0', '') + 'K' : n;
     }
 
-    // ---- ຄົນອອນລາຍ ຕອນນີ້ (Real-time) ----
     const myKey = db.ref('status').push().key;
     const statusRef = db.ref('status/' + myKey);
     statusRef.set(true);
-    statusRef.onDisconnect().remove(); // ອອກຈາກເວັບ = ຫຼຸດອັດຕະໂນມັດ
+    statusRef.onDisconnect().remove();
 
     db.ref('status').on('value', (snap) => {
       const count = snap.numChildren();
@@ -456,10 +459,8 @@
       if (el) el.textContent = fmt(count || 1);
     });
 
-    // ---- ນັບ view (ທຸກຄັ້ງທີ່ໂຫຼດໜ້າ) ----
     db.ref('stats/views/' + today).transaction((v) => (v || 0) + 1);
 
-    // ---- ນັບຄົນ unique (ຄັ້ງດຽວຕໍ່ session) ----
     if (!sessionStorage.getItem('vw_visited_v2')) {
       sessionStorage.setItem('vw_visited_2', '1');
       db.ref('stats/today/' + today).transaction((v) => (v || 0) + 1);
@@ -467,7 +468,6 @@
       db.ref('stats/year/' + year).transaction((v) => (v || 0) + 1);
     }
 
-    // ---- ສະແດງຕົວເລກ (ອັບເດດ real-time) ----
     db.ref('stats/views/' + today).on('value', (s) => {
       const el = document.getElementById('vw-views');
       if (el) el.textContent = fmt(s.val() || 0);
@@ -485,6 +485,10 @@
       if (el) el.textContent = fmt(s.val() || 0);
     });
   })();
+  } catch (e) {
+    console.warn('Firebase visitor tracking error:', e);
+  }
+  }
 </script>
 <script>
   function setHeaderOffset() {
@@ -502,15 +506,15 @@
     edu:      { name: 'ສິນເຊື່ອເພື່ອການສຶກສາ',                rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
     home:     { name: 'ສິນເຊື່ອເພື່ອທີ່ຢູ່ອາໄສ',                 rate:   3.0,  minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
     agri:     { name: 'ສິນເຊື່ອເພື່ອກະສິກຳ',                  rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
-    govEmp:   { name: 'ເງິນກູ້ພະນັກງານລັດ',                   rate: 2.99, minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
-    privEmp:  { name: 'ເງິນກູ້ພະນັກງານເອກະຊົນ',                rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
-    trade:    { name: 'ສິນເຊື່ອເພື່ອຄ້າຂາຍທີ່ມີໜ້າຮ້ານ',        rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
-    express:  { name: 'ສິນເຊື່ອເງິນດ່ວນ',                     rate: 5.0, minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 5  },
-    comfort:  { name: 'ສິນເຊື່ອແສນສະບາຍ',                     rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
-    gold:     { name: 'ສິນເຊື່ອຝາກຄຳ / ຄຳປະກັນ',              rate: 2.0, minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
-    deposit:  { name: 'ສິນເຊື່ອເງິນຝາກປະຈຳ',                  rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
-    landTitle:{ name: 'ສິນເຊື່ອຈຳໃບຕາດິນ',                    rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
-    vehicle:  { name: 'ສິນເຊື່ອຈຳທະບຽນລົດ',                   rate: 3.0,   minAmount: 5000000, maxAmount: 1000000000,  maxTerm: 36 },
+    govEmp:   { name: 'ເງິນກູ້ພະນັກງານລັດ',                   rate: 2.99, minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    privEmp:  { name: 'ເງິນກູ້ພະນັກງານເອກະຊົນ',                rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    trade:    { name: 'ສິນເຊື່ອເພື່ອຄ້າຂາຍທີ່ມີໜ້າຮ້ານ',        rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    express:  { name: 'ສິນເຊື່ອເງິນດ່ວນ',                     rate: 5.0, minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 5  },
+    comfort:  { name: 'ສິນເຊື່ອແສນສະບາຍ',                     rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    gold:     { name: 'ສິນເຊື່ອຝາກຄຳ / ຄຳປະກັນ',              rate: 2.0, minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    deposit:  { name: 'ສິນເຊື່ອເງິນຝາກປະຈຳ',                  rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    landTitle:{ name: 'ສິນເຊື່ອຈຳໃບຕາດິນ',                    rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
+    vehicle:  { name: 'ສິນເຊື່ອຈຳທະບຽນລົດ',                   rate: 3.0,   minAmount: 1000000, maxAmount: 1000000000,  maxTerm: 36 },
   };
   let showAmort = true;
   let doughnutChart = null;
@@ -528,8 +532,8 @@
     document.getElementById('amountMarkMin').textContent = fmtMillionLabel(p.minAmount);
     document.getElementById('amountMarkMid').textContent = fmtMillionLabel(Math.round((p.minAmount + p.maxAmount) / 2 / 1000000) * 1000000);
     document.getElementById('amountMarkMax').textContent = fmtMillionLabel(p.maxAmount);
-    document.getElementById('termMarkMin').textContent  = fmtMonthLabel(3);
-    document.getElementById('termMarkMid').textContent  = fmtMonthLabel(Math.round((3 + p.maxTerm) / 2));
+    document.getElementById('termMarkMin').textContent  = fmtMonthLabel(1);
+    document.getElementById('termMarkMid').textContent  = fmtMonthLabel(Math.round((1 + p.maxTerm) / 2));
     document.getElementById('termMarkMax').textContent  = fmtMonthLabel(p.maxTerm);
   }
 
@@ -675,8 +679,6 @@
     ['amountSlider','termSlider','rateSlider'].forEach(id => { const el = document.getElementById(id); if (el) updateSliderBg(el); });
     calculate();
   });
-
-  
 </script>
 </body>
 </html>
